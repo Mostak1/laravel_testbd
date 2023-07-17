@@ -1,0 +1,32 @@
+@anchor('admin/questions', 'Questions', 'nav-link text-black')
+use like this
+steps
+1.composer require nette/utils
+
+2.Open your AppServiceProvider.php file, which is located in the app/Providers directory.
+
+Import the necessary classes at the top of the file:
+
+
+use Illuminate\Support\Facades\Blade;
+use Nette\Utils\Html;
+
+3.In the boot method of the AppServiceProvider class, define your custom Blade directive:
+php
+Blade::directive('anchor', function ($expression) {
+    $args = explode(',', $expression);
+    $url = trim($args[0]);
+    $text = trim($args[1]);
+    $class = isset($args[2]) ? trim($args[2]) : '';
+
+    $anchor = Html::el('a')
+        ->href($url)
+        ->setText($text)
+        ->class($class);
+
+    return "<?php echo $anchor; ?>";
+});
+
+4.Save the file and run the following command to clear the compiled Blade views:
+arduino
+php artisan view:clear

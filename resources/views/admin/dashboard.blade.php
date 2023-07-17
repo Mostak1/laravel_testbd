@@ -1,2 +1,6 @@
+@extends('admin.layouts.main')
 
-    <h3>Dashboaard Home</h3>
+@section('content')
+    
+<h3>Dashboaard Home</h3>
+@endsection

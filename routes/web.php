@@ -15,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', function () {
-    return view('welcome');
-});
+// Route::get('profile', function () {
+//     return view('profile');
+// });
 Route::get('/', [HomeController::class, 'index']);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('admin/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'checkRole:2'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
