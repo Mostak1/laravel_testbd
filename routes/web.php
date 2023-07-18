@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('profile');
 // });
 Route::get('/', [HomeController::class, 'index']);
+Route::get('skill', [HomeController::class, 'skill']);
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,6 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('admin/users', [HomeController::class, 'user']);
+    Route::get('admin/t', [HomeController::class, 'thana']);
+    Route::get('admin/b', [HomeController::class, 'board']);
+    Route::get('admin/d', [HomeController::class, 'district']);
+    Route::get('admin/usersall', [HomeController::class, 'userall']);
 });
 
 require __DIR__ . '/auth.php';

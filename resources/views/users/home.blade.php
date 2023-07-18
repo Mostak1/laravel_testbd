@@ -20,18 +20,23 @@
 
                 </div>
                 <div class="col-md-3">
-                    <p>LEARNING</p>
+                    <p>ACADEMIC LEARNING</p>
                 </div>
                 <div class="col-md-3">
-                    <p>LEARNING</p>
+                    <p>Skill LEARNING</p>
                 </div>
                 <div class="col-md-3">
-                    <p>LEARNING</p>
+                    <p>ADMISSION LEARNING</p>
                 </div>
             </div>
-            <div class="mx-auto text-center">Register to Get Our Service...</div>
-            @if ($user)
-            @endif
+            <div class="mx-auto text-center">
+                @if (Auth::user())
+                    Thanks For Using Our Service Mr. {{ $user->name }}
+                @else
+                    <a class="dropdown-item" href="{{ url('login') }}">Login</a> to Get Our
+                    Service...
+                @endif
+            </div>
 
 
         </div>
@@ -62,8 +67,8 @@
             </button>
         </div>
         <!-- --------------------------
-        ---------------End Carousel-------
-        -------------------------------- -->
+                                                                        ---------------End Carousel-------
+                                                                        -------------------------------- -->
         <div class="my-3 row">
             <div class="col-md-6">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_7WvWjFXF9K.json" background="transparent"
@@ -88,5 +93,5 @@
             </div>
         </div>
     </div>
-    <h3>Home Controler</h3>
+   
 @endsection

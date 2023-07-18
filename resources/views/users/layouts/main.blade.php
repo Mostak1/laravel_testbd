@@ -37,9 +37,9 @@
                 <div class="navbar-nav mx-lg-auto">
                     <a class="nav-item me-4 fs-5 nav-link active" href="{{ url('') }}"
                         aria-current="page">Home</a>
+                    <a class="nav-item me-4 fs-5 nav-link" href="{{ url('skill') }}">Skill Devlopment</a>
+                    <a class="nav-item me-4 fs-5 nav-link" href="#">Store</a>
                     <a class="nav-item me-4 fs-5 nav-link" href="#">Questions</a>
-                    <a class="nav-item me-4 fs-5 nav-link" href="#">Pricing</a>
-                    <a class="nav-item me-4 fs-5 nav-link" href="{{ url('dashboard') }}">Dashboard</a>
                 </div>
                 <!-- Right navigation -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
@@ -55,8 +55,8 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             @if (Auth::check() && $user->role == 2)
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ url('admin/dashboard') }}"
-                                        target="_blank">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ url('dashboard') }}" target="_blank">Dashboard</a>
+                                </li>
                                 @include('components.logout')
                             @elseif (Auth::check())
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
