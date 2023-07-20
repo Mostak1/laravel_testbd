@@ -9,79 +9,25 @@
     </style>
 @endsection
 @section('content')
-    <div class="home_heaing">
-        <div class="container">
-            @php
-                $user = Auth::user();
-            @endphp
-            <div class="row my-auto">
-                <div class="col-md-3">
-                    <div class="mt-3"><span class="fs-2 text-danger">LEARNING</span><br> <span>Is easy for you</span></div>
-
-                </div>
-                <div class="col-md-3">
-                    <p>ACADEMIC LEARNING</p>
-                </div>
-                <div class="col-md-3">
-                    <p>Skill LEARNING</p>
-                </div>
-                <div class="col-md-3">
-                    <p>ADMISSION LEARNING</p>
+    {{-- main banner for home page --}}
+    <div class="section main-banner" id="top">
+        <video autoplay muted loop id="bg-video" src="{{ asset('assets/images/course-video.mp4') }}"></video>
+        <div class="video-overlay header-text">
+            <div class="caption">
+                <h6>You Have a <span class="bc">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
+                    a<span class="bc">Smart Decision</span> and <span class="bc">Develop Your Skill</span> </h6>
+                <h2><em>Your</em> Classroom</h2>
+                <div class="main-button">
+                    <div class="scroll-to-section">
+                        <a class="cbtn" href="#section2">Discover more</a>
+                    </div>
                 </div>
             </div>
-            <div class="mx-auto text-center">
-                @if (Auth::user())
-                    Thanks For Using Our Service Mr. {{ $user->name }}
-                @else
-                    <a class="dropdown-item" href="{{ url('login') }}">Login</a> to Get Our
-                    Service...
-                @endif
-            </div>
-
-
         </div>
     </div>
+
     <div class="container my-5">
-        <!-- carousel starts here -->
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="4000">
-                    <img src="{{ asset('assets/img/ca1.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="{{ asset('assets/img/ca2.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/ca3.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <!-- --------------------------
-                                                                        ---------------End Carousel-------
-                                                                        -------------------------------- -->
-        <div class="my-3 row">
-            <div class="col-md-6">
-                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_7WvWjFXF9K.json" background="transparent"
-                    speed="1" style="width: 400px;" loop autoplay></lottie-player>
-            </div>
-            <div class="col-md-6">
-                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_bwnHjUCsaL.json" background="transparent"
-                    speed="1" style="width: 400px;" loop autoplay></lottie-player>
-            </div>
-        </div>
-        <!-- testpaper title dynamic -->
-        <div class="home_title">~Past Exam Papers~</div>
-        <div class="exam_data"></div>
+
         <div class="my-3 row">
             <div class="col-md-6">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_yg29hewu.json" background="transparent"
@@ -92,6 +38,91 @@
                     speed="1" style="width: 600px;" loop autoplay></lottie-player>
             </div>
         </div>
+
+        {{--  --}}
+        <section class="section my-5 why-us" data-section="section2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading my-4">
+                            <h2 class="text-center">Why choose <span class="bc">TestBD School</span> ?</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="tabs">
+                            {{-- <ul>
+                                <li><a href="#tabs-1">Best Education</a></li>
+                                <li><a href="#tabs-2">Top Management</a></li>
+                                <li><a href="#tabs-3">Quality Meeting</a></li>
+                            </ul> --}}
+                            <section class="tabs-content">
+                                <article id="tabs-1">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="assets/images/choose-us-image-01.png" alt="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Best Education</h4>
+                                            <p>
+                                                Grad School is free educational HTML template with
+                                                Bootstrap 4.5.2 CSS layout. Feel free to use it for
+                                                educational or commercial purposes. You may want to make
+                                                <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a
+                                                    little donation</a>
+                                                to TemplateMo. Please tell your friends about us. Thank
+                                                you.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article id="tabs-2">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="assets/images/choose-us-image-02.png" alt="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Top Level</h4>
+                                            <p>
+                                                You can modify this HTML layout by editing contents and
+                                                adding more pages as you needed. Since this template has
+                                                options to add dropdown menus, you can put many HTML
+                                                pages.
+                                            </p>
+                                            <p>
+                                                Suspendisse tincidunt, magna ut finibus rutrum, libero
+                                                dolor euismod odio, nec interdum quam felis non ante.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article id="tabs-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="assets/images/choose-us-image-03.png" alt="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Quality Meeting</h4>
+                                            <p>
+                                                You are NOT allowed to redistribute this template ZIP
+                                                file on any template collection website. However, you
+                                                can use this template to convert into a specific theme
+                                                for any kind of CMS platform such as WordPress. For more
+                                                information, you shall
+                                                <a rel="nofollow" href="https://templatemo.com/contact"
+                                                    target="_parent">contact TemplateMo</a>
+                                                now.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
     </div>
-   
 @endsection
