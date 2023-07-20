@@ -38,9 +38,13 @@
                     speed="1" style="width: 600px;" loop autoplay></lottie-player>
             </div>
         </div>
+    </div>
 
-        {{--  --}}
-        <section class="section my-5 why-us" data-section="section2">
+    {{--  --}}
+    <div class="customBac wc">
+
+
+        <section class="section  mt-5 pb-5 why-us" data-section="section2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -121,8 +125,5 @@
                 </div>
             </div>
         </section>
-
-
-
     </div>
 @endsection

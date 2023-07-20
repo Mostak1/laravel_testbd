@@ -1,8 +1,8 @@
 @extends('users.layouts.main')
 @section('content')
-    <h2 class="text-center">Graphic Designing with Photoshop</h2>
+    <h2 class="afterNav text-center">Graphic Designing with Photoshop</h2>
     <div class="container">
-        <div class="row">
+        <div class="row pb-5">
             <div class="col-md-8">
                 <p>অ্যাডোবি ফটোশপ ব্যবহার করে গ্রাফিক ডিজাইন শিখুন। আজই এনরোল করে লোগো, সোশ্যাল মিডিয়া কন্টেন্টসহ
                     প্র্যাক্টিকাল ডিজাইনিং শুরু করুন।</p>

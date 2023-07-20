@@ -50,7 +50,8 @@
             </div>
         </form>
     </x-guest-layout> --}}
-    <div class="container my-5">
+    <div class="afterNav"></div>
+    <div class="container  my-5">
         <div class="row contact">
             <div class="col-md-6">
                 <!-- <Lottie animationData={contactm} loop={true} /> -->
