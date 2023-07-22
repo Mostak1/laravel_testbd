@@ -70,9 +70,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            buttons: [
-                'copy', 'excel', 'pdf', 'print'
-            ]
             var table = $('#myTable').DataTable();
             new $.fn.dataTable.Buttons(table, {
                 buttons: [

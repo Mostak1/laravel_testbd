@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,11 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('admin/users', [HomeController::class, 'user']);
-    Route::get('admin/t', [HomeController::class, 'thana']);
-    Route::get('admin/b', [HomeController::class, 'board']);
-    Route::get('admin/d', [HomeController::class, 'district']);
-    Route::get('admin/usersall', [HomeController::class, 'userall']);
+});
+Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
+    Route::resources([
+        'board' => BoardController::class,
+    ]);
 });
 
 require __DIR__ . '/auth.php';
