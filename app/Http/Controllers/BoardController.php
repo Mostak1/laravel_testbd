@@ -59,6 +59,7 @@ class BoardController extends Controller
     public function update(UpdateBoardRequest $request, Board $board)
     {
         $board->name = $request->name;
+        $board->url = $request->url;
         if ($board->save()) {
             return redirect()->back()->with("success", "Successfully Updated");
         }
@@ -71,6 +72,13 @@ class BoardController extends Controller
     {
         if (Board::destroy($board->id)) {
             return redirect('board')->with("success", "Successfully Deleted");
+        }
+    }
+    public function restore($id)
+    {
+        $board = Board::onlyTrashed()->find($id);
+        if ($board->restore()) {
+            return redirect()->back()->with("success", "Product Restored Successfully");
         }
     }
 }

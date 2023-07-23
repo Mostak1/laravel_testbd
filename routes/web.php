@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -16,14 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('profile', function () {
-//     return view('profile');
-// });
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('skill', [HomeController::class, 'skill']);
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
     return view('admin/dashboard');
 })->middleware(['auth', 'verified', 'checkRole:2'])->name('dashboard');
@@ -34,9 +31,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
+    Route::get('user', [AdminController::class, 'user']);
+    Route::get('user/edit/{id}', [AdminController::class, 'user_edit']);
+    Route::put('user/update/{user}', [AdminController::class, 'user_update'])->name('user.update');
+    Route::delete('user/destroy/{user}', [AdminController::class, 'destroy'])->name('user.destroy');
+    Route::post('user/restore/{id}', [AdminController::class, 'restore'])->name('user.restore');
+
     Route::resources([
         'board' => BoardController::class,
     ]);
+    Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
 });
 
 require __DIR__ . '/auth.php';

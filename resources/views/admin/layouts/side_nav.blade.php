@@ -20,7 +20,7 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested  nav">
 
-                        <a href="{{ url('admin/users') }}" class="dropdown-item" rel="noopener noreferrer">Users</a>
+                        <a href="{{ url('user') }}" class="dropdown-item" rel="noopener noreferrer">Users</a>
                         <a href="{{ url('board') }}" class="dropdown-item" rel="noopener noreferrer">Board</a>
                         <a href="{{ url('admin/d') }}" class="dropdown-item" rel="noopener noreferrer">District</a>
                         <a href="{{ url('admin/t') }}" class="dropdown-item" rel="noopener noreferrer">Thana</a>
@@ -70,7 +70,7 @@
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Addons</div>
-                <a class="nav-link" href="{{ url('admin/users') }}">
+                <a class="nav-link" href="{{ url('user') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Users
                 </a>
