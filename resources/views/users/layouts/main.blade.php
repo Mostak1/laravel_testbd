@@ -81,10 +81,10 @@
             </div>
         </div>
     </nav>
-
     <!-- Header End -->
-
     <!-- Main Content -->
+    @include('layouts.flash')
+
     @yield('content')
 
     <!-- Footer -->

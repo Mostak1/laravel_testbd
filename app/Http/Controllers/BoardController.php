@@ -15,7 +15,7 @@ class BoardController extends Controller
     {
         $data['board'] = Board::paginate(10);
         // dd($data);
-        return view('admin.board', $data);
+        return view('admin.board.all', $data);
     }
 
     /**

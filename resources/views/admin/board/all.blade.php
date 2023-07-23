@@ -5,32 +5,17 @@
     <hr>
     <div class="d-flex justify-content-end">
         <span>
-            <i class="bi bi-plus-square" id="showFormBtn"></i>
+
         </span>
     </div>
-    <div class="form-container">
-        <form action="{{ route('board.store') }}" method="post">
-
-            @csrf
-            <input type="hidden" id="id" value="">
-            <div class="form-group">
-                <label class="form-label">Board</label>
-                <input class="form-control" type="text" name="name" id="name">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Website</label>
-                <input class="form-control" type="text" name="url" id="url">
-            </div>
-
-
-            <div class="form-group my-2">
-                <input type="submit" class="btn btn-outline-primary" value="ADD" id="addBtn">
-                <input type="button" class="btn btn-outline-danger" value="Clear" id="clearBtn">
-            </div>
-        </form>
-        <br>
+    <div class="">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-plus-square" id="showFormBtn">Add</i>
+        </button>
 
     </div>
+
     <table id="myTable" class="table table-striped table-hover table-sm">
         <thead>
             <tr>
@@ -82,3 +67,24 @@
         });
     </script>
 @endsection
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Board</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('board.store') }}" method="post">
+                    @csrf
+                    @include('admin.board.form')
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
