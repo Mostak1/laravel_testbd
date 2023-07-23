@@ -10,7 +10,7 @@
     </div>
     <div class="">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
             <i class="bi bi-plus-square" id="showFormBtn">Add</i>
         </button>
 
@@ -27,6 +27,8 @@
                 <th>Board</th>
                 <th>Website</th>
                 <th>Operations</th>
+                <th></th>
+
             </tr>
         </thead>
         <tbody id="maindata">
@@ -37,6 +39,10 @@
                     <td>{{ $row->url }}</td>
 
                     <td>
+                        <a href="{{ route('board.edit', $row->id) }}" class="btn btn-outline-primary">EDIT</a>
+                    </td>
+                    <td>
+
                         <form action="{{ route('board.destroy', $row->id) }}" method="post">
                             @csrf
                             @method('delete')
@@ -68,8 +74,8 @@
     </script>
 @endsection
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <!-- Modal add --> --}}
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -80,6 +86,9 @@
                 <form action="{{ route('board.store') }}" method="post">
                     @csrf
                     @include('admin.board.form')
+                    <div class="form-group my-2">
+                        <input type="submit" class="btn btn-outline-primary" value="ADD" id="addBtn">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

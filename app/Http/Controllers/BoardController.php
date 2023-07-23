@@ -48,7 +48,9 @@ class BoardController extends Controller
      */
     public function edit(Board $board)
     {
-        //
+        $board = Board::find($board)?->first();
+        //dd($cat);
+        return view("admin.board.edit", compact("board"));
     }
 
     /**
@@ -56,7 +58,10 @@ class BoardController extends Controller
      */
     public function update(UpdateBoardRequest $request, Board $board)
     {
-        //
+        $board->name = $request->name;
+        if ($board->save()) {
+            return redirect()->back()->with("success", "Successfully Updated");
+        }
     }
 
     /**

@@ -19,16 +19,9 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested  nav">
-                        {{-- @anchor("admin/boards", "Boards",  'nav-link text-black');
-                        @anchor("admin/districts", "Districts",  'nav-link text-black'); 
-                        @anchor("admin/thana", "Thana",  'nav-link text-black') 
-                        @anchor("admin/institutes", "Institutes",  'nav-link text-black') 
-                        @anchor("admin/exams", "Exams",  'nav-link text-black') 
-                        @anchor("admin/subject", "Subjects",  'nav-link text-black') 
-                        @anchor("admin/orders", "Orders",  'nav-link text-black') 
-                        @anchor('admin/questions', 'Questions', 'nav-link text-black') --}}
+
                         <a href="{{ url('admin/users') }}" class="dropdown-item" rel="noopener noreferrer">Users</a>
-                        <a href="{{ url('admin/b') }}" class="dropdown-item" rel="noopener noreferrer">Board</a>
+                        <a href="{{ url('board') }}" class="dropdown-item" rel="noopener noreferrer">Board</a>
                         <a href="{{ url('admin/d') }}" class="dropdown-item" rel="noopener noreferrer">District</a>
                         <a href="{{ url('admin/t') }}" class="dropdown-item" rel="noopener noreferrer">Thana</a>
                         <a href="{{ url('admin/i') }}" class="dropdown-item" rel="noopener noreferrer">Institute</a>
