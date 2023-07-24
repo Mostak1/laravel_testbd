@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
-    <h1 class="mt-4">Boards Management</h1>
+    <h1 class="mt-4">District Management</h1>
 
     <hr>
     <div class="d-flex justify-content-end">
@@ -25,18 +25,31 @@
             <tr>
                 <th>ID</th>
                 <th>Board</th>
+                <th>District</th>
+                <th>District(Bangla)</th>
+                <th>Latitude</th>
+                <th>longitude</th>
                 <th>Website</th>
-                <th>Operations</th>
-                <th></th>
+                <th colspan="2">Operations</th>
 
             </tr>
         </thead>
         <tbody id="maindata">
-            @foreach ($board as $row)
+            @foreach ($dis as $row)
                 <tr class="{{ $row->deleted_at ? 'bg-warning' : '' }}">
                     <td>{{ $row->id }}</td>
+                    <td>{{ $row->board->name }}</td>
                     <td>{{ $row->name }}</td>
-                    <td>{{ $row->url }}</td>
+                    <td>{{ $row->bn_name }}</td>
+                    <td>{{ $row->lat }}</td>
+                    <td>{{ $row->lon }}</td>
+                    <td>
+                        {{-- <a href="{{ $row->url }}" target="_blank">{{ $row->url }}</a> --}}
+                        <a class="nav-link text-danger"
+                            href="{{ Str::startsWith($row->url, ['http://', 'https://']) ? $row->url : 'http://' . $row->url }}"
+                            target="_blank">{{ $row->url }}</a>
+
+                    </td>
 
                     <td>
                         <a href="{{ route('board.edit', $row->id) }}" class="btn btn-outline-primary">EDIT</a>
@@ -44,14 +57,14 @@
                     <td>
                         @if ($row->deleted_at)
                             {{-- restore --}}
-                            <form onsubmit="return confirm('Are you sure?')" action="{{ route('board.restore', $row->id) }}"
-                                method="post">
+                            <form onsubmit="return confirm('Are you sure?')"
+                                action="{{ route('district.restore', $row->id) }}" method="post">
                                 @csrf
                                 <input type="submit" class="btn btn-success" name="delete" value="Restore">
                             </form>
                             {{-- restore END --}}
                         @else
-                            <form action="{{ route('board.destroy', $row->id) }}" method="post">
+                            <form action="{{ route('district.destroy', $row->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <input type="submit" onsubmit="return confirm('Are You Sure to Delete?')"
@@ -62,14 +75,36 @@
                 </tr>
             @endforeach
         </tbody>
-        {{ $board->links() }}
+        {{-- {{ $board->links() }} --}}
     </table>
 @endsection
 @section('script')
     <script>
         $(document).ready(function() {
 
-            var table = $('#myTable').DataTable();
+            var table = $('#myTable').DataTable({
+                // Specify the number of columns and their order here
+                columns: [
+                    null, // ID column (first column in the table)
+                    null, // Board column
+                    null, // District column
+                    null, // District (Bangla) column
+                    null, // Latitude column
+                    null, // Longitude column
+                    null, // Website column
+                    {
+                        orderable: false
+                    }, // Operations column (disable sorting for the operations column)
+                    {
+                        orderable: false
+                    }, // Operations column (disable sorting for the operations column)
+                ],
+                // Optional: Customize other DataTables options as needed
+            });
+
+
+
+
             new $.fn.dataTable.Buttons(table, {
                 buttons: [
                     'copy', 'excel', 'pdf', 'print'
@@ -92,9 +127,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('board.store') }}" method="post">
+                <form action="{{ route('district.store') }}" method="post">
                     @csrf
-                    @include('admin.board.form')
+                    @include('admin.district.form')
                     <div class="form-group my-2">
                         <input type="submit" class="btn btn-outline-primary" value="ADD" id="addBtn">
                     </div>

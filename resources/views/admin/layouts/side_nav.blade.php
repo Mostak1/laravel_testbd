@@ -22,12 +22,12 @@
 
                         <a href="{{ url('user') }}" class="dropdown-item" rel="noopener noreferrer">Users</a>
                         <a href="{{ url('board') }}" class="dropdown-item" rel="noopener noreferrer">Board</a>
-                        <a href="{{ url('admin/d') }}" class="dropdown-item" rel="noopener noreferrer">District</a>
-                        <a href="{{ url('admin/t') }}" class="dropdown-item" rel="noopener noreferrer">Thana</a>
-                        <a href="{{ url('admin/i') }}" class="dropdown-item" rel="noopener noreferrer">Institute</a>
-                        <a href="{{ url('admin/s') }}" class="dropdown-item" rel="noopener noreferrer">Subject</a>
-                        <a href="{{ url('admin/q') }}" class="dropdown-item" rel="noopener noreferrer">Questions</a>
-                        <a href="{{ url('admin/o') }}" class="dropdown-item" rel="noopener noreferrer">Order
+                        <a href="{{ url('district') }}" class="dropdown-item" rel="noopener noreferrer">District</a>
+                        <a href="{{ url('thana') }}" class="dropdown-item" rel="noopener noreferrer">Thana</a>
+                        <a href="{{ url('institute') }}" class="dropdown-item" rel="noopener noreferrer">Institute</a>
+                        <a href="{{ url('subject') }}" class="dropdown-item" rel="noopener noreferrer">Subject</a>
+                        <a href="{{ url('question') }}" class="dropdown-item" rel="noopener noreferrer">Questions</a>
+                        <a href="{{ url('order') }}" class="dropdown-item" rel="noopener noreferrer">Order
                             Management</a>
                     </nav>
                 </div>

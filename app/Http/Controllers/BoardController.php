@@ -13,7 +13,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $data['board'] = Board::paginate(10);
+        $data['board'] = Board::withTrashed()->paginate(10);
         // dd($data);
         return view('admin.board.all', $data);
     }
@@ -78,7 +78,7 @@ class BoardController extends Controller
     {
         $board = Board::onlyTrashed()->find($id);
         if ($board->restore()) {
-            return redirect()->back()->with("success", "Product Restored Successfully");
+            return redirect()->back()->with("success", "Restored Successfully");
         }
     }
 }
