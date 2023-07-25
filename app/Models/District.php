@@ -18,7 +18,7 @@ class District extends Model
     {
         return $this->belongsTo(Board::class);
     }
-    public function thana()
+    public function thanas()
     {
         return $this->hasMany(Thana::class);
     }

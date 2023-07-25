@@ -14,14 +14,15 @@ class ThanaController extends Controller
      */
     public function index()
     {
-        $district = District::get();
-        // dd($dis);
-        $thana = Thana::with('district')->withTrashed()->get();
+        // $districts = District::get();
+        $thanas = Thana::with('district')->get();
+        // dd($thanas);
 
         return view("admin.thana.all")
-            ->with('thanas', $thana)
-            ->with('district', $district);
+            ->with('thanas', $thanas);
+        // ->with('districts', $districts);
     }
+
 
     /**
      * Show the form for creating a new resource.

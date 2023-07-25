@@ -15,7 +15,7 @@ class Board extends Model
         'name', 'url'
     ];
 
-    public function district()
+    public function districts()
     {
         return $this->hasMany(District::class);
     }

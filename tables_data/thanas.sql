@@ -517,7 +517,7 @@ INSERT INTO `thanas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (489, 64, 'Mohongonj', 'মোহনগঞ্জ', 'mohongonj.netrokona.gov.bd'),
 (490, 64, 'Purbadhala', 'পূর্বধলা', 'purbadhala.netrokona.gov.bd'),
 (491, 64, 'Netrokona Sadar', 'নেত্রকোণা সদর', 'netrokonasadar.netrokona.gov.bd'),
-(492, 0, 'Eidgaon', 'ঈদগাঁও', '2255'),
+(492, 9, 'Eidgaon', 'ঈদগাঁও', '2255'),
 (493, 39, 'Madhyanagar', 'মধ্যনগর', 'null'),
 (494, 50, 'Dasar', 'ডাসার', 'null'),
 (495, 47, 'Demra', 'ডেমরা', 'demra.com'),
