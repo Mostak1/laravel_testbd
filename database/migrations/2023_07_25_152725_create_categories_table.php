@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->set('active', ['0', '1'])->default('1');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
