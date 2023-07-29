@@ -1,15 +1,4 @@
-@extends('layouts.admin')
-
-@section('title', 'Show Classes')
-@section('sidebar')
-    @include('dashboard.sidebar')
-@endsection
-
-@section('navbar')
-    @include('inc.admin.navbar')
-@endsection
-
-
+@extends('admin.layouts.main')
 @section('content')
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">

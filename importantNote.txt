@@ -1,4 +1,10 @@
 
+after finish css
+npm run build
+
+continue run css 
+npm dev run
+
 Route::resources([
     'photos' => PhotoController::class,
     'posts' => PostController::class,

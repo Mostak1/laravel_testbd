@@ -1,14 +1,4 @@
-@extends('layouts.admin')
-
-@section('title', 'Add Classes')
-@section('sidebar')
-    @include('dashboard.sidebar')
-@endsection
-
-@section('navbar')
-    @include('inc.admin.navbar')
-@endsection
-
+@extends('admin.layouts.main')
 @section('content')
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
@@ -20,8 +10,8 @@
         <div class="card-body mt-1">
             {{ Form::open(['route' => 'category.store', 'class' => 'user', 'enctype' => 'multipart/form-data']) }}
 
-            @include('partial.flash')
-            @include('partial.error')
+            {{-- @include('partial.flash')
+            @include('partial.error') --}}
 
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">

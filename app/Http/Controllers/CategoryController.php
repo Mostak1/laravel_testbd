@@ -40,7 +40,7 @@ class CategoryController extends Controller
         // dd($data);
         $cat = Category::create($data);
         if($cat){
-            return back()->with('message','Category ' .$cat->id. ' has been created Successfully!');
+            return back()->with('success','Category ' .$cat->id. ' has been created Successfully!');
         }
     }
 
@@ -67,10 +67,10 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
         if($category->save()){
-                return back()->with('message',"Update Successfully!");
+                return back()->with('success',"Update Successfully!");
             }
             else{
-                return back()->with('message',"Update Failed!");
+                return back()->with('error',"Update Failed!");
             }
     }
 
@@ -80,9 +80,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         if(Category::destroy($category->id)){
-            return back()->with('message',$category->id. ' has been deleted!');
+            return back()->with('success',$category->id. ' has been deleted!');
         }else{
-            return back()->with('message','Delete Failed!');
+            return back()->with('error','Delete Failed!');
         }
     }
 }

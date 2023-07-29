@@ -29,6 +29,7 @@
                         <a href="{{ url('question') }}" class="dropdown-item" rel="noopener noreferrer">Questions</a>
                         <a href="{{ url('order') }}" class="dropdown-item" rel="noopener noreferrer">Order
                             Management</a>
+                        <a href="{{ url('category') }}" class="dropdown-item" rel="noopener noreferrer">Category</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"

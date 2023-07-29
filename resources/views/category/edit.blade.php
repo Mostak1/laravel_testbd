@@ -1,15 +1,4 @@
-@extends('layouts.admin')
-
-@section('title', 'Edit Class')
-@section('sidebar')
-    @include('dashboard.sidebar')
-@endsection
-
-@section('navbar')
-    @include('inc.admin.navbar')
-@endsection
-
-
+@extends('admin.layouts.main')
 @section('content')
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
@@ -25,8 +14,8 @@
                 'class' => 'user',
                 'route' => ['category.update', $category->id],
             ]) !!}
-            @include('partial.flash')
-            @include('partial.error')
+            {{-- @include('partial.flash')
+            @include('partial.error') --}}
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     {!! Form::text('name', null, [
