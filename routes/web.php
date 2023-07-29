@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ThanaController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,7 +45,8 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'board' => BoardController::class,
         'district' => DistrictController::class,
         'thana' => ThanaController::class,
-        '/category' => CategoryController::class,
+        'category' => CategoryController::class,
+        'subcategory'=> SubcategoryController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');
