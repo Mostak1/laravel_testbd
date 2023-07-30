@@ -44,18 +44,18 @@
                                 <td>{{ $category->description }}</td>
                                 <td class="skip d-flex justify-content-center">
                                     {!! Form::open(['method' => 'delete', 'route' => ['category.destroy', $category->id], 'id' => 'deleteform']) !!}
-                                    <a href="javascript:void(0)" class="btn btn-danger btn-circle btn-sm" title="Delete"
+                                    <a href="javascript:void(0)" class="btn btn-danger  btn-sm" title="Delete"
                                         onclick="event.preventDefault();if (!confirm('Are you sure?')) return; document.getElementById('deleteform').submit();">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                     {!! Form::close() !!}
                                     &nbsp;
                                     <a href="{{ url('category/' . $category->id . '/edit') }}"
-                                        class="btn btn-info btn-circle btn-sm" title="Edit">
+                                        class="btn btn-info  btn-sm" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     &nbsp;
-                                    <a href="{{ url('category/' . $category->id) }}" class="btn btn-info btn-circle btn-sm"
+                                    <a href="{{ url('category/' . $category->id) }}" class="btn btn-info  btn-sm"
                                         title="View">
                                         <i class="fas fa-eye"></i>
                                     </a>

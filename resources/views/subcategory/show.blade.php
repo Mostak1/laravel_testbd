@@ -5,7 +5,7 @@
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
             <h4 class="m-0 font-weight-bold text-info">Subject Details</h4>
-            <a href="{{ url('subcategory') }}" class="btn btn-info btn-circle btn-sm" title="Back to Subject">
+            <a href="{{ url('subcategory') }}" class="btn btn-info  btn-sm" title="Back to Subject">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>

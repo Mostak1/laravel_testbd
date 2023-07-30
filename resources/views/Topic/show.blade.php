@@ -1,31 +1,34 @@
 @extends('admin.layouts.main')
+
 @section('content')
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
-            <h4 class="m-0 font-weight-bold text-info">Class Details</h4>
-            <a href="{{ url('category') }}" class="btn btn-info  btn-sm" title="Back to Class">
+            <h6 class="m-0 font-weight-bold text-info">Topic Details</h6>
+            <a href="{{ url('topic') }}" class="btn btn-info btn-circle btn-sm" title="Back to Chapter">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
         <div class="card-body">
             <table class="table table-responsive">
-                <tr class="table-bordered">
-                    <th>Id:</th>
-                    <td>{{ $category->id }}</td>
-                </tr>
+                {{-- <tr class="table-bordered">
+                <th>Id:</th>
+                <td>{{ $topic->id }}</td>
+            </tr> --}}
                 <tr class="table-bordered">
                     <th>Name:</th>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $topic->name }}</td>
                 </tr>
-                <tr class="table-bordered text-start">
+                <tr class="table-bordered">
+                    <th>Class:</th>
+                    <td>{{ $topic->subcategory->name }}</td>
+                </tr>
+                <tr class="table-bordered">
                     <th>Active:</th>
-                    <td>
-                    <td>{{ $category->active }}</td>
-                    </td>
+                    <td>{{ $topic->active }}</td>
                 </tr>
                 <tr class="table-bordered">
                     <th>Description:</th>
-                    <td>{{ $category->description }}</td>
+                    <td>{{ $topic->description }}</td>
                 </tr>
             </table>
         </div>
