@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class District extends Model
 {
-    use SoftDeletes; // use the trait
     use HasFactory;
+    use SoftDeletes; // use the trait
     protected $dates = ['deleted_at'];
     protected $fillable = [
         'board_id', 'name', 'bn_name', 'lat', 'lon', 'url'

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Subcategory;
+use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
@@ -15,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('category.index',compact('categories'))->with('user',Auth::user());
+        return view('category.index', compact('categories'))->with('user', Auth::user());
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create')->with('user',Auth::user());
+        return view('category.create')->with('user', Auth::user());
     }
 
     /**
@@ -31,16 +33,16 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        
+
         $data = [
-            'name'=>$request->name,
-            'description'=>$request->description,
-            'active'=>$request->active,
+            'name' => $request->name,
+            'description' => $request->description,
+            'active' => $request->active,
         ];
         // dd($data);
         $cat = Category::create($data);
-        if($cat){
-            return back()->with('success','Category ' .$cat->id. ' has been created Successfully!');
+        if ($cat) {
+            return back()->with('success', 'Category ' . $cat->id . ' has been created Successfully!');
         }
     }
 
@@ -49,7 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.show',compact('category'))->with('user',Auth::user());
+        return view('category.show', compact('category'))->with('user', Auth::user());
     }
 
     /**
@@ -57,7 +59,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit',compact('category'))->with('user',Auth::user());
+        return view('category.edit', compact('category'))->with('user', Auth::user());
     }
 
     /**
@@ -66,12 +68,11 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
-        if($category->save()){
-                return back()->with('success',"Update Successfully!");
-            }
-            else{
-                return back()->with('error',"Update Failed!");
-            }
+        if ($category->save()) {
+            return back()->with('success', "Update Successfully!");
+        } else {
+            return back()->with('error', "Update Failed!");
+        }
     }
 
     /**
@@ -79,10 +80,24 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if(Category::destroy($category->id)){
-            return back()->with('success',$category->id. ' has been deleted!');
-        }else{
-            return back()->with('error','Delete Failed!');
+        if (Category::destroy($category->id)) {
+            return back()->with('success', $category->id . ' has been deleted!');
+        } else {
+            return back()->with('error', 'Delete Failed!');
         }
+    }
+    // API subcategories
+    public function apisubcat($cid)
+    {
+        $scat  = Subcategory::where('category_id', $cid)->get();
+        // dd($id);
+        return response()->json($scat);
+    }
+    // API topics
+    public function apitopic($scid)
+    {
+        $topic  = Topic::where('subcategory_id', $scid)->get();
+        //    dd($id);
+        return response()->json($topic);
     }
 }
