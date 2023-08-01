@@ -7,6 +7,7 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizsetController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ThanaController;
 use App\Http\Controllers\TopicController;
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'subcategory' => SubcategoryController::class,
         'topic' => TopicController::class,
         'quiz' => QuizController::class,
+        'quizset' => QuizsetController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');

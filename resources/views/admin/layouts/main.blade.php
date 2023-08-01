@@ -73,7 +73,7 @@
             }
         });
     </script>
-  
+
     <script>
         $(document).ready(function() {
 
@@ -120,10 +120,10 @@
                 }
                 $("#topic_id").html(html);
             }
-            $("#subcategory_id").on('change', function(){
-                
-            // })
-            // $("#subcategory_id").change(function() {
+            $("#subcategory_id").on('change', function() {
+
+                // })
+                // $("#subcategory_id").change(function() {
                 if ($(this).val() == "null") {
                     $("#topic_id").empty().append('<option value = "0">All');
                     return;
@@ -142,10 +142,24 @@
             });
 
         });
+        $(document).ready(function() {
+
+            var table = $('#dataTable').DataTable();
+
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ]
+            });
+            table.buttons().container().appendTo($('.tablebtn', table.table().container()));
+            $('.tablebtn .dt-buttons').removeClass('flex-wrap');
+            $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
+
+        });
     </script>
-      <!-- dynamic content start-->
-      @yield('script')
-      <!-- dynamic content end -->
+    <!-- dynamic content start-->
+    @yield('script')
+    <!-- dynamic content end -->
 </body>
 
 </html>
