@@ -73,7 +73,7 @@
 
 
 
-@section('scripts')
+@section('script')
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

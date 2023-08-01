@@ -57,20 +57,15 @@ class QuizController extends Controller
         // $opt = str_replace('"', '', trim($request->ques, '[]'));
         $ques = json_encode($request->ques);
         $opt = str_replace('"', '', trim($ques, '[]'));
-    
-        if ($request->file('quizimage')) {
-            // $qid  = Quiz::orderBy('id', 'desc')->first()->id;
-            $qid  = Quiz::all()->last()->id;
-            $filename = $qid + 1 . '.jpg';
-            // dd($filename);
-            $path = $request->file('quizimage')?->storeAs('public/quizimages', $filename);
 
-            $storagepath = Storage::path($path);
-            // desired format ->fit(330, 330)
-            $img = Image::make($storagepath);
-            // save image
-            $img->save($storagepath);
+        if ($request->hasFile('quizimage')) {
+            $file = $request->file('quizimage');
+            $extention = $file->extension();
+            $qid  = Quiz::all()->last()->id;
+            $filename = $qid + 1 .'.'. $extention;
+            $request->quizimage->move(public_path('/assets/img/'), $filename);
         }
+
 
 
         $request = [
@@ -86,24 +81,9 @@ class QuizController extends Controller
             'user_id' => $request->user_id,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
-            'topic_id' => $request->topic_id,
+            'topic_id' => $request->topic_id ?? '',
         ];
-        /*         $request = [
 
-            'question' => $request->question,
-            'type' => $request->type,
-            'op1' => $request->op1,
-            'op2' => $request->op2,
-            'op3' => $request->op3,
-            'op4' => $request->op4,
-            'ans' => $opt,
-            'qimage' => $filename ?? '',
-            'user_id' => $request->user_id,
-            'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
-            'topic_id' => $request->topic_id,
-        ]; */
-        // dd($data);
         $quizzes = Quiz::create($request);
         if ($quizzes) {
             return back()->with('success', 'Quiz ' . $quizzes->id . ' has been created Successfully!')->withinput(array('category_id' =>  $quizzes->category_id));
@@ -147,29 +127,38 @@ class QuizController extends Controller
         $ques = json_encode($request->ques);
         $opt = str_replace('"', '', trim($ques, '[]'));
         // dd($opt);
-
-
-        if ($request->file('quizimage')) {
+        if ($request->hasFile('quizimage')) {
             if ($quiz->qimage) {
                 Storage::delete($quiz->qimage);
             }
-
-            // Image rename and replace the file name with desired name
-            $path = $request->file('quizimage')->storeAs('public/quizimages', $quiz->qimage);
-            $storagepath = Storage::path($path);
-            // ->fit(330, 330)
-            $img = Image::make($storagepath);
-            $img->save($storagepath);
+            $file = $request->file('quizimage');
+            $extention = $file->extension();
+            $qid  = Quiz::all()->last()->id;
+            $filename = $qid + 1 .'.'. $extention;
+            $request->quizimage->move(public_path('/assets/img/'), $filename);
         }
+
+        // if ($request->file('quizimage')) {
+        //     if ($quiz->qimage) {
+        //         Storage::delete($quiz->qimage);
+        //     }
+
+        //     // Image rename and replace the file name with desired name
+        //     $path = $request->file('quizimage')->storeAs('public/quizimages', $quiz->qimage);
+        //     $storagepath = Storage::path($path);
+        //     // ->fit(330, 330)
+        //     $img = Image::make($storagepath);
+        //     $img->save($storagepath);
+        // }
         // Input
         // if ($request->subcategory_id=='0' || $request->topic_id == '0') {
         //     $quiz->subcategory_id = $request->subcategory_id=='0'? null : $request->subcategory_id;
         //     $quiz->topic_id = $request->topic_id=='0'? null : $request->topic_id;
         //     // $quiz->update($request->only($request)); //$request->only($request)  
         // } 
-        $quiz->update($request->except('ans','subcategory_id','topic_id'));
-        $quiz->subcategory_id = $request->subcategory_id=='0'? null : $request->subcategory_id;
-        $quiz->topic_id = $request->topic_id=='0'? null : $request->topic_id;
+        $quiz->update($request->except('ans', 'subcategory_id', 'topic_id'));
+        $quiz->subcategory_id = $request->subcategory_id == '0' ? null : $request->subcategory_id;
+        $quiz->topic_id = $request->topic_id == '0' ? null : $request->topic_id;
         $quiz->ans = $opt;
 
         //  dd($request->ans,  $quiz->ans,$opt);
@@ -193,7 +182,7 @@ class QuizController extends Controller
             return back()->with('error', 'Delete Failed!');
         }
     }
-    
+
     public function qall(Request $request, Category $category)
     {
 
@@ -255,10 +244,10 @@ class QuizController extends Controller
         // return response()->json($quizzes->toJson(JSON_PRETTY_PRINT));
         return response()->json($quizzes);
     }
-    
+
     public function qimage()
     {
-       
+
 
         return view('playquiz.qimage')
             // ->with('quizzes', $quizzes)
@@ -273,8 +262,9 @@ class QuizController extends Controller
         $q = Quiz::inRandomOrder()->limit(15)->get();
         return response()->json($q);
     }
-    
-    public function apiaddquiz(Request $request){
+
+    public function apiaddquiz(Request $request)
+    {
         $request = [
 
             'question' => htmlentities($request->question),
@@ -284,18 +274,18 @@ class QuizController extends Controller
             'op3' => htmlentities($request->op3),
             'op4' => htmlentities($request->op4),
             'ans' => $request->ans,
-            
+
         ];
         $quizzes = Quiz::create($request);
-        return response()->json(['message'=>"Quiz Created"]);
+        return response()->json(['success' => "Quiz Created"]);
     }
 
-    public function loadquestions($cid,$scid,$tid)
+    public function loadquestions($cid, $scid, $tid)
     {
         $qz = Quiz::where('category_id', $cid)
-        ->where('category_id', $scid)
-        ->where('topic_id', $tid)
-        ->limit(15)->get();
+            ->where('category_id', $scid)
+            ->where('topic_id', $tid)
+            ->limit(15)->get();
         //  dd($cid,$scid,$tid );
         // questions/6/6/8
         return response()->json($qz);

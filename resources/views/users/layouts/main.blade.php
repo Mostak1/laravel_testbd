@@ -39,6 +39,18 @@
                     <a class="customNav  me-4 fs-5 " href="{{ url('skill') }}">Skill Devlopment</a>
                     <a class="customNav  me-4 fs-5 " href="{{url('playquiz')}}">Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="#">Questions</a>
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle wc" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Quiz
+                        </a>
+                      
+                        <ul class="dropdown-menu wc customBac">
+                          <li><a class="dropdown-item wc" href="{{url('playquiz')}}">Quiz All</a></li>
+                          <li><a class="dropdown-item wc" href="{{url('showquiz')}}">Dynamicquiz</a></li>
+                          <li><a class="dropdown-item wc" href="{{url('quiz/qz/qshow')}}">Quiz Show</a></li>
+                          <li><a class="dropdown-item wc" href="{{url('playquiz/qimage')}}">Quiz Image</a></li>
+                        </ul>
+                      </div>
                 </div>
                 <!-- Right navigation -->
                 <ul class="navbar-nav mt-2 mb-lg-0">

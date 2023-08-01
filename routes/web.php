@@ -66,5 +66,9 @@ Route::get('playquiz/subcat/{id}', [QuizController::class, "subcatquiz"]);
 Route::get('playquiz/topic/{id}', [QuizController::class, "topicquiz"]);
 Route::get('/showquiz', [QuizController::class, "dynamicquiz"]);
 Route::get('playquiz/qimage', [QuizController::class, "qimage"]);
+// subcategory
+Route::post('subcats/{cid}', [SubcategoryController::class, 'subcats']);
+// for topics as subcats
+Route::post('topics/{tid}', [TopicController::class, 'topics']);
 
 require __DIR__ . '/auth.php';

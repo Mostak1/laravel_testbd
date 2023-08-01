@@ -32,7 +32,7 @@
                         <a href="{{ url('category') }}" class="dropdown-item" rel="noopener noreferrer">Category</a>
                         <a href="{{ url('subcategory') }}" class="dropdown-item" rel="noopener noreferrer">Subcategory</a>
                         <a href="{{ url('topic') }}" class="dropdown-item" rel="noopener noreferrer">Topics</a>
-                        <a href="{{ url('quiz') }}" class="dropdown-item" rel="noopener noreferrer">Topics</a>
+                        <a href="{{ url('quiz') }}" class="dropdown-item" rel="noopener noreferrer">Quiz</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"

@@ -24,8 +24,6 @@
     {{-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
-
-
     @yield('css')
 </head>
 
@@ -75,9 +73,79 @@
             }
         });
     </script>
-    <!-- dynamic content start -->
-    @yield('script')
-    <!-- dynamic content end -->
+  
+    <script>
+        $(document).ready(function() {
+
+            // show the alert
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 2000);
+            // =========
+            // for subcats as cats
+            function selectscat(ob) {
+                $("#subcategory_id").empty().append('<option value = "0">All');
+
+                let html = "<option value='0'>All</option>";
+                for (const key in ob) {
+                    if (Object.hasOwnProperty.call(ob, key)) {
+                        html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                    }
+                }
+                $("#subcategory_id").html(html);
+            }
+            $("#category_id").change(function() {
+                // console.log( $(this).val() )
+                let URL = "{{ url('subcats') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectscat(response);
+                    }
+                });
+            });
+
+            // for topics as subcats
+            function selecttopic(ot) {
+                // $("#topic_id").html("");
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
+
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
+                }
+                $("#topic_id").html(html);
+            }
+            $("#subcategory_id").on('change', function(){
+                
+            // })
+            // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#topic_id").empty().append('<option value = "0">All');
+                    return;
+                }
+                // console.log( $(this).val() )
+                let URL = "{{ url('topics') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selecttopic(response);
+                    }
+                });
+            });
+
+        });
+    </script>
+      <!-- dynamic content start-->
+      @yield('script')
+      <!-- dynamic content end -->
 </body>
 
 </html>

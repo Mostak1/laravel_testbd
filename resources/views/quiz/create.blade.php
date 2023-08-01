@@ -10,9 +10,6 @@
         <div class="card-body">
             {{ Form::open(['route' => 'quiz.store', 'class' => 'user', 'enctype' => 'multipart/form-data']) }}
 
-          
-
-
             <div class="form-group mt-1 row">
                 <div class="col-sm-3 mb-3">
                     {!! Form::select('category_id', $categories, null, [
@@ -52,11 +49,6 @@
                 </div>
             </div>
 
-            {{-- <div id="imagecontainer" class="row">
-            <div class="col-sm-12 mb-3 mb-sm-0">
-             <input type="file" class="form-control" name="quizimage" id="quizimage">
-            </div>
-            </div> --}}
             <div id="imagecontainer" class="form-group row">
                 <div class="mb-3 mb-sm-0">
                     {!! Form::file('quizimage', ['class' => 'form-control', 'id' => 'quizimage', 'title' => 'Quiz Picture']) !!}
@@ -123,10 +115,9 @@
             {!! Form::close() !!}
         </div>
     </div>
-   
 @endsection
 
-@section('scripts')
+@section('script')
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -135,7 +126,6 @@
         });
 
         $(document).ready(function() {
-            // alert(5)
             $("#imagecontainer").hide();
 
             $('#type').on('change', function(e) {
@@ -145,6 +135,7 @@
                     $("#imagecontainer").hide(100);
                 }
             });
+
 
         });
     </script>

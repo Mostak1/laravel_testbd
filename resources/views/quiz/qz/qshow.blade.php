@@ -19,8 +19,7 @@
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
-        @include('partial.flash')
-        @include('partial.error')
+
         <div class="card-body">
                 <section>
                     <div class="form-group mt-1 row">
@@ -66,7 +65,7 @@
                         <div class="card-header py-3 d-flex justify-content-between">
                             <span class="btn btn-info">Refresh</span>
                             <span class="btn btn-info" id="showQuizBtn"> Show Quizzes</span>
-                            </a>
+                            
                         </div>
                     </div>
                 </section>
@@ -93,10 +92,8 @@
         </div>
     </div>
 @endsection
-@section('footer')
-    @include('inc.admin.footer')
-@endsection
-@section('scripts')
+
+@section('script')
 
     <script type="text/javascript">
         $.ajaxSetup({
