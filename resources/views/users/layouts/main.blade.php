@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test BD</title>
+    <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -108,9 +109,11 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @yield('script')
+
+
+    
     <script>
-        $.ajaxSetup({
+       $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
             }
@@ -123,6 +126,78 @@
             $('#additm').text(itemCount);
         });
     </script>
+
+<script>
+    $(document).ready(function() {
+
+        // show the alert
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 2000);
+        // =========
+        // for subcats as cats
+        function selectscat(ob) {
+            $("#subcategory_id").empty().append('<option value = "0">All');
+
+            let html = "<option value='0'>All</option>";
+            for (const key in ob) {
+                if (Object.hasOwnProperty.call(ob, key)) {
+                    html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                }
+            }
+            $("#subcategory_id").html(html);
+        }
+        $("#category_id").change(function() {
+            // console.log( $(this).val() )
+            let URL = "{{ url('subcats') }}";
+            $.ajax({
+                type: "post",
+                url: URL + '/' + $(this).val(),
+                data: "data",
+                dataType: "json",
+                success: function(response) {
+                    selectscat(response);
+                }
+            });
+        });
+
+        // for topics as subcats
+        function selecttopic(ot) {
+            // $("#topic_id").html("");
+            let html = "<option value='0'>All</option>";
+            for (const k in ot) {
+                if (Object.hasOwnProperty.call(ot, k)) {
+
+                    html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                }
+            }
+            $("#topic_id").html(html);
+        }
+        $("#subcategory_id").on('change', function() {
+
+            // })
+            // $("#subcategory_id").change(function() {
+            if ($(this).val() == "null") {
+                $("#topic_id").empty().append('<option value = "0">All');
+                return;
+            }
+            // console.log( $(this).val() )
+            let URL = "{{ url('topics') }}";
+            $.ajax({
+                type: "post",
+                url: URL + '/' + $(this).val(),
+                data: "data",
+                dataType: "json",
+                success: function(response) {
+                    selecttopic(response);
+                }
+            });
+        });
+
+    });
+   
+</script>
+@yield('script')
 </body>
 
 </html>

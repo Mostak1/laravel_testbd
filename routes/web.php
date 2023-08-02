@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuizsetController;
@@ -72,5 +74,15 @@ Route::get('playquiz/qimage', [QuizController::class, "qimage"]);
 Route::post('subcats/{cid}', [SubcategoryController::class, 'subcats']);
 // for topics as subcats
 Route::post('topics/{tid}', [TopicController::class, 'topics']);
+
+// Answer controller
+Route::post('/result', [AnswerController::class, "result"]);
+Route::post('/storeanswer', [AnswerController::class, "storeanswer"])->name('storeanswer');
+Route::post('/resultview', [AnswerController::class, "viewanswer"])->name('viewanswer');
+
+// leaderboard 
+Route::get('/leaderboard/index', [LeaderboardController::class, "index"]);
+Route::get('/leaderboard/{id}', [LeaderboardController::class, "show"]);
+Route::get('leaderboard', [LeaderboardController::class, "index"])->name('leaderboard');
 
 require __DIR__ . '/auth.php';

@@ -159,7 +159,7 @@
     </script>
     <!-- dynamic content start-->
     @yield('script')
-    <!-- dynamic content end -->
+    <!--dynamic content end -->
 </body>
 
 </html>

@@ -201,7 +201,7 @@ class QuizController extends Controller
     public function subcatquiz($id)
     {
 
-        $scats  = Subcategory::with('topics');
+        $scats  = Subcategory::with('topics')->find($id);
         return view('playquiz.subcat', compact('scats'));
     }
     public function topicquiz($id)

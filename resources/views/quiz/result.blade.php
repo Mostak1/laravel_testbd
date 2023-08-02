@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('users.layouts.main')
 {{-- 
 @section('sidebar')
     <!-- sidebar as user role -->
@@ -71,7 +71,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header bg-primary">
-                                @if( Auth::check() && Auth::user()->role == "3")
+                                @if( Auth::check())
                                 <h4 class="modal-title text-center text-light" id="quizmodal">Would you like to save your
                                     Marks?</h4>
                                 @else
@@ -97,7 +97,7 @@
                                         <input type="text" name="type" id="type" value="rq">
                                 </div>
                                 <div class="modal-footer small">
-                                    @if( Auth::check() && Auth::user()->role == "3")
+                                    @if( Auth::check())
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                     <button type="submit" class="btn btn-info">Yes</button>
                                    @endif
@@ -135,16 +135,6 @@
                 // console.log($t.closest('.quizcontainer').find('.'+$answer));
             });
 
-            // =======================
-
-
-            // =======================
-
-            //   $(document).ready(function(){ $("p").toggle(
-            //   function(){$("p").css({"color": "red"});},
-            //   function(){$("p").css({"color": "blue"});},
-            //   function(){$("p").css({"color": "green"});
-            //  });
             setTimeout(function() {
                 $('#savemark').trigger('click');
             }, 20);

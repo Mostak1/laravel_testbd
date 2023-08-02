@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('users.layouts.main')
 {{-- @section('sidebar')
     <!-- sidebar as user role -->
     @if (Auth::check() && Auth::user()->role == '1')
@@ -9,18 +9,92 @@
         @include('inc.admin.stsidebar')
     @endif
 @stop --}}
+@section('style')
+    <style>
+        label.box {
+            display: flex;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ddd
+        }
 
+        .one:checked~label.first,
+        .two:checked~label.second,
+        .three:checked~label.third,
+        .four:checked~label.forth,
+        .five:checked~label.fifth,
+        .six:checked~label.sixth,
+        .seven:checked~label.seveth,
+        .eight:checked~label.eighth {
+            border-color: #00FFFF
+        }
+
+        .one:checked~label.first .circle,
+        .two:checked~label.second .circle,
+        .three:checked~label.third .circle,
+        .four:checked~label.forth .circle,
+        .five:checked~label.fifth .circle,
+        .six:checked~label.sixth .circle,
+        .seven:checked~label.seveth .circle,
+        .eight:checked~label.eighth .circle {
+            border: 6px solid #00FFFF;
+            background-color: #fff
+        }
+
+        label.box:hover {
+            background: #FFA500
+        }
+
+        .bggreen {
+            background: green;
+        }
+
+        label.box .course {
+            display: flex;
+            align-items: center;
+            width: 100%
+        }
+
+        label.box .circle {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #ddd;
+            display: inline-block
+        }
+
+        input[type="radio"] {
+            display: none
+        }
+
+        .btn.btn-primary {
+            border-radius: 25px;
+            margin-top: 20px
+        }
+
+        @media(max-width: 450px) {
+            .subject {
+                font-size: 12px
+            }
+        }
+    </style>
+@endsection
 
 @section('content')
-    <div class="card card-hover shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-info">Quiz Details</h6>
-            <a href="{{ url('quizset') }}" class="btn btn-info btn-circle btn-sm" title="Back to Chapter">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-        </div>
+    <div class="container afterNav">
 
-        <div class="card-body">
+        <div class="card card-hover shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between">
+                <h6 class="m-0 font-weight-bold text-info">Quiz Details</h6>
+                <a href="{{ url('quizset') }}" class="btn btn-info btn-circle btn-sm" title="Back to Chapter">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <div class="card-body">
                 <section>
                     <div class="form-group mt-1 row">
                         <div class="col-sm-3 mb-3">
@@ -65,7 +139,7 @@
                         <div class="card-header py-3 d-flex justify-content-between">
                             <span class="btn btn-info">Refresh</span>
                             <span class="btn btn-info" id="showQuizBtn"> Show Quizzes</span>
-                            
+
                         </div>
                     </div>
                 </section>
@@ -89,12 +163,12 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 @endsection
 
 @section('script')
-
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -111,16 +185,10 @@
                 $answer = $t.data('answer');
                 $t.next('span').toggle();
                 $t.closest('.quizcontainer').find('.' + $answer).toggleClass('bg-warning rounded');
-                // console.log($t.closest('.quizcontainer').find('.'+$answer));
             });
 
-            // $(document).on("click", '.course', function() {
-            //     var params = $("input[type=radio]:checked").val();
-            //     alert(params);
-            // });
-            // render_quiz_questions
+
             function render_quiz_questions(quizzes) {
-                //console.log(quizzes);
                 let q = "";
                 quizzes.forEach(quiz => {
                     let html = '';
@@ -136,19 +204,19 @@
                             <div class='quizcontainer'>
                             <div class='col-12 mb-2'>
                             <input type='radio' name="box${quiz.id}" value="op1" id="one${quiz.id}" class='one'>
-                            <input type='radio' name="box${quiz.id}" value="op2" id="two${quiz.id}" class='two'>
-                            <input type='radio' name="box${quiz.id}" value="op3" id="three${quiz.id}" class='three'>
-                            <input type='radio' name="box${quiz.id}" value="op4" id="four${quiz.id}" class='four'>
                             <label for='one${quiz.id}' class='box first'><div class='course op1'><span class='circle'></span><span class='subject'>${quiz.op1}</span></div></label>
+                            <input type='radio' name="box${quiz.id}" value="op2" id="two${quiz.id}" class='two'>
                             <label for='two${quiz.id}' class='box second'><div class='course op2'><span class='circle'></span><span class='subject'>${quiz.op2}</span></div></label>
+                            <input type='radio' name="box${quiz.id}" value="op3" id="three${quiz.id}" class='three'>
                             <label for='three${quiz.id}' class='box third'><div class='course op3'><span class='circle'></span><span class='subject'>${quiz.op3}</span></div></label>
+                            <input type='radio' name="box${quiz.id}" value="op4" id="four${quiz.id}" class='four'>
                             <label for='four${quiz.id}' class='box forth'><div class='course op4'><span class='circle'></span><span class='subject'>${quiz.op4}</span></div></label>
                             </div>
                         </div>
                         <div class='form-group row'>
                             <div class='col-sm-12 mb-3 mb-sm-0 d-flex justify-content-between align-self-center'>
                             <div>
-                            <span id='ansbtn' data-answer='${quiz.ans}' class='ansbtn btn btn-sm btn-info my-2 px-4 fw-bold'>Answer</span>
+                            <span id='ansbtn' data-answer='${quiz.ans}' class='ansbtn  my-2 fw-bold'></span>
                             <span class='ansshow btn btn-sm btn-success ms-2 my-2 px-4 fw-bold'>${quiz.ans}</span>
                             </div>
                             <div><span class='btn btn-sm btn-info my-2 px-4 fw-bold'>Clean</span></div></div></div>
@@ -175,22 +243,15 @@
                         },
                         dataType: "json",
                         success: function(response) {
-                            // alert(9)
-                            // console.log(response);
-                            // response = JSON.parse(response);
-                            //$("#quizcontainer").html(response);
                             render_quiz_questions(response);
                         }
                     })
                     .done(function(data) {
-                        // console.log(data);
-
                         if (data.length != 0) {
                             //show the quiz
                         } else {
                             console.log("no quiz in the databaes");
                         }
-                        //console.log(data);
                     });
             });
             $("#showQuizBtn").trigger('click');
@@ -207,6 +268,5 @@
             });
 
         });
-      
     </script>
 @endsection

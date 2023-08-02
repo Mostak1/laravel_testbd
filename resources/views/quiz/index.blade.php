@@ -68,8 +68,8 @@
                                 <!-- Attempt to read property "name" on null -->
 
                                 <td>{{ $quiz->category->name }}</td>
-                                <td>{{ $quiz->subcategory->id }}</td>
-                                <td>{{ $quiz->topic->id }}</td>
+                                <td>{{ $quiz->subcategory->name }}</td>
+                                <td>{{ $quiz->topic->name }}</td>
                                 <td class="skip d-flex justify-content-center">
                                     {!! Form::open(['method' => 'delete', 'route' => ['quiz.destroy', $quiz->id], 'id' => 'deleteform']) !!}
                                     <a href="javascript:void(0)" class="btn btn-danger btn-circle btn-sm" title="Delete"

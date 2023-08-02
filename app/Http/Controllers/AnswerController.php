@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Leaderboard;
 use App\Models\Quiz;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -105,6 +106,7 @@ class AnswerController extends Controller
     {
         
         $u = User::find(Auth::id());
+       $uid= Auth::user()->id;
         $q = new Answer();
         $q->qset_id = $request->qset ?? null;
         $q->type = 'rq';
@@ -112,13 +114,29 @@ class AnswerController extends Controller
         $q->tquiz = $request->tquiz;
 
          // for guest user
-  
-            if( Auth::check() && $u->role == "3"){
-                $u->answers()->save($q);
-                return Redirect::to('student')->with('message', 'You got '. $request->marks . 'out of' . $request->tquiz);
+         $data = [
+            'user_id' => $uid,
+            'qset_id' => $request->qset ?? null,
+            'type' => 'rq',
+            'marks' => $request->marks,
+            'tquiz' => $request->tquiz,
+        ];
+         $data1 = [
+            'user_id' => $uid,
+            'quizset_id' => $request->qset ?? null,
+            'submitted_at' => '(time:5.1)',
+            'marks' => $request->marks,
+            'given_ans' =>$request->marks.'/'. $request->tquiz,
+        ];
+        // dd($data);
+        $ld= Leaderboard::create($data1);
+        $cat = Answer::create($data);
+         if( Auth::check()){
+                // $u->answers()->save($q);
+                return Redirect::to('student')->with('success', 'You got '. $request->marks . 'out of' . $request->tquiz);
             }
             else{
-                return redirect('/')->with('message', 'Thanks! You got '. $request->marks. '/' . $request->tquiz);
+                return redirect('/')->with('success', 'Thanks! You got '. $request->marks. '/' . $request->tquiz);
             }
     
     }
