@@ -68,7 +68,7 @@ Route::get('playquiz', [QuizController::class, "qall"]);
 Route::get('playquiz/cat/{id}', [QuizController::class, "catquiz"]);
 Route::get('playquiz/subcat/{id}', [QuizController::class, "subcatquiz"]);
 Route::get('playquiz/topic/{id}', [QuizController::class, "topicquiz"]);
-Route::get('/showquiz', [QuizController::class, "dynamicquiz"]);
+Route::get('/showquiz', [QuizController::class, "dynamicquiz"]); 
 Route::get('playquiz/qimage', [QuizController::class, "qimage"]);
 // subcategory
 Route::post('subcats/{cid}', [SubcategoryController::class, 'subcats']);

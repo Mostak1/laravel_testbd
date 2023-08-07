@@ -240,17 +240,13 @@ class QuizController extends Controller
         } else {
             $quizzes = Quiz::inRandomOrder()->limit($count)->get();
         }
-
         // return response()->json($quizzes->toJson(JSON_PRETTY_PRINT));
         return response()->json($quizzes);
     }
 
     public function qimage()
     {
-
-
         return view('playquiz.qimage')
-            // ->with('quizzes', $quizzes)
             ->with('user', Auth::user());
     }
 

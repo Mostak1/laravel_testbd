@@ -88,7 +88,7 @@
 
         <div class="card card-hover shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h6 class="m-0 font-weight-bold text-info">Quiz Details</h6>
+                <h6 class="m-0 font-weight-bold text-info">Random Quiz</h6>
                 <a href="{{ url('quizset') }}" class="btn btn-info btn-circle btn-sm" title="Back to Chapter">
                     <i class="fas fa-arrow-left"></i>
                 </a>
@@ -96,7 +96,7 @@
 
             <div class="card-body">
                 <section>
-                    <div class="form-group mt-1 row">
+                    <div class="form-group mt-1 row d-none">
                         <div class="col-sm-3 mb-3">
                             {!! Form::select('category_id', $categories, null, [
                                 'required',
@@ -137,8 +137,8 @@
 
                     <div id="Showquiz" class="card  mb-1">
                         <div class="card-header py-3 d-flex justify-content-between">
-                            <span class="btn btn-info">Refresh</span>
-                            <span class="btn btn-info" id="showQuizBtn"> Show Quizzes</span>
+                            {{-- <span class="btn btn-info">Refresh</span> --}}
+                            <span class="btn btn-info" id="showQuizBtn">Refresh</span>
 
                         </div>
                     </div>

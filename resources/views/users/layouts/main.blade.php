@@ -37,8 +37,8 @@
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto wc">
                     <a class="customNav  me-4 fs-5  " href="{{ url('') }}">Home</a>
-                    <a class="customNav  me-4 fs-5 " href="{{ url('skill') }}">Skill Devlopment</a>
-                    <a class="customNav  me-4 fs-5 " href="{{url('playquiz')}}">Quiz</a>
+                    <a class="customNav  me-4 fs-5 " href="{{ url('playquiz') }}">Skill Devlopment</a>
+                    <a class="customNav  me-4 fs-5 " href="{{url('quiz/qz/qshow')}}">Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="#">Questions</a>
                     <div class="dropdown">
                         <a class=" dropdown-toggle wc" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
