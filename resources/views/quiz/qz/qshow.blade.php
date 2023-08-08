@@ -96,7 +96,10 @@
 
             <div class="card-body">
                 <section>
-                    <div class="form-group mt-1 row d-none">
+                    @auth
+                        
+                    
+                    <div class="form-group mt-1 row">
                         <div class="col-sm-3 mb-3">
                             {!! Form::select('category_id', $categories, null, [
                                 'required',
@@ -134,7 +137,7 @@
                         </div>
                     </div>
 
-
+                    @endauth
                     <div id="Showquiz" class="card  mb-1">
                         <div class="card-header py-3 d-flex justify-content-between">
                             {{-- <span class="btn btn-info">Refresh</span> --}}
@@ -145,7 +148,7 @@
                 </section>
 
                 <div class="container mb-1">
-
+                    <div class="">Time Remaining:<span id="countdown"></span></div>
                     <div class="row">
                         <form action="{{ url('resultview') }}" method="post">
                             @csrf
@@ -158,7 +161,8 @@
                             <hr>
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-sm btn-info text-center mb-2" id="submit">Submit
-                                    Quiz</button>
+                                    Quiz
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -177,7 +181,7 @@
         });
         $('.navbar-toggler-icon').trigger('click');
         $(document).ready(function() {
-            // alert(5)
+            // alert('Hi Mostak')
             // answer btn toggle
             $(".ansshow").hide();
             $(document).on("click", '.ansbtn', function() {
@@ -228,7 +232,7 @@
                 $("#quizcontainer").html(q);
                 $(".ansshow").hide();
             }
-            // alert(55)
+            // mostak
 
             //showQuizBtn click start
             $("#showQuizBtn").click(function() {
@@ -267,6 +271,36 @@
 
             });
 
+        });
+        // Set the time (in seconds) for the quiz timer
+        const totalSeconds = 10; // 10 minutes
+
+        let secondsRemaining = totalSeconds;
+
+        // Function to update the timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(secondsRemaining / 60);
+            const seconds = secondsRemaining % 60;
+            $("#countdown").text(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+        }
+
+        // Function to handle the timer countdown
+        function countdown() {
+            updateTimerDisplay();
+
+            if (secondsRemaining > 0) {
+                secondsRemaining--;
+                setTimeout(countdown, 1000); // Update timer every second
+            } else {
+                // Time's up, perform any action you want when the timer reaches 0
+                alert("Time's up! Your quiz will be submitted.");
+                $("#submit").trigger("click");
+                // You can also submit the quiz automatically, etc.
+            }
+        }
+
+        $(document).ready(function() {
+            countdown();
         });
     </script>
 @endsection

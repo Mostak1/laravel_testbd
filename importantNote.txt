@@ -1,7 +1,7 @@
 
 after finish css
 npm run build
-
+base64:3fER0L9mlV2uY+FlhGgeIz6DAwDvD735LGaTpreQ+24=
 continue run css 
 npm dev run
 

@@ -15,8 +15,19 @@ class LeaderboardController extends Controller
      */
     public function index()
     {
-        $answers = Answer::orderBy("marks", "desc")->paginate(15);
+        $answers = Answer::orderBy("marks", "desc")->paginate(10);
         $anslim = Answer::orderBy("marks", "desc")->orderBy('created_at')->paginate(4);
+        // dd($answers);
+        return view('leaderboard.index')
+        ->with('anslim', $anslim)
+        ->with('answers', $answers)
+        ->with('user', Auth::user());
+    }
+    public function indexuser()
+    {
+        $uid=Auth::user()->id;
+        $answers = Answer::orderBy("marks", "desc")->limit(10)->get();
+        $anslim = Answer::where('user_id',$uid)->get();
         // dd($answers);
         return view('leaderboard.index')
         ->with('anslim', $anslim)
