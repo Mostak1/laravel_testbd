@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     @vite(['resources/scss/home.scss'])
-
+    <!-- DataTable CSS -->
+    <link
+        href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
+        rel="stylesheet" />
+    <!-- DataTable CSS -->
     @yield('style')
 </head>
 
@@ -38,20 +42,22 @@
                 <div class="navbar-nav mx-lg-auto wc">
                     <a class="customNav  me-4 fs-5  " href="{{ url('') }}">Home</a>
                     <a class="customNav  me-4 fs-5 " href="{{ url('playquiz') }}">Skill Devlopment</a>
-                    <a class="customNav  me-4 fs-5 " href="{{url('quiz/qz/qshow')}}">Quiz</a>
+                    <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="#">Questions</a>
+                    <a class="customNav  me-4 fs-5 " href="{{ url('leaderboard/user') }}">Exam Score</a>
                     <div class="dropdown">
-                        <a class=" dropdown-toggle wc" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Quiz
+                        <a class=" dropdown-toggle wc" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Quiz
                         </a>
-                      
+
                         <ul class="dropdown-menu wc customBac">
-                          <li><a class="dropdown-item wc" href="{{url('playquiz')}}">Quiz All</a></li>
-                          <li><a class="dropdown-item wc" href="{{url('showquiz')}}">Dynamicquiz</a></li>
-                          <li><a class="dropdown-item wc" href="{{url('quiz/qz/qshow')}}">Quiz Show</a></li>
-                          <li><a class="dropdown-item wc" href="{{url('playquiz/qimage')}}">Quiz Image</a></li>
+                            <li><a class="dropdown-item wc" href="{{ url('playquiz') }}">Quiz All</a></li>
+                            <li><a class="dropdown-item wc" href="{{ url('showquiz') }}">Dynamicquiz</a></li>
+                            <li><a class="dropdown-item wc" href="{{ url('quiz/qz/qshow') }}">Quiz Show</a></li>
+                            <li><a class="dropdown-item wc" href="{{ url('playquiz/qimage') }}">Quiz Image</a></li>
                         </ul>
-                      </div>
+                    </div>
                 </div>
                 <!-- Right navigation -->
                 <ul class="navbar-nav mt-2 mb-lg-0">
@@ -109,11 +115,17 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- DataTable JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.js">
+    </script>
+    <!-- DataTable JS -->
 
 
-    
     <script>
-       $.ajaxSetup({
+        $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
             }
@@ -127,77 +139,104 @@
         });
     </script>
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-        // show the alert
-        setTimeout(function() {
-            $(".alert").alert('close');
-        }, 2000);
-        // =========
-        // for subcats as cats
-        function selectscat(ob) {
-            $("#subcategory_id").empty().append('<option value = "0">All');
+            // show the alert
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 2000);
+            // =========
+            // for subcats as cats
+            function selectscat(ob) {
+                $("#subcategory_id").empty().append('<option value = "0">All');
 
-            let html = "<option value='0'>All</option>";
-            for (const key in ob) {
-                if (Object.hasOwnProperty.call(ob, key)) {
-                    html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                let html = "<option value='0'>All</option>";
+                for (const key in ob) {
+                    if (Object.hasOwnProperty.call(ob, key)) {
+                        html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                    }
                 }
+                $("#subcategory_id").html(html);
             }
-            $("#subcategory_id").html(html);
-        }
-        $("#category_id").change(function() {
-            // console.log( $(this).val() )
-            let URL = "{{ url('subcats') }}";
-            $.ajax({
-                type: "post",
-                url: URL + '/' + $(this).val(),
-                data: "data",
-                dataType: "json",
-                success: function(response) {
-                    selectscat(response);
-                }
+            $("#category_id").change(function() {
+                // console.log( $(this).val() )
+                let URL = "{{ url('subcats') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectscat(response);
+                    }
+                });
             });
-        });
 
-        // for topics as subcats
-        function selecttopic(ot) {
-            // $("#topic_id").html("");
-            let html = "<option value='0'>All</option>";
-            for (const k in ot) {
-                if (Object.hasOwnProperty.call(ot, k)) {
+            // for topics as subcats
+            function selecttopic(ot) {
+                // $("#topic_id").html("");
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
 
-                    html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
                 }
+                $("#topic_id").html(html);
             }
-            $("#topic_id").html(html);
-        }
-        $("#subcategory_id").on('change', function() {
+            $("#subcategory_id").on('change', function() {
 
-            // })
-            // $("#subcategory_id").change(function() {
-            if ($(this).val() == "null") {
-                $("#topic_id").empty().append('<option value = "0">All');
-                return;
-            }
-            // console.log( $(this).val() )
-            let URL = "{{ url('topics') }}";
-            $.ajax({
-                type: "post",
-                url: URL + '/' + $(this).val(),
-                data: "data",
-                dataType: "json",
-                success: function(response) {
-                    selecttopic(response);
+                // })
+                // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#topic_id").empty().append('<option value = "0">All');
+                    return;
                 }
+                // console.log( $(this).val() )
+                let URL = "{{ url('topics') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selecttopic(response);
+                    }
+                });
             });
-        });
 
-    });
-   
-</script>
-@yield('script')
+        });
+        $(document).ready(function() {
+
+            var table = $('#dataTable').DataTable();
+
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ]
+            });
+            table.buttons().container().appendTo($('.tablebtn', table.table().container()));
+            $('.tablebtn .dt-buttons').removeClass('flex-wrap');
+            $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
+
+        });
+        $(document).ready(function() {
+
+            var table = $('.dataTable').DataTable();
+
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ]
+            });
+            table.buttons().container().appendTo($('.tablebtn', table.table().container()));
+            $('.tablebtn .dt-buttons').removeClass('flex-wrap');
+            $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
+
+        });
+    </script>
+    @yield('script')
 </body>
 
 </html>

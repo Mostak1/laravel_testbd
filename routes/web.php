@@ -82,6 +82,7 @@ Route::post('/resultview', [AnswerController::class, "viewanswer"])->name('viewa
 
 // leaderboard 
 Route::get('/leaderboard/index', [LeaderboardController::class, "index"]);
+Route::get('/leaderboard/user', [LeaderboardController::class, "indexuser"]);
 Route::get('/leaderboard/{id}', [LeaderboardController::class, "show"]);
 Route::get('leaderboard', [LeaderboardController::class, "index"])->name('leaderboard');
 

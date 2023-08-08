@@ -25,11 +25,12 @@ class LeaderboardController extends Controller
     }
     public function indexuser()
     {
-        $uid=Auth::user()->id;
+
+        $uid=Auth::user()->id ?? '';
         $answers = Answer::orderBy("marks", "desc")->limit(10)->get();
         $anslim = Answer::where('user_id',$uid)->get();
         // dd($answers);
-        return view('leaderboard.index')
+        return view('leaderboard.indexuser')
         ->with('anslim', $anslim)
         ->with('answers', $answers)
         ->with('user', Auth::user());
