@@ -128,12 +128,12 @@ class AnswerController extends Controller
             'marks' => $request->marks,
             'given_ans' =>$request->marks.'/'. $request->tquiz,
         ];
-        // dd($data);
+    
         $ld= Leaderboard::create($data1);
         $cat = Answer::create($data);
          if( Auth::check()){
                 // $u->answers()->save($q);
-                return Redirect::to('student')->with('success', 'You got '. $request->marks . 'out of' . $request->tquiz);
+                return redirect('/')->with('success', 'You got '. $request->marks . 'out of' . $request->tquiz);
             }
             else{
                 return redirect('/')->with('success', 'Thanks! You got '. $request->marks. '/' . $request->tquiz);
