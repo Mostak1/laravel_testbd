@@ -1,19 +1,5 @@
 @extends('users.layouts.main')
-{{-- 
-@section('sidebar')
-    <!-- sidebar as user role -->
-    @if (Auth::check() && Auth::user()->role == '1')
-        @include('dashboard.sidebar')
-    @elseif (Auth::check() &&  Auth::user()->role == '2')
-        @include('inc.admin.trsidebar')
-    @else
-        @include('inc.admin.stsidebar')
-    @endif
-@stop
-<!-- end sidebar -->
-@section('navbar')
-    @include('inc.admin.navbar')
-@stop --}}
+
 
 @section('content')
     <div class="card card-hover shadow mb-4">
@@ -91,7 +77,7 @@
                                 @csrf
                                 @method('post')
                                 <div class="d-none">
-                                    {{-- <input type="text" name="qset_id " id="qset_id" value="{{ 'qsid'}}"> --}}
+                                    <input type="text" name="qset_id " id="qset_id" value="{{ 'qsid'}}">
                                     <input type="text" name="marks" id="marks" value="{{ $result }}">
                                     <input type="text" name="tquiz" id="tquiz" value="{{ $total }}">
                                         <input type="text" name="type" id="type" value="rq">

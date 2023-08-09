@@ -54,21 +54,7 @@
             <div class="row">
 
 
-                {{-- @foreach ($cats->subcategories as $scs)
-                    <div class="col-lg-4 col-md-6 pb-1">
-                        <div class=" card-hover  d-flex bg-light shadow-sm border-top border rounded mb-2"
-                            style="padding: 30px">
-
-                            <div class="pl-4">
-                                <div class="m-0">
-                                    <i class="flaticon-050-fence me-1 text-primary"></i><a
-                                        href="{{ url('playquiz/subcat/' . $scs->id) }}">{{ $scs->name }}</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach --}}
+               
 
             </div>
             <div class="row pb-5">
@@ -107,7 +93,7 @@
                                                 
                                                 <div class="m-0">
                                                     <i class="flaticon-050-fence me-1 text-primary"></i><a
-                                                        href="{{ url('quiz/qz/qshow') }}"> Show Quizzes </a>
+                                                        href="{{ url('playquiz/subcat/' . $scs->id) }}"> Show Quizzes </a>
                                                 </div>
 
 

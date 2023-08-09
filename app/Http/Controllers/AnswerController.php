@@ -133,7 +133,7 @@ class AnswerController extends Controller
         $cat = Answer::create($data);
          if( Auth::check()){
                 // $u->answers()->save($q);
-                return redirect('/')->with('success', 'You got '. $request->marks . 'out of' . $request->tquiz);
+                return redirect('leaderboard/user')->with('success', 'You got '. $request->marks . 'out of' . $request->tquiz);
             }
             else{
                 return redirect('/')->with('success', 'Thanks! You got '. $request->marks. '/' . $request->tquiz);
@@ -167,21 +167,14 @@ class AnswerController extends Controller
         $q->type = 'sq';
         $q->marks = $result;
         $q->tquiz = count($answers);
-        if($u->role == "3"){
+        if($u){
             $u->answers()->save($q);
-            return Redirect::to('student')->with('message', 'You got '. $result . ' out of ' . count($answers));
+            return redirect('leaderboard/user')->with('message', 'You got '. $result . ' out of ' . count($answers));
         }
         else{
             return redirect('/')->with('message', 'Thanks for your Supports');
         }
         
-    //191,192,193,194,195,196,197,198,200,201,202,203,204,205,206,207,208,209,210,211
-  
-/*         return view('quiz.result')
-            ->with('quizzes', $quizzes)
-            ->with('quizans', $quizans)
-            ->with('total', count($answers))
-            ->with('result', $result); */
     }
 
     public function apianswers(Request $request)

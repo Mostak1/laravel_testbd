@@ -15,11 +15,11 @@
                             <div class="pl-4">
                                 {{-- <a href="{{ route('campaign.show', [$campaign->id]) }}"> --}}
                                 {{-- <h3><a href="{{ url('playquiz/cat/'.$scs->id)}}">{{$scs->name}}</a></h3> --}}
-                                @foreach ($scs->topics as $tps)
+                                {{-- @foreach ($scs->topics as $tps)
                                     <li class="m-0">
                                     <a href="{{ url('playquiz/subcat/'.$tps->id)}}">{{ $tps->name}}</a>
                                     </li>
-                                @endforeach
+                                @endforeach --}}
                             </div>
                         </div>
                     </div>
