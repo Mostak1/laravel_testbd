@@ -202,13 +202,33 @@ class QuizController extends Controller
     {
 
         $scats  = Subcategory::with('topics')->find($id);
-        return view('playquiz.subcat', compact('scats'));
+        // dd($scats);
+        return view('playquiz.subcat')->with('scats', $scats);
     }
     public function topicquiz($id)
     {
-
+        $count = "10";
+        
+            $quizzes = Quiz::where('topic_id',$id)->inRandomOrder()->limit($count)->get();
+        $topic=Topic::find($id);
+            // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
+       
         $topics = Topic::with('quizzes')->get();
-        return view('playquiz.topic', compact('topics'));
+        return view('playquiz.topic')
+        ->with('quizzes', $quizzes)
+        ->with('topic', $topic);
+    }
+    public function topicquizapi($id)
+    {
+        $count = "10";
+        
+            $quizzes = Quiz::where('topic_id',$id)->inRandomOrder()->limit($count)->get();
+        
+            // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
+       
+        $topics = Topic::with('quizzes')->get();
+        return response()->json($quizzes);
+        // return view('playquiz.topic', compact('quizzes'));
     }
 
 

@@ -77,6 +77,7 @@ class AnswerController extends Controller
 
     public function viewanswer(Request $request)
     {
+        $topic=$request->topic;
         $answers = $request->all();
         unset($answers['_token']);
         $quizid = array_keys($answers);
@@ -96,6 +97,7 @@ class AnswerController extends Controller
         return view('quiz.result')
         ->with('quizzes', $quizzes)
         ->with('quizans', $quizans)
+        ->with('topic', $topic)
         ->with('total', count($answers))
         ->with('result', $result);
 
@@ -107,28 +109,23 @@ class AnswerController extends Controller
         
         $u = User::find(Auth::id());
        $uid= Auth::user()->id;
-        $q = new Answer();
-        $q->qset_id = $request->qset ?? null;
-        $q->type = 'rq';
-        $q->marks = $request->marks;
-        $q->tquiz = $request->tquiz;
-
+        
          // for guest user
          $data = [
             'user_id' => $uid,
-            'qset_id' => $request->qset ?? null,
+            'qset_id' => $request->topic,
             'type' => 'rq',
             'marks' => $request->marks,
             'tquiz' => $request->tquiz,
         ];
          $data1 = [
             'user_id' => $uid,
-            'quizset_id' => $request->qset ?? null,
+            'quizset_id' => $request->topic,
             'submitted_at' => '(time:5.1)',
             'marks' => $request->marks,
             'given_ans' =>$request->marks.'/'. $request->tquiz,
         ];
-    
+    // dd($data1);
         $ld= Leaderboard::create($data1);
         $cat = Answer::create($data);
          if( Auth::check()){

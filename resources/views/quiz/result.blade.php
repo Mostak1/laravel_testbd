@@ -70,17 +70,17 @@
                             <div class="modal-body">
                                 <h3 class="m-0 font-weight-bold text-info">You got <span
                                         id="marks">{{ $result }}</span> out of <span
-                                        id="tquiz">{{ $total }}</span> </h3>
+                                        id="tquiz">{{ $total-1 }}</span> </h3>
                             </div>
                         
                             <form action="{{ url('/storeanswer') }}" method='post'>
                                 @csrf
                                 @method('post')
-                                <div class="d-none">
-                                    <input type="text" name="qset_id " id="qset_id" value="{{ 'qsid'}}">
+                                <div class="">
+                                    <input type="text" name="topic" id="topic" value="{{ $topic}}">
                                     <input type="text" name="marks" id="marks" value="{{ $result }}">
-                                    <input type="text" name="tquiz" id="tquiz" value="{{ $total }}">
-                                        <input type="text" name="type" id="type" value="rq">
+                                    <input type="text" name="tquiz" id="tquiz" value="{{ $total-1 }}">
+                                    <input type="text" name="type" id="type" value="rq">
                                 </div>
                                 <div class="modal-footer small">
                                     @if( Auth::check())
