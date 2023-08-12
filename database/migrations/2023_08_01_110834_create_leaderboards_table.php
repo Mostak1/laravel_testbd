@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('topic_id')->unsigned(); 
+            $table->foreign('topic_id')->references('id')->on('topics');
             $table->bigInteger('quizset_id')->unsigned()->nullable();
             $table->foreign('quizset_id')->references('id')->on('quizsets');
             $table->string('given_ans');

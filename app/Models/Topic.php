@@ -19,6 +19,14 @@ class Topic extends Model
         'category_id',
         'active',
     ];
+    public function answers()
+    {
+    return $this->hasMany(Answer::class);
+    }
+    public function leaderboards()
+    {
+    return $this->hasMany(Leaderboard::class);
+    }
     public function blogs()
     {
     return $this->hasMany('App\Models\Blog');

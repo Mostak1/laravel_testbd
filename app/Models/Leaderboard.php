@@ -12,8 +12,13 @@ class Leaderboard extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'user_id', 'quizset_id', 'given_ans', 'submitted_at', 'marks',
+        'user_id','topic_id', 'quizset_id', 'given_ans', 'submitted_at', 'marks',
     ];
+    public function topic()
+    {
+        // assuming you have a state_id in your customers table
+        return $this->belongsTo(Topic::class);
+    }
     public function user()
     {
         // assuming you have a state_id in your customers table

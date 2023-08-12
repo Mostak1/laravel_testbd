@@ -51,8 +51,7 @@
                                                                 {{-- <img src="assets/images/faces/face1.jpg" alt="image" /> --}}
                                                                 <span class="pl-2">{{ $ans->user->name }}</span>
                                                             </td>
-                                                            <td><a
-                                                                    href="{{ url('/quiz/qz/qshow') }}">{{ $ans->Quizset->name ?? 'Random Quizzes' }}</a>
+                                                            <td>{{ $ans->topic->name ?? 'Random Quizzes' }}
                                                             </td>
                                                             <td>{{ $ans->marks }}</td>
                                                             <td>{{ $ans->tquiz }}</td>
@@ -70,7 +69,7 @@
                                         </div>
                                         <div class="table-responsive" >
                                          <div class="text-center text-danger fs-2">{{Auth::user()->name ?? 'User' }} Marks</div>
-                                            <table class="table" id="dataTable">
+                                            <table class="table dataTable" id="dataTable">
                                                 <thead>
                                                     <tr>
                                                         <tr>
@@ -93,8 +92,7 @@
                                                                 {{-- <img src="assets/images/faces/face1.jpg" alt="image" /> --}}
                                                                 <span class="pl-2">{{ $ans->user->name }}</span>
                                                             </td>
-                                                            <td><a
-                                                                    href="{{ url('/quiz/qz/qshow') }}">{{ $ans->Quizset->name ?? 'Random Quizzes' }}</a>
+                                                            <td>{{ $ans->topic->name }}
                                                             </td>
                                                             <td>{{ $ans->marks }}</td>
                                                             <td>{{ $ans->tquiz }}</td>

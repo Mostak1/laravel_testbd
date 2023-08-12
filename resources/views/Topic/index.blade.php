@@ -88,40 +88,5 @@
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-
-            var table = $('#dataTable').DataTable({
-                // Specify the number of columns and their order here
-                columns: [
-                    null, //  1
-                    null, // 2
-                    null, // 3
-                    null, // 4
-                    null, // 5
-                    null, // 6
-                    null, // 7
-                    // {
-                    //     orderable: false
-                    // }, // Operations column (disable sorting for the operations column)
-                    // {
-                    //     orderable: false
-                    // }, // Operations column (disable sorting for the operations column)
-                ],
-            });
-
-
-
-
-            new $.fn.dataTable.Buttons(table, {
-                buttons: [
-                    'copy', 'excel', 'pdf', 'print'
-                ]
-            });
-            table.buttons().container().appendTo($('.tablebtn', table.table().container()));
-            $('.tablebtn .dt-buttons').removeClass('flex-wrap');
-            $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
-
-        });
-    </script>
+   
 @endsection
