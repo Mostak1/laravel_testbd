@@ -273,7 +273,7 @@
 
         });
         // Set the time (in seconds) for the quiz timer
-        const totalSeconds = 2000; // 10 minutes
+        const totalSeconds = 600; // 10 minutes
 
         let secondsRemaining = totalSeconds;
 
