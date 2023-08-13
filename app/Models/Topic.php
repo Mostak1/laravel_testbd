@@ -19,6 +19,10 @@ class Topic extends Model
         'category_id',
         'active',
     ];
+    public function details()
+    {
+    return $this->hasMany(Detail::class);
+    }
     public function answers()
     {
     return $this->hasMany(Answer::class);

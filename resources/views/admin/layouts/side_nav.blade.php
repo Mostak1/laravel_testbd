@@ -35,6 +35,7 @@
                         <a href="{{ url('quiz') }}" class="dropdown-item" rel="noopener noreferrer">Quiz</a>
                         <a href="{{ url('quizset') }}" class="dropdown-item" rel="noopener noreferrer">Quiz Set</a>
                         <a href="{{ url('leaderboard') }}" class="dropdown-item" rel="noopener noreferrer">Leaderboard</a>
+                        <a href="{{ url('detail') }}" class="dropdown-item" rel="noopener noreferrer">Details Of Topic</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"

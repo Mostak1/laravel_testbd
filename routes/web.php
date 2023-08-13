@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeaderboardController;
@@ -55,6 +56,7 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'topic' => TopicController::class,
         'quiz' => QuizController::class,
         'quizset' => QuizsetController::class,
+        'detail' => DetailController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');

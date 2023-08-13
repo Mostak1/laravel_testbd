@@ -24,6 +24,10 @@ DELETE	    /photos/{photo}	        destroy	    photos.destroy
 Enroll information 
 Id Cat_id Student_id  Tranjection_methode Tran_id Status(default pending) Expair_Time 
 
+detail model
+details table
+id,topic_id,question,answer
+
 
 
 
