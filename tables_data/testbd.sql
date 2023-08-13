@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 09:35 AM
+-- Generation Time: Aug 13, 2023 at 08:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `answers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `topic_id` bigint(20) UNSIGNED DEFAULT NULL,
   `qset_id` bigint(20) UNSIGNED DEFAULT NULL,
   `type` set('rq','sq') NOT NULL DEFAULT 'sq',
   `marks` bigint(20) NOT NULL,
@@ -43,74 +44,12 @@ CREATE TABLE `answers` (
 -- Dumping data for table `answers`
 --
 
-INSERT INTO `answers` (`id`, `user_id`, `qset_id`, `type`, `marks`, `tquiz`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 1, 'sq', 9, 9, '2023-08-31 05:53:30', '2023-08-31 05:53:30', NULL),
-(2, 3, 2, 'sq', 9, 9, '2023-08-31 05:56:44', '2023-08-31 05:56:44', NULL),
-(3, 1, NULL, 'rq', 9, 9, '2023-08-31 05:57:13', '2023-08-31 05:57:13', NULL),
-(4, 3, 3, 'sq', 9, 9, '2023-08-31 06:07:09', '2023-08-31 06:07:09', NULL),
-(5, 3, NULL, 'rq', 9, 9, '2023-08-31 06:08:16', '2023-08-31 06:08:16', NULL),
-(6, 5, NULL, 'rq', 9, 9, '2023-08-31 06:12:10', '2023-08-31 06:12:10', NULL),
-(7, 3, NULL, 'rq', 10, 10, '2023-08-31 06:18:14', '2023-08-31 06:18:14', NULL),
-(8, 1, NULL, 'rq', 10, 10, '2023-08-31 06:19:27', '2023-08-31 06:19:27', NULL),
-(9, 4, NULL, 'rq', 10, 10, '2023-08-31 06:28:38', '2023-08-31 06:28:38', NULL),
-(10, 1, NULL, 'rq', 10, 10, '2023-08-31 06:33:32', '2023-08-31 06:33:32', NULL),
-(11, 3, NULL, 'rq', 10, 10, '2023-08-31 06:38:38', '2023-08-31 06:38:38', NULL),
-(12, 1, NULL, 'rq', 4, 4, '2023-08-31 06:47:49', '2023-08-31 06:47:49', NULL),
-(13, 6, 4, 'sq', 4, 4, '2023-08-31 06:49:15', '2023-08-31 06:49:15', NULL),
-(14, 1, NULL, 'rq', 4, 4, '2023-08-31 06:53:58', '2023-08-31 06:53:58', NULL),
-(15, 1, NULL, 'rq', 2, 2, '2023-08-31 07:07:48', '2023-08-31 07:07:48', NULL),
-(16, 2, NULL, 'rq', 9, 2, '2023-08-31 07:09:21', '2023-08-31 07:09:21', NULL),
-(17, 1, NULL, 'rq', 8, 10, '2023-08-31 07:14:38', '2023-08-31 07:14:38', NULL),
-(18, 1, NULL, 'rq', 2, 2, '2023-08-31 07:20:34', '2023-08-31 07:20:34', NULL),
-(19, 3, NULL, 'rq', 2, 2, '2023-08-31 07:25:38', '2023-08-31 07:25:38', NULL),
-(20, 3, 1, 'sq', 8, 2, '2023-08-31 07:27:07', '2023-08-31 07:27:07', NULL),
-(21, 1, NULL, 'rq', 2, 2, '2023-08-31 07:27:23', '2023-08-31 07:27:23', NULL),
-(22, 1, NULL, 'rq', 2, 2, '2023-08-31 07:27:31', '2023-08-31 07:27:31', NULL),
-(23, 1, NULL, 'rq', 2, 2, '2023-08-31 07:27:42', '2023-08-31 07:27:42', NULL),
-(24, 1, NULL, 'rq', 2, 2, '2023-08-31 07:28:26', '2023-08-31 07:28:26', NULL),
-(25, 1, NULL, 'rq', 8, 2, '2023-08-31 07:29:22', '2023-08-31 07:29:22', NULL),
-(26, 1, NULL, 'rq', 2, 2, '2023-08-31 07:31:59', '2023-08-31 07:31:59', NULL),
-(27, 1, NULL, 'rq', 2, 2, '2023-08-31 07:35:58', '2023-08-31 07:35:58', NULL),
-(28, 1, NULL, 'rq', 2, 2, '2023-08-31 07:37:12', '2023-08-31 07:37:12', NULL),
-(29, 1, NULL, 'rq', 2, 2, '2023-08-31 07:37:57', '2023-08-31 07:37:57', NULL),
-(30, 1, NULL, 'rq', 2, 2, '2023-08-31 07:38:35', '2023-08-31 07:38:35', NULL),
-(31, 1, NULL, 'rq', 2, 2, '2023-08-31 07:39:01', '2023-08-31 07:39:01', NULL),
-(32, 1, NULL, 'rq', 2, 2, '2023-08-31 07:39:42', '2023-08-31 07:39:42', NULL),
-(33, 1, NULL, 'rq', 2, 2, '2023-08-31 07:43:01', '2023-08-31 07:43:01', NULL),
-(34, 1, NULL, 'rq', 2, 2, '2023-08-31 07:43:40', '2023-08-31 07:43:40', NULL),
-(35, 1, NULL, 'rq', 2, 2, '2023-08-31 07:45:54', '2023-08-31 07:45:54', NULL),
-(36, 1, NULL, 'rq', 2, 2, '2023-08-31 07:46:38', '2023-08-31 07:46:38', NULL),
-(37, 1, NULL, 'rq', 2, 2, '2023-08-31 07:47:22', '2023-08-31 07:47:22', NULL),
-(38, 1, NULL, 'rq', 2, 2, '2023-08-31 07:50:35', '2023-08-31 07:50:35', NULL),
-(39, 1, NULL, 'rq', 2, 2, '2023-08-31 08:07:41', '2023-08-31 08:07:41', NULL),
-(40, 1, NULL, 'rq', 2, 2, '2023-08-31 08:10:28', '2023-08-31 08:10:28', NULL),
-(41, 1, NULL, 'rq', 1, 1, '2023-08-31 08:13:05', '2023-08-31 08:13:05', NULL),
-(42, 1, NULL, 'rq', 1, 1, '2023-08-31 08:17:32', '2023-08-31 08:17:32', NULL),
-(43, 1, NULL, 'rq', 1, 1, '2023-08-31 08:19:02', '2023-08-31 08:19:02', NULL),
-(44, 1, NULL, 'rq', 1, 1, '2023-08-31 08:31:29', '2023-08-31 08:31:29', NULL),
-(45, 1, NULL, 'rq', 1, 1, '2023-08-31 08:33:29', '2023-08-31 08:33:29', NULL),
-(46, 1, NULL, 'rq', 1, 1, '2023-08-31 08:36:04', '2023-08-31 08:36:04', NULL),
-(47, 1, NULL, 'rq', 1, 1, '2023-08-31 08:36:13', '2023-08-31 08:36:13', NULL),
-(48, 1, NULL, 'rq', 1, 1, '2023-08-31 08:37:06', '2023-08-31 08:37:06', NULL),
-(49, 1, NULL, 'rq', 1, 1, '2023-08-31 08:37:17', '2023-08-31 08:37:17', NULL),
-(50, 1, NULL, 'rq', 1, 1, '2023-08-31 08:37:23', '2023-08-31 08:37:23', NULL),
-(51, 1, NULL, 'rq', 1, 1, '2023-08-31 08:37:41', '2023-08-31 08:37:41', NULL),
-(52, 1, NULL, 'rq', 1, 1, '2023-08-31 08:38:43', '2023-08-31 08:38:43', NULL),
-(53, 1, NULL, 'rq', 3, 3, '2023-08-31 08:48:12', '2023-08-31 08:48:12', NULL),
-(54, 1, NULL, 'rq', 2, 2, '2023-08-31 08:52:26', '2023-08-31 08:52:26', NULL),
-(55, 1, NULL, 'rq', 2, 2, '2023-08-31 08:52:40', '2023-08-31 08:52:40', NULL),
-(56, 1, NULL, 'rq', 1, 1, '2023-08-31 08:56:04', '2023-08-31 08:56:04', NULL),
-(57, 1, NULL, 'rq', 1, 1, '2023-08-31 08:58:04', '2023-08-31 08:58:04', NULL),
-(58, 1, NULL, 'rq', 1, 1, '2023-08-31 08:59:55', '2023-08-31 08:59:55', NULL),
-(59, 1, NULL, 'rq', 5, 5, '2023-08-31 09:06:01', '2023-08-31 09:06:01', NULL),
-(60, 3, NULL, 'rq', 5, 5, '2023-08-31 09:07:59', '2023-08-31 09:07:59', NULL),
-(61, 3, NULL, 'rq', 4, 4, '2023-08-31 21:13:13', '2023-08-31 21:13:13', NULL),
-(62, 3, NULL, 'rq', 9, 10, '2023-08-31 21:15:36', '2023-08-31 21:15:36', NULL),
-(63, 3, NULL, 'rq', 10, 10, '2023-08-31 21:30:26', '2023-08-31 21:30:26', NULL),
-(72, 1, NULL, 'rq', 2, 8, '2023-08-01 22:31:13', '2023-08-01 22:31:13', NULL),
-(73, 1, NULL, 'rq', 2, 8, '2023-08-01 22:35:53', '2023-08-01 22:35:53', NULL),
-(74, 1, NULL, 'rq', 2, 8, '2023-08-01 22:54:01', '2023-08-01 22:54:01', NULL),
-(75, 1, NULL, 'rq', 3, 7, '2023-08-02 00:30:47', '2023-08-02 00:30:47', NULL);
+INSERT INTO `answers` (`id`, `user_id`, `topic_id`, `qset_id`, `type`, `marks`, `tquiz`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 8, NULL, 'rq', 3, 10, '2023-08-11 05:49:16', '2023-08-11 05:49:16', NULL),
+(2, 1, 9, NULL, 'rq', 3, 9, '2023-08-11 06:21:46', '2023-08-11 06:21:46', NULL),
+(3, 11, 24, NULL, 'rq', 1, 2, '2023-08-12 02:12:55', '2023-08-12 02:12:55', NULL),
+(4, 1, 25, NULL, 'rq', 1, 1, '2023-08-12 02:33:06', '2023-08-12 02:33:06', NULL),
+(7, 1, 26, NULL, 'rq', 3, 9, '2023-08-13 03:03:30', '2023-08-13 03:03:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +91,7 @@ CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `active` set('0','1') NOT NULL DEFAULT '1',
+  `active` set('0','1','2','3','4') NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -168,12 +107,39 @@ INSERT INTO `categories` (`id`, `name`, `description`, `active`, `created_at`, `
 (3, 'Class 7', 'English Version', '1', '2023-07-14 15:23:57', '2023-07-14 15:26:18', NULL),
 (4, 'Class 8', 'English Speaking', '1', '2023-07-14 15:27:37', '2023-07-29 07:51:26', NULL),
 (5, 'Class 9', 'NCERT Solutions for Class 9 for the subjects Maths, Science and Social Science.', '1', '2023-07-15 16:28:28', '2023-07-29 07:10:46', NULL),
-(6, 'Web Design and Development with Laravel', 'IT  Programme', '1', '2023-07-16 22:16:51', '2023-07-28 23:36:53', NULL),
+(6, 'Basic Web-Design', 'IT  Programme', '2', '2023-07-16 22:16:51', '2023-08-13 02:13:50', NULL),
 (7, 'Class 10', 'Class 10', '1', '2023-07-29 06:33:17', '2023-07-29 07:50:10', NULL),
 (8, 'Class 11', 'Class 11', '1', '2023-07-29 06:33:25', '2023-07-29 07:50:45', NULL),
 (9, 'Class 12', 'Class 12', '1', '2023-07-29 06:33:30', '2023-07-29 07:52:03', NULL),
-(10, 'BCS', 'BCS preliminary', '1', '2023-07-29 06:33:38', '2023-07-29 03:42:11', NULL),
-(11, 'General Knowledge', 'General Knowledge or General Awareness is an important and common section in all competitive and government recruitment examinations such as UPSC, SSC, Bank PO/Clerk, and so forth.', '1', '2023-09-02 23:05:11', '2023-09-02 23:05:11', NULL);
+(10, 'BCS', 'BCS preliminary', '3', '2023-07-29 06:33:38', '2023-08-13 02:33:50', NULL),
+(11, 'General Knowledge', 'General Knowledge or General Awareness is an important and common section in all competitive and government recruitment examinations such as UPSC, SSC, Bank PO/Clerk, and so forth.', '3', '2023-09-02 23:05:11', '2023-08-13 02:34:29', NULL),
+(12, 'Network Technology', 'Manage Server, Secure Network, Basic CISCO', '2', '2023-08-12 02:23:37', '2023-08-13 02:34:11', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `details`
+--
+
+CREATE TABLE `details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `topic_id` bigint(20) UNSIGNED NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `details`
+--
+
+INSERT INTO `details` (`id`, `topic_id`, `question`, `answer`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 8, 'First Learning with HTML', '<pre>\r\n&lt;!DOCTYPE html&gt;\r\n&lt;html&gt;\r\n&lt;head&gt;\r\n&lt;title&gt;Page Title&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;\r\n\r\n&lt;h1&gt;This is a Heading&lt;/h1&gt;\r\n&lt;p&gt;This is a paragraph.&lt;/p&gt;\r\n\r\n&lt;/body&gt;\r\n&lt;/html&gt;\r\n</pre>\r\n\r\nThe Output Is:\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<title>Page Title</title>\r\n</head>\r\n<body>\r\n\r\n<h1>This is a Heading</h1>\r\n<p>This is a paragraph.</p>\r\n\r\n</body>\r\n</html>', '2023-08-13 06:54:34', '2023-08-13 11:20:21', NULL),
+(2, 8, 'What is HTML?', '1`.HTML stands for Hyper Text Markup Language.\r\n2.HTML is the standard markup language for creating Web pages.\r\n3.HTML describes the structure of a Web page.\r\n4.HTML consists of a series of elements.\r\n5.HTML elements tell the browser how to display the content. \r\n6.HTML elements label pieces of content such as \"this is a heading\", \"this is a paragraph\", \"this is a link\", etc.', '2023-08-13 11:24:04', '2023-08-13 11:25:48', NULL),
+(3, 8, 'What is an HTML Element?', '<pre>\r\n&lt;tagname&gt; Content goes here... &lt;/tagname&gt;\r\nThe HTML element is everything from the start tag to the end tag:\r\n\r\n&lt;h1&gt;My First Heading&lt;/h1&gt;\r\n&lt;p&gt;My first paragraph.&lt;/p&gt;\r\n</pre>\r\n\r\nOutput:\r\nAn HTML element is defined by a start tag, some content, and an end tag:\r\n\r\n<tagname> Content goes here... </tagname>\r\nThe HTML element is everything from the start tag to the end tag:\r\n\r\n<h1>My First Heading</h1>\r\n<p>My first paragraph.</p>', '2023-08-13 11:29:24', '2023-08-13 11:29:24', NULL),
+(4, 8, 'HTML History', 'Since the early days of the World Wide Web, there have been many versions of HTML:\r\n<table class=\"table\">\r\n  <tr>\r\n    <th>Year</th>\r\n    <th>Version</th>\r\n  </tr>\r\n  <tr>\r\n    <td>1989</td>\r\n    <td>Tim Berners-Lee invented www</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1991</td>\r\n    <td>Tim Berners-Lee invented HTML</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1993</td>\r\n    <td>Dave Raggett drafted HTML+</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1995</td>\r\n    <td>HTML Working Group defined HTML 2.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1997</td>\r\n    <td>W3C Recommendation: HTML 3.2</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1999</td>\r\n    <td>W3C Recommendation: HTML 4.01</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2000</td>\r\n    <td>W3C Recommendation: XHTML 1.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2008</td>\r\n    <td>WHATWG HTML5 First Public Draft</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2012</td>\r\n    <td>WHATWG HTML5 Living Standard</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2014</td>\r\n    <td>W3C Recommendation: HTML5</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2016</td>\r\n    <td>W3C Candidate Recommendation: HTML 5.1</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.1 2nd Edition</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.2</td>\r\n  </tr>\r\n</table>', '2023-08-13 11:40:10', '2023-08-13 11:41:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -289,6 +255,7 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `leaderboards` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `topic_id` bigint(20) UNSIGNED DEFAULT NULL,
   `quizset_id` bigint(20) UNSIGNED DEFAULT NULL,
   `given_ans` varchar(255) NOT NULL,
   `submitted_at` varchar(255) DEFAULT NULL,
@@ -302,19 +269,12 @@ CREATE TABLE `leaderboards` (
 -- Dumping data for table `leaderboards`
 --
 
-INSERT INTO `leaderboards` (`id`, `user_id`, `quizset_id`, `given_ans`, `submitted_at`, `marks`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, '100/100', '(time: 10:25 minutes)', 100, '2023-08-31 19:11:48', '2023-08-31 19:11:48', NULL),
-(11, 2, 2, '99/100', '(time: 12:01 minutes)', 99, '2023-08-05 19:11:48', '2023-08-31 19:11:48', NULL),
-(12, 3, 2, '92/100', '(time: 11:25 minutes)', 92, '2023-08-07 19:11:48', '2023-08-31 19:11:48', NULL),
-(13, 4, 4, '88/100', '(time: 12:25 minutes)', 88, '2023-08-08 19:11:48', '2023-08-31 19:11:48', NULL),
-(14, 7, 3, '78/100', '(time: 11:29 minutes)', 78, '2023-08-01 19:11:48', '2023-08-31 19:11:48', NULL),
-(15, 6, 2, '90/100', '(time: 1:25 minutes)', 90, '2023-08-31 19:11:48', '2023-08-31 19:11:48', NULL),
-(16, 7, 1, '70/100', '(time: 1:25 minutes)', 70, '2023-08-02 19:11:48', '2023-08-31 19:11:48', NULL),
-(17, 8, 4, '60/100', '(time: 1:25 minutes)', 60, '2023-08-01 19:11:48', '2023-08-31 19:11:48', NULL),
-(18, 9, 2, '80/100', '(time: 1:25 minutes)', 80, '2023-08-03 19:11:48', '2023-08-31 19:11:48', NULL),
-(19, 10, 2, '70/100', '(time: 1:25 minutes)', 70, '2023-08-02 19:11:48', '2023-08-31 19:11:48', NULL),
-(20, 1, NULL, '2/8', '(time:5.1)', 2, '2023-08-01 22:54:01', '2023-08-01 22:54:01', NULL),
-(21, 1, NULL, '3/7', '(time:5.1)', 3, '2023-08-02 00:30:47', '2023-08-02 00:30:47', NULL);
+INSERT INTO `leaderboards` (`id`, `user_id`, `topic_id`, `quizset_id`, `given_ans`, `submitted_at`, `marks`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 8, NULL, '3/10', '(time:5.1)', 3, '2023-08-11 05:49:16', '2023-08-11 05:49:16', NULL),
+(2, 1, 9, NULL, '3/9', '(time:5.1)', 3, '2023-08-11 06:21:46', '2023-08-11 06:21:46', NULL),
+(3, 11, 24, NULL, '1/2', '(time:5.1)', 1, '2023-08-12 02:12:55', '2023-08-12 02:12:55', NULL),
+(4, 1, 25, NULL, '1/1', '(time:5.1)', 1, '2023-08-12 02:33:06', '2023-08-12 02:33:06', NULL),
+(7, 1, 26, NULL, '3/9', '(time:5.1)', 3, '2023-08-13 03:03:30', '2023-08-13 03:03:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -346,8 +306,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2023_07_29_164849_create_topics_table', 8),
 (18, '2023_07_30_071155_create_quizzes_table', 9),
 (19, '2023_08_01_091935_create_quizsets_table', 10),
-(21, '2023_08_01_103841_create_answers_table', 11),
-(22, '2023_08_01_110834_create_leaderboards_table', 12);
+(24, '2023_08_01_110834_create_leaderboards_table', 12),
+(25, '2023_08_11_114241_create_answers_table', 13),
+(26, '2023_08_13_110232_create_details_table', 14);
 
 -- --------------------------------------------------------
 
@@ -761,7 +722,8 @@ INSERT INTO `quizzes` (`id`, `question`, `type`, `op1`, `op2`, `op3`, `op4`, `an
 (300, 'বাংলা ভাষায় পরাশ্রয়ী ধ্বনি কতটি ?', 'm', '২ টি', '৪ টি', '৩ টি', '৫ টি', 'null', '', 1, 10, 26, 23, '2023-09-11 18:15:30', '2023-09-11 18:15:30', NULL),
 (301, 'বাংলা ভাষার পরাশ্রয়ী ধ্বনি কতটি?', 'm', '২টি', '৪টি', '৩টি', '৫টি', 'op3', '', 1, 10, 26, 23, '2023-09-11 18:47:03', '2023-09-11 18:47:03', NULL),
 (304, 'Test Question', 'qi', 'as', 'fe', 'ds', 'ddf', 'op4', '302.jpg', 1, 10, 27, 24, '2023-07-31 06:44:01', '2023-07-31 06:44:01', NULL),
-(305, 'Tesst cc', 'qi', 'b', 'b hbjb', 'ggfh', 'bubu', 'op2', '305png', 1, 10, 27, 24, '2023-08-01 00:34:15', '2023-08-01 00:34:15', NULL);
+(305, 'Tesst cc', 'qi', 'b', 'b hbjb', 'ggfh', 'bubu', 'op2', '305png', 1, 10, 27, 24, '2023-08-01 00:34:15', '2023-08-01 00:34:15', NULL),
+(306, 'When it comes to virtualization, what is a host?', 'm', 'A computer that hosts a service.', 'A computer that hosts virtual machines', 'A computer that hosts Windows Server 2012r2-2016', 'A computer that can run and operate hosts', 'op2', '', 1, 12, 31, 25, '2023-08-12 02:32:15', '2023-08-12 02:32:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -813,7 +775,9 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `description`, `active
 (26, 10, 'Bangla', 'Bangla', '1', '2023-09-11 16:58:48', '2023-09-11 16:58:48', NULL),
 (27, 10, 'English', 'English', '1', '2023-09-11 17:02:46', '2023-09-11 17:02:46', NULL),
 (28, 10, 'Mathematic', 'Mathematic', '1', '2023-09-11 17:03:31', '2023-09-11 17:03:31', NULL),
-(29, 10, 'History', 'History', '1', '2023-09-11 17:04:41', '2023-09-11 17:04:41', NULL);
+(29, 10, 'History', 'History', '1', '2023-09-11 17:04:41', '2023-09-11 17:04:41', NULL),
+(30, 2, 'Math', 'Math Quiz', '1', '2023-08-09 04:19:48', '2023-08-09 04:19:48', NULL),
+(31, 12, 'Server 2016', 'Domain,Active Directory,Core,IT configuration etc', '1', '2023-08-12 02:27:03', '2023-08-12 02:27:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -1397,7 +1361,9 @@ INSERT INTO `topics` (`id`, `category_id`, `subcategory_id`, `name`, `descriptio
 (21, NULL, 20, 'Chapter 11', 'MCQ Questions for Class 8 Maths Chapter 11 Mensuration with Answers', '1', '2023-09-03 15:23:18', '2023-09-03 15:23:18', NULL),
 (22, NULL, 25, 'Introduction of React', 'Intro', '1', '2023-09-11 07:54:15', '2023-09-11 07:54:15', NULL),
 (23, 10, 26, 'ধ্বনি ও বর্ণ', 'ধ্বনি ও বর্ণ', '1', '2023-09-11 17:07:41', '2023-09-11 17:19:03', NULL),
-(24, NULL, 27, 'Parts of Speech', 'All Kinds of Parts of Speech', '1', '2023-07-31 06:38:00', '2023-07-31 06:38:00', NULL);
+(24, NULL, 27, 'Parts of Speech', 'All Kinds of Parts of Speech', '1', '2023-07-31 06:38:00', '2023-07-31 06:38:00', NULL),
+(25, NULL, 31, 'Domain', 'All About Domain', '1', '2023-08-12 02:28:54', '2023-08-12 02:28:54', NULL),
+(26, NULL, NULL, 'Random Quiz', '', '1', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1445,6 +1411,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `passwo
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `answers_user_id_foreign` (`user_id`),
+  ADD KEY `answers_topic_id_foreign` (`topic_id`),
   ADD KEY `answers_qset_id_foreign` (`qset_id`);
 
 --
@@ -1458,6 +1425,13 @@ ALTER TABLE `boards`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `details`
+--
+ALTER TABLE `details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `details_topic_id_foreign` (`topic_id`);
 
 --
 -- Indexes for table `districts`
@@ -1479,6 +1453,7 @@ ALTER TABLE `failed_jobs`
 ALTER TABLE `leaderboards`
   ADD PRIMARY KEY (`id`),
   ADD KEY `leaderboards_user_id_foreign` (`user_id`),
+  ADD KEY `leaderboards_topic_id_foreign` (`topic_id`),
   ADD KEY `leaderboards_quizset_id_foreign` (`quizset_id`);
 
 --
@@ -1558,7 +1533,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `boards`
@@ -1570,7 +1545,13 @@ ALTER TABLE `boards`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `details`
+--
+ALTER TABLE `details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `districts`
@@ -1588,13 +1569,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `leaderboards`
 --
 ALTER TABLE `leaderboards`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1612,13 +1593,13 @@ ALTER TABLE `quizsets`
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `thanas`
@@ -1630,7 +1611,7 @@ ALTER TABLE `thanas`
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1647,7 +1628,14 @@ ALTER TABLE `users`
 --
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_qset_id_foreign` FOREIGN KEY (`qset_id`) REFERENCES `quizsets` (`id`),
+  ADD CONSTRAINT `answers_topic_id_foreign` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`),
   ADD CONSTRAINT `answers_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `details`
+--
+ALTER TABLE `details`
+  ADD CONSTRAINT `details_topic_id_foreign` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`);
 
 --
 -- Constraints for table `districts`
@@ -1660,6 +1648,7 @@ ALTER TABLE `districts`
 --
 ALTER TABLE `leaderboards`
   ADD CONSTRAINT `leaderboards_quizset_id_foreign` FOREIGN KEY (`quizset_id`) REFERENCES `quizsets` (`id`),
+  ADD CONSTRAINT `leaderboards_topic_id_foreign` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`),
   ADD CONSTRAINT `leaderboards_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
