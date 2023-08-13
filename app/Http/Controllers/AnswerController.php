@@ -113,14 +113,14 @@ class AnswerController extends Controller
          // for guest user
          $data = [
             'user_id' => $uid,
-            'topic_id' => $request->topic,
+            'topic_id' => $request->topic ?? 26,
             'type' => 'rq',
             'marks' => $request->marks,
             'tquiz' => $request->tquiz,
         ];
          $data1 = [
             'user_id' => $uid,
-            'topic_id' => $request->topic,
+            'topic_id' => $request->topic ?? 26,
             'submitted_at' => '(time:5.1)',
             'marks' => $request->marks,
             'given_ans' =>$request->marks.'/'. $request->tquiz,

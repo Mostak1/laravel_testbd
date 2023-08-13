@@ -183,11 +183,23 @@ class QuizController extends Controller
         }
     }
 
-    public function qall(Request $request, Category $category)
+    public function qskill(Request $request, Category $category)
     {
 
-        $cats  = Category::with('subcategories')->get();
+        $cats  = Category::where('active','2')->with('subcategories')->get();
         return view('playquiz.index', compact('cats'));
+    }
+    public function qacademic(Request $request, Category $category)
+    {
+
+        $cats  = Category::where('active','1')->with('subcategories')->get();
+        return view('playquiz.academic', compact('cats'));
+    }
+    public function qcompetitive(Request $request, Category $category)
+    {
+
+        $cats  = Category::where('active','3')->with('subcategories')->get();
+        return view('playquiz.competitive', compact('cats'));
     }
     public function catquiz($id)
     {

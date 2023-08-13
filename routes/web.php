@@ -64,7 +64,9 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
 // QuizController all classes
 Route::get('quiz/qz/qshow', [QuizController::class, "qshow"]);
 Route::post('dynamicquiz', [QuizController::class, "dynamicquiz"]);
-Route::get('playquiz', [QuizController::class, "qall"]);
+Route::get('playquiz', [QuizController::class, "qskill"]);
+Route::get('playquiz_ac', [QuizController::class, "qacademic"]);
+Route::get('playquiz_com', [QuizController::class, "qcompetitive"]);
 Route::get('playquiz/cat/{id}', [QuizController::class, "catquiz"]);
 Route::get('playquiz/subcat/{id}', [QuizController::class, "subcatquiz"]);
 Route::get('playquiz/topic/{id}', [QuizController::class, "topicquiz"]);

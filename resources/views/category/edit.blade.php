@@ -35,11 +35,11 @@
                 </div>
             </div>
             <div class="form-group">
-                {!! Form::select('active', [0 => 'No', 1 => 'Yes'], 1, [
+                {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development',3=>'Competitive Exam'], 1, [
                     'required',
                     'class' => 'form-control form-control-profile',
                     'id' => 'active',
-                    'max' => '1',
+                    'max' => '4',
                     'min' => '0',
                     'placeholder' => 'Active Field',
                 ]) !!}

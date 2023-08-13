@@ -51,7 +51,9 @@
                                                                 {{-- <img src="assets/images/faces/face1.jpg" alt="image" /> --}}
                                                                 <span class="pl-2">{{ $ans->user->name }}</span>
                                                             </td>
-                                                            <td>{{ $ans->topic->name ?? 'Random Quizzes' }}
+                                                            <td>
+                                                                {{ $ans->topic->name  }}
+                                                                
                                                             </td>
                                                             <td>{{ $ans->marks }}</td>
                                                             <td>{{ $ans->tquiz }}</td>

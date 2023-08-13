@@ -41,21 +41,19 @@
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto wc">
                     <a class="customNav  me-4 fs-5  " href="{{ url('') }}">Home</a>
-                    <a class="customNav  me-4 fs-5 " href="{{ url('playquiz') }}">Skill Devlopment</a>
-                    <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Quiz</a>
-                    <a class="customNav  me-4 fs-5 " href="#">Questions</a>
+                   
+                    <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Random Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="{{ url('leaderboard/user') }}">Exam Score</a>
                     <div class="dropdown">
-                        <a class=" dropdown-toggle wc" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class=" dropdown-toggle wc fs-5" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Quiz
+                            Learning Sector
                         </a>
 
                         <ul class="dropdown-menu wc customBac">
-                            <li><a class="dropdown-item wc" href="{{ url('playquiz') }}">Quiz All</a></li>
-                            <li><a class="dropdown-item wc" href="{{ url('showquiz') }}">Dynamicquiz</a></li>
-                            <li><a class="dropdown-item wc" href="{{ url('quiz/qz/qshow') }}">Quiz Show</a></li>
-                            <li><a class="dropdown-item wc" href="{{ url('playquiz/qimage') }}">Quiz Image</a></li>
+                            <li><a class="dropdown-item wc " href="{{ url('playquiz') }}">Skill Devlopment</a></li>
+                            <li><a class="dropdown-item wc " href="{{ url('playquiz_ac') }}">Academic</a></li>
+                            <li><a class="dropdown-item wc " href="{{ url('playquiz_com') }}">Competitive Exams</a></li>
                         </ul>
                     </div>
                 </div>
@@ -88,13 +86,13 @@
                         </ul>
                     </li>
                     <div class="">
-                        <a href="{{ url('checkout') }}" class=" customNav position-relative">
+                        {{-- <a href="{{ url('checkout') }}" class=" customNav position-relative">
                             Buy Item
                             <span id="additm"
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 <span class="visually-hidden">unread messages</span>
                             </span>
-                        </a>
+                        </a> --}}
                     </div>
                 </ul>
             </div>
