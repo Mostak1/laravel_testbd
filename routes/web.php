@@ -63,6 +63,11 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
     Route::post('thana/restore/{id}', [ThanaController::class, 'restore'])->name('thana.restore');
     
 });
+
+// topic_detail collect using topic id
+Route::post('topic_detail', [DetailController::class, "topic_detail"]);
+Route::get('topic_detail', [DetailController::class, "topic_detail"]);
+
 // QuizController all classes
 Route::get('quiz/qz/qshow', [QuizController::class, "qshow"]);
 Route::post('dynamicquiz', [QuizController::class, "dynamicquiz"]);

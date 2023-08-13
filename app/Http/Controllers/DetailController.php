@@ -6,6 +6,7 @@ use App\Models\Detail;
 use App\Http\Requests\StoreDetailRequest;
 use App\Http\Requests\UpdateDetailRequest;
 use App\Models\Topic;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DetailController extends Controller
@@ -87,5 +88,13 @@ class DetailController extends Controller
         if (Detail::destroy($detail->id)) {
             return back()->with('success', $detail->id . ' Deleted!!!!');
         }
+    }
+    public function topic_detail(Request $request)
+    {
+       $tid = $request->tid;
+       $tdetail = Detail::where('topic_id', $tid)->get();
+    //    dd($tdetail);
+       return response()->json($tdetail);
+    //    return view('playquiz.subcat')->with('tdetail', $tdetail);
     }
 }

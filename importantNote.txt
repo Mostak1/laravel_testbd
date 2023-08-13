@@ -6,8 +6,8 @@ continue run css
 npm dev run
 
 Route::resources([
-    'photos' => PhotoController::class,
-    'posts' => PostController::class,
+    'photos' =&gt; PhotoController::class,
+    'posts' =&gt; PostController::class,
 ]);
 route setting 
 Actions Handled By Resource Controller
@@ -27,6 +27,7 @@ Id Cat_id Student_id  Tranjection_methode Tran_id Status(default pending) Expair
 detail model
 details table
 id,topic_id,question,answer
+
 
 
 
