@@ -16,8 +16,10 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr><th colspan="5" class="tablebtn">
-                        </th></tr>
+                        <tr>
+                            <th colspan="5" class="tablebtn">
+                            </th>
+                        </tr>
                         <tr>
                             <th>#</th>
                             <th>Name</th>
@@ -30,7 +32,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Active</th>
+                            <th>Sector</th>
                             <th>Description</th>
                             <th>Action</th>
                         </tr>
@@ -40,7 +42,17 @@
                             <tr>
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->active }}</td>
+                                <td>
+                                    @if ($category->active == 1)
+                                        Academic
+                                    @elseif ($category->active == 2)
+                                        Skill Development
+                                    @elseif ($category->active == 3)
+                                        Competitive Exam
+                                    @endif
+
+
+                                </td>
                                 <td>{{ $category->description }}</td>
                                 <td class="skip d-flex justify-content-center">
                                     {!! Form::open(['method' => 'delete', 'route' => ['category.destroy', $category->id], 'id' => 'deleteform']) !!}
@@ -50,8 +62,8 @@
                                     </a>
                                     {!! Form::close() !!}
                                     &nbsp;
-                                    <a href="{{ url('category/' . $category->id . '/edit') }}"
-                                        class="btn btn-info  btn-sm" title="Edit">
+                                    <a href="{{ url('category/' . $category->id . '/edit') }}" class="btn btn-info  btn-sm"
+                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     &nbsp;
@@ -70,5 +82,4 @@
 @endsection
 
 @section('script')
-   
 @endsection

@@ -17,6 +17,10 @@ class Category extends Model
         'active',
 
     ];
+    public function enrolls()
+    {
+    return $this->hasMany(Enroll::class);
+    }
     public function Subcategories()
     {
     return $this->hasMany('App\Models\Subcategory', 'category_id');

@@ -6,6 +6,7 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
@@ -57,6 +58,7 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'quiz' => QuizController::class,
         'quizset' => QuizsetController::class,
         'detail' => DetailController::class,
+        'enroll' => EnrollController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');

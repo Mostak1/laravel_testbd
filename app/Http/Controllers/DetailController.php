@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Detail;
 use App\Http\Requests\StoreDetailRequest;
 use App\Http\Requests\UpdateDetailRequest;
+use App\Models\Category;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,9 +29,10 @@ class DetailController extends Controller
     public function create()
     {
         $topic = Topic::pluck('name', 'id');
+        $categories = Category::pluck('name', 'id');
         // array_unshift($categories , ['-1'=>"Select Category"]);
         // dd($categories);
-        return view("detail.create")->with('topic', $topic)->with('user', Auth::user());
+        return view("detail.create")->with('categories', $categories)->with('user', Auth::user());
   
     }
 

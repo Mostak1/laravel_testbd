@@ -23,14 +23,14 @@
                     ]) !!}
                 </div>
                 <div class="col-sm-6">
-                    {!! Form::select('active', [0 => 'No', 1 => 'Yes'], 1, [
-                        'required',
-                        'class' => 'form-control form-control-profile',
-                        'id' => 'active',
-                        'max' => '1',
-                        'min' => '0',
-                        'placeholder' => 'Active Field',
-                    ]) !!}
+                    {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development',3=>'Competitive Exam'], 1, [
+                    'required',
+                    'class' => 'form-control form-control-profile',
+                    'id' => 'active',
+                    'max' => '4',
+                    'min' => '0',
+                    'placeholder' => 'Active Field',
+                ]) !!}
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                     'required',
                     'class' => 'form-control form-control-profile',
                     'id' => 'description',
-                    'rows' => '1',
+                    'rows' => '3',
                     'placeholder' => 'Description',
                 ]) !!}
             </div>

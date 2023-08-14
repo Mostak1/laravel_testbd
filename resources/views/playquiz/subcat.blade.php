@@ -14,28 +14,28 @@
                             <div class="card-header text-center">
                                 Topics of {{ $scats->name }}
                             </div>
-                            @foreach ($scats->topics as $tps)
-                                <ul class="list-group list-group-flush">
-                                    <li data-tid="{{ $tps->id }}" class="list-group-item topicd">{{ $tps->name }} (<a
-                                            href="{{ url('playquiz/topic/' . $tps->id) }}">Exam</a>)</li>
-
-                                </ul>
-                            @endforeach
+                            <ul class="list-group list-group-flush">
+                                @foreach ($scats->topics as $tps)
+                                    <li data-tid="{{ $tps->id }}" class="list-group-item topicd btn text-start">{{ $tps->name }}
+                                        (<a href="{{ url('playquiz/topic/' . $tps->id) }}">Exam</a>)</li>
+                                @endforeach
+                            </ul>
                         </div>
                         @foreach ($scats->topics as $tps)
-                            <a href="{{ url('playquiz/topic/' . $tps->id) }}">{{ $tps->name }}</a>
+                            {{-- <a href="{{ url('playquiz/topic/' . $tps->id) }}">{{ $tps->name }}</a> --}}
                         @endforeach
 
                     </div>
                 @endif
                 <div class="col-md-9">
                     <div class="card">
+                        <div id="" class="paginationContainer pagination justify-content-center mt-3"></div>
                         <div class="card-body" id="detailcontainer">
                             {{ $scats->description }}
 
 
                         </div>
-                        <div id="paginationContainer" class="pagination justify-content-center"></div>
+                        <div id="" class="paginationContainer pagination justify-content-center"></div>
 
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                 for (let page = 1; page <= totalPages; page++) {
                     paginationHTML += `<li class="page-item"><a class="page-link" href="#">${page}</a></li>`;
                 }
-                $("#paginationContainer").html(`<ul class="pagination">${paginationHTML}</ul>`);
+                $(".paginationContainer").html(`<ul class="pagination">${paginationHTML}</ul>`);
 
                 // Add click event handler for pagination links
                 $(".page-link").click(function() {

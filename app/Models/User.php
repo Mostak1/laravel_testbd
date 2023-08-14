@@ -27,7 +27,10 @@ class User extends Authenticatable
         'password',
         'role',
     ];
-
+    public function enrolls()
+    {
+    return $this->hasMany(Enroll::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

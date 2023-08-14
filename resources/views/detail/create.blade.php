@@ -10,16 +10,38 @@
         <div class="card-body">
             {{ Form::open(['route' => 'detail.store', 'class' => 'user', 'enctype' => 'multipart/form-data']) }}
             {{-- @include('detail.form') --}}
-           
+
 
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    {!! Form::select('topic_id', $topic, null, [
-                        'placeholder' => 'Select Class',
-                        'id' => 'topic_id',
-                        'class' => 'form-control w-full',
+                <div class="col-sm-3 mb-3">
+                    {!! Form::select('category_id', $categories, null, [
+                        'required',
+                        'class' => 'form-control',
+                        'id' => 'category_id',
+                        'placeholder' => 'Select Category',
                     ]) !!}
+
                 </div>
+                <div class="col-sm-3 mb-3 mb-sm-0">
+                    {!! Form::select('subcategory_id', [], null, [
+                        'required',
+                        'class' => 'form-control ',
+                        'id' => 'subcategory_id',
+                        'placeholder' => 'Select Subcategory',
+                    ]) !!}
+
+                </div>
+                <div class="col-sm-3 mb-3 mb-sm-0">
+                    {!! Form::select('topic_id', [], null, [
+                        'required',
+                        'class' => 'form-control',
+                        'id' => 'topic_id',
+                        'placeholder' => 'Select Topic',
+                    ]) !!}
+
+                </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-6">
                     {!! Form::textarea('question', null, [
                         'required',
@@ -29,8 +51,7 @@
                         'placeholder' => 'question',
                     ]) !!}
                 </div>
-            </div>
-            <div class="form-group row">
+
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     {!! Form::textarea('answer', null, [
                         'required',
@@ -40,7 +61,7 @@
                         'placeholder' => 'answer',
                     ]) !!}
                 </div>
-                
+
             </div>
 
 
@@ -50,4 +71,13 @@
             {!! Form::close() !!}
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @endsection
