@@ -14,8 +14,7 @@
                             <img src="{{ asset('assets/img/cat.jpg') }}" alt="...">
                             <div class="card-body">
                                 <h3 class="card-title">{{ $cs->name }}</h3>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text">{{$cs->description}}</p>
                                 <h5 class="card-title text-end">
                                    
                                             <a href="{{ url('playquiz/cat/' . $cs->id) }}">Go Details</a>

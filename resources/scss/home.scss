@@ -8,6 +8,17 @@ $passageFont: "Merriweather", serif;
 $navBacColor: #162138;
 $bumbleBcolor: #f5a425;
 $wColor: #ffffff;
+$gradientColor1: linear-gradient(to bottom, #f5a425, #d66f00);
+$gradientColor2: linear-gradient(to bottom, #162138, #354968);
+// admin panel css
+.sidebar {
+    background: $gradientColor2;
+    /* Other sidebar styling */
+}
+
+
+
+
 // common class css
 .wc {
     color: $wColor;

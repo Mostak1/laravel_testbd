@@ -1,15 +1,15 @@
 <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion sb-sidenav bg-info shadow-lg" id="sidenavAccordion">
+    <nav class="sb-sidenav accordion sb-sidenav sidebar shadow" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav mt-2">
                 <!-- Navbar Brand-->
-                <a class="navbar-brand ps-3 text-black" target="_blank" href="{{ url('/') }}">Test BD</a>
-                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="navbar-brand ps-3 fs-1 text-white" target="_blank" href="{{ url('/') }}"><span class="bc">Test</span> BD</a>
+                <div class="sb-sidenav-menu-heading wc">Core</div>
                 <a class="nav-link" href="{{ url('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-                <div class="sb-sidenav-menu-heading">Interface</div>
+                <div class="sb-sidenav-menu-heading wc">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -20,23 +20,54 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested  nav">
 
-                        <a href="{{ url('user') }}" class="dropdown-item" rel="noopener noreferrer">Users</a>
-                        <a href="{{ url('board') }}" class="dropdown-item" rel="noopener noreferrer">Board</a>
-                        <a href="{{ url('district') }}" class="dropdown-item" rel="noopener noreferrer">District</a>
-                        <a href="{{ url('thana') }}" class="dropdown-item" rel="noopener noreferrer">Thana</a>
-                        <a href="{{ url('institute') }}" class="dropdown-item" rel="noopener noreferrer">Institute</a>
-                        <a href="{{ url('subject') }}" class="dropdown-item" rel="noopener noreferrer">Subject</a>
-                        <a href="{{ url('question') }}" class="dropdown-item" rel="noopener noreferrer">Questions</a>
-                        <a href="{{ url('order') }}" class="dropdown-item" rel="noopener noreferrer">Order
-                            Management</a>
-                        <a href="{{ url('category') }}" class="dropdown-item" rel="noopener noreferrer">Category</a>
-                        <a href="{{ url('subcategory') }}" class="dropdown-item" rel="noopener noreferrer">Subcategory</a>
-                        <a href="{{ url('topic') }}" class="dropdown-item" rel="noopener noreferrer">Topics</a>
-                        <a href="{{ url('quiz') }}" class="dropdown-item" rel="noopener noreferrer">Quiz</a>
-                        <a href="{{ url('quizset') }}" class="dropdown-item" rel="noopener noreferrer">Quiz Set</a>
-                        <a href="{{ url('leaderboard') }}" class="dropdown-item" rel="noopener noreferrer">Leaderboard</a>
-                        <a href="{{ url('detail') }}" class="dropdown-item" rel="noopener noreferrer">Details Of Topic</a>
-                        <a href="{{ url('enroll') }}" class="dropdown-item" rel="noopener noreferrer">Enroll Informations</a>
+                        <a href="{{ url('user') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Users
+                        </a>
+                        <a href="{{ url('board') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Board
+                        </a>
+                        <a href="{{ url('district') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>District
+                        </a>
+                        <a href="{{ url('thana') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Thana
+                        </a>
+                        <a href="{{ url('institute') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Institute
+                        </a>
+                        <a href="{{ url('question') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Question
+                        </a>
+                        <a href="{{ url('question') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Question
+                        </a>
+                        <a href="{{ url('order') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Order Management
+                        </a>
+                        <a href="{{ url('category') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Academic Class or Sector
+                        </a>
+                        <a href="{{ url('subcategory') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Subjects
+                        </a>
+                        <a href="{{ url('topic') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Topic
+                        </a>
+                        <a href="{{ url('quiz') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Quiz
+                        </a>
+                        <a href="{{ url('quizset') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Quizset
+                        </a>
+                        <a href="{{ url('leaderboard') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Leaderboard
+                        </a>
+                        <a href="{{ url('detail') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Topic Detail
+                        </a>
+                        <a href="{{ url('enroll') }}" class="nav-link" rel="noopener noreferrer">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Enroll
+                        </a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -49,7 +80,8 @@
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+                            aria-controls="pagesCollapseAuth">
                             Authentication
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
@@ -77,7 +109,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="sb-sidenav-menu-heading">Addons</div>
+                <div class="sb-sidenav-menu-heading wc">Addons</div>
                 <a class="nav-link" href="{{ url('user') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Users

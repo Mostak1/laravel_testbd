@@ -26,7 +26,9 @@ Id Cat_id Student_id  Tranjection_methode Tran_id Status(default pending) Expair
 
 detail model
 details table
-id,topic_id,question,answer
+id,topic_id,question,answer,
+
+in arry dea kaj krtehbe 
 
 
 

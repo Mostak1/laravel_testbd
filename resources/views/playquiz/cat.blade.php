@@ -9,6 +9,8 @@
                     {{ $cats->name }}
                 </h3>
                 <p class="text-center">{{ $cats->description }}</p>
+
+                {{-- @dd($uenroll) --}}
                 @forelse ($uenroll as $item)
                     @if ($item->category_id === $cats->id)
                         <!-- Card for Sub-Category -->
@@ -27,24 +29,29 @@
                                 </div>
                             @endforeach
                         </div>
+                   
+                        
+                    @else
+                        
+                    
+                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
                     @endif
                 @empty
-                    <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
                 @endforelse
-                @auth
-                    <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+            @auth
 
-                @endauth
-            </div>
+            @endauth
         </div>
     </div>
-    <!-- Facilities End -->
+</div>
+<!-- Facilities End -->
 @endsection
 
 @section('script')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // Code here if needed
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Code here if needed
+    });
+</script>
 @endsection

@@ -28,7 +28,7 @@
     <nav id="navCustom" class="customBac navbar fixed-top navbar-expand-lg navbar shadow px-0 py-3">
         <div class="container-xl">
             <!-- Logo -->
-            <a class="navbar-brand customNav" href="#">
+            <a class="navbar-brand customNav fs-2" href="#">
                 <span class="bc">Test</span>BD
             </a>
             <!-- Navbar toggle -->

@@ -24,6 +24,7 @@
     {{-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
+    @vite(['resources/scss/home.scss'])
     @yield('css')
 </head>
 
