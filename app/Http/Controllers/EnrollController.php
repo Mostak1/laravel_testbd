@@ -65,6 +65,20 @@ class EnrollController extends Controller
         return view('enroll.edit', compact('enroll'))->with('categories', $categories)->with('users', $users);
    
     }
+    public function uenroll($id)
+    {
+        if (Auth::user()) {
+            $uid= Auth::user()->id;
+            $categories = Category::where('id',$id)->pluck('name', 'id');
+            $users = User::where('id',$uid)->pluck('name', 'id');
+            return view('enroll.ucreate')->with('categories', $categories)->with('users', $users);
+       
+        }
+      
+        return redirect()->route('login')->with('success', 'Please Log In First');
+
+   
+    }
 
     /**
      * Update the specified resource in storage.

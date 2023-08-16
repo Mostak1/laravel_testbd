@@ -1,6 +1,5 @@
 @extends('users.layouts.main')
 
-{{-- main content add here --}}
 @section('content')
     <!-- Facilities Start -->
     <div class="container py-5 my-5 afterNav">
@@ -10,33 +9,42 @@
                     {{ $cats->name }}
                 </h3>
                 <p class="text-center">{{ $cats->description }}</p>
-
-                {{-- Card for Sub-Category --}}
-                <div class="row">
-                    @foreach ($cats->subcategories as $scs)
-                        <div class="col-sm-6 mb-3">
-                            <div class="card bnav">
-                                <div class="card-body">
-                                    <h5 class="card-title bc">{{ $scs->name }}</h5>
-                                    <p class="card-text wc">{{ $scs->description }}</p>
-                                    <a href="{{ url('playquiz/subcat/' . $scs->id) }}" class="btn btn-outline-primary">Go
-                                        Topics</a>
+                @forelse ($uenroll as $item)
+                    @if ($item->category_id === $cats->id)
+                        <!-- Card for Sub-Category -->
+                        <div class="row">
+                            @foreach ($cats->subcategories as $scs)
+                                <div class="col-sm-6 mb-3">
+                                    <div class="card bnav">
+                                        <div class="card-body">
+                                            <h5 class="card-title bc">{{ $scs->name }}</h5>
+                                            <p class="card-text wc">{{ $scs->description }}</p>
+                                            <a href="{{ url('playquiz/subcat/' . $scs->id) }}"
+                                                class="btn btn-outline-primary">Go
+                                                Topics</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
+                    @endif
+                @empty
+                    <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+                @endforelse
+                @auth
+                    <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+
+                @endauth
             </div>
         </div>
     </div>
-
     <!-- Facilities End -->
 @endsection
+
 @section('script')
     <script type="text/javascript">
         $(document).ready(function() {
-            //    alert('Please wait')
-
+            // Code here if needed
         });
     </script>
 @endsection

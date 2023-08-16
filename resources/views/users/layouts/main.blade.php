@@ -100,7 +100,10 @@
     </nav>
     <!-- Header End -->
     <!-- Main Content -->
-    @include('layouts.flash')
+    <div class="">
+
+        @include('layouts.flash')
+    </div>
 
     @yield('content')
 
@@ -233,6 +236,17 @@
             $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
 
         });
+    </script>
+    <script>
+        (function (window, document) {
+            var loader = function () {
+                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                tag.parentNode.insertBefore(script, tag);
+            };
+    
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
     </script>
     @yield('script')
 </body>

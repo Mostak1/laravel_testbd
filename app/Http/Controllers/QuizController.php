@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
+use App\Models\Enroll;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,7 @@ class QuizController extends Controller
             $file = $request->file('quizimage');
             $extention = $file->extension();
             $qid  = Quiz::all()->last()->id;
-            $filename = $qid + 1 .'.'. $extention;
+            $filename = $qid + 1 . '.' . $extention;
             $request->quizimage->move(public_path('/assets/img/'), $filename);
         }
 
@@ -134,7 +135,7 @@ class QuizController extends Controller
             $file = $request->file('quizimage');
             $extention = $file->extension();
             $qid  = Quiz::all()->last()->id;
-            $filename = $qid + 1 .'.'. $extention;
+            $filename = $qid + 1 . '.' . $extention;
             $request->quizimage->move(public_path('/assets/img/'), $filename);
         }
 
@@ -185,30 +186,33 @@ class QuizController extends Controller
 
     public function qskill(Request $request, Category $category)
     {
-
-        $cats  = Category::where('active','2')->with('subcategories')->get();
+        
+         $cats  = Category::where('active', '2')->with('subcategories')->get();
         return view('playquiz.index', compact('cats'));
     }
     public function qacademic(Request $request, Category $category)
     {
-
-        $cats  = Category::where('active','1')->with('subcategories')->get();
+     
+           
+        $cats  = Category::where('active', '1')->with('subcategories')->get();
         return view('playquiz.academic', compact('cats'));
     }
     public function qcompetitive(Request $request, Category $category)
     {
-
-        $cats  = Category::where('active','3')->with('subcategories')->get();
+       
+        $cats  = Category::where('active', '3')->with('subcategories')->get();
         return view('playquiz.competitive', compact('cats'));
     }
     public function catquiz($id)
     {
-
+        $uid = Auth::user()->id ?? null;
+        $uenroll = Enroll::where('user_id', $uid)->where('status', 'Active')->get();
 
         $cats  = Category::with("subcategories.topics")->find($id);
         //    dd($cats);
         return view('playquiz.cat')
-            ->with('cats', $cats);
+            ->with('cats', $cats)
+            ->with('uenroll', $uenroll);
     }
     public function subcatquiz($id)
     {
@@ -220,24 +224,24 @@ class QuizController extends Controller
     public function topicquiz($id)
     {
         $count = "10";
-        
-            $quizzes = Quiz::where('topic_id',$id)->inRandomOrder()->limit($count)->get();
-        $topic=Topic::find($id);
-            // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
-       
+
+        $quizzes = Quiz::where('topic_id', $id)->inRandomOrder()->limit($count)->get();
+        $topic = Topic::find($id);
+        // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
+
         $topics = Topic::with('quizzes')->get();
         return view('playquiz.topic')
-        ->with('quizzes', $quizzes)
-        ->with('topic', $topic);
+            ->with('quizzes', $quizzes)
+            ->with('topic', $topic);
     }
     public function topicquizapi($id)
     {
         $count = "10";
-        
-            $quizzes = Quiz::where('topic_id',$id)->inRandomOrder()->limit($count)->get();
-        
-            // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
-       
+
+        $quizzes = Quiz::where('topic_id', $id)->inRandomOrder()->limit($count)->get();
+
+        // $quizzes = Quiz::inRandomOrder()->limit($count)->get();
+
         $topics = Topic::with('quizzes')->get();
         return response()->json($quizzes);
         // return view('playquiz.topic', compact('quizzes'));
