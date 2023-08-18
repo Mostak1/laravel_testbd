@@ -12,6 +12,14 @@
 
                 {{-- @dd($uenroll) --}}
                 @forelse ($uenroll as $item)
+@php
+    $expairTime = new DateTime($item->expair_time);
+    $currentDate = new DateTime();
+    $dateDiff = $currentDate->diff($expairTime);
+@endphp
+
+<p>Remaining Time: {{ $dateDiff->format('%m Months and %d Days') }} </p>
+
                     @if ($item->category_id === $cats->id)
                         <!-- Card for Sub-Category -->
                         <div class="row">
@@ -34,10 +42,10 @@
                     @else
                         
                     
-                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{$cats->price}}Tk Only</a>
                     @endif
                 @empty
-                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now</a>
+                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{$cats->price}}Tk Only</a>
                 @endforelse
             @auth
 

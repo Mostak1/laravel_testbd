@@ -27,34 +27,40 @@
                 <div class="form-group row mb-3">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         {!! Form::select('category_id', $categories, null, [
-                            'placeholder' => 'Select Category',
+                            
                             'id' => 'category_id',
                             'class' => 'form-control w-full',
                         ]) !!}
                     </div>
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         {!! Form::select('user_id', $users, null, [
-                            'placeholder' => 'Select User Name',
                             'id' => 'user_id',
                             'class' => 'form-control w-full',
                         ]) !!}
                     </div>
-
                 </div>
                 <div class="form-group row mb-3">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
                         {!! Form::select('tj_methode', ['Bkash' => 'Bkash', 'Nagod' => 'Nagod', 'Roket' => 'Roket'], null, [
                             'required',
                             'class' => 'form-control form-control-profile',
                             'id' => 'tj_methode',
                         ]) !!}
                     </div>
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
                         {!! Form::text('tj_id', null, [
                             'required',
                             'class' => 'form-control form-control-profile',
                             'id' => 'tj_id',
                             'placeholder' => 'Tranjection ID',
+                        ]) !!}
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        {!! Form::number('price', $catp, [
+                            'required','readonly',
+                            'class' => 'form-control  form-control-profile',
+                            'id' => 'price',
+                            
                         ]) !!}
                     </div>
                 </div>
@@ -78,10 +84,16 @@
 
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Submit Orders', ['class' => 'btn mt-3 btn-info btn-profile btn-block']) !!}
+                    {!! Form::submit('Submit Orders', ['class' => 'btn mt-3 btn-info btn-profile btn-block', 'id' => 'submit-button']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
 @endsection
+@section('script')
+    <script>
+       
+    </script>
+@endsection
+

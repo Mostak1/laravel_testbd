@@ -13,7 +13,13 @@ class Enroll extends Model
     protected $dates = ['deleted_at'];
     // status(default pending)
     protected $fillable = [
-        'category_id','user_id','tj_methode','tj_id','status','expair_time' 
+        'category_id',
+        'user_id',
+        'tj_methode',
+        'price',
+        'tj_id',
+        'status',
+        'expair_time' 
     ];
     public function category()
     {

@@ -26,27 +26,39 @@
                     ]) !!}
                 </div>
                 <div class="col-sm-6">
-                    {!! Form::text('description', null, [
+                    {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development', 3 => 'Competitive Exam'], null, [
                         'required',
                         'class' => 'form-control form-control-profile',
-                        'id' => 'description',
-                        'placeholder' => 'Description',
+                        'id' => 'active',
+                        'max' => '4',
+                        'min' => '0',
+                        'placeholder' => 'Active Field',
                     ]) !!}
                 </div>
             </div>
-            <div class="form-group">
-                {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development',3=>'Competitive Exam'], 1, [
-                    'required',
-                    'class' => 'form-control form-control-profile',
-                    'id' => 'active',
-                    'max' => '4',
-                    'min' => '0',
-                    'placeholder' => 'Active Field',
-                ]) !!}
+            <div class="form-group mt-3 row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    {!! Form::textarea('description', null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'description',
+                        'rows' => '3',
+                        'placeholder' => 'Description',
+                    ]) !!}
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    {!! Form::number('price', null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'price',
+                        
+                        'placeholder' => 'Price',
+                    ]) !!}
+                </div>
             </div>
 
             <div class="form-group">
-                {!! Form::submit('Update Class', ['class' => 'btn btn-info btn-profile btn-block']) !!}
+                {!! Form::submit('Update Class', ['class' => 'mt-3 btn btn-info btn-profile btn-block']) !!}
             </div>
             {!! Form::close() !!}
         </div>

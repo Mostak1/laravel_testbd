@@ -23,29 +23,40 @@
                     ]) !!}
                 </div>
                 <div class="col-sm-6">
-                    {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development',3=>'Competitive Exam'], 1, [
-                    'required',
-                    'class' => 'form-control form-control-profile',
-                    'id' => 'active',
-                    'max' => '4',
-                    'min' => '0',
-                    'placeholder' => 'Active Field',
-                ]) !!}
+                    {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development', 3 => 'Competitive Exam'], null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'active',
+                        'max' => '4',
+                        'min' => '0',
+                        'placeholder' => 'Active Field',
+                    ]) !!}
+                </div>
+            </div>
+
+            <div class="form-group mt-3 row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    {!! Form::textarea('description', null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'description',
+                        'rows' => '3',
+                        'placeholder' => 'Description',
+                    ]) !!}
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    {!! Form::number('price', null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'price',
+                        
+                        'placeholder' => 'Price',
+                    ]) !!}
                 </div>
             </div>
 
             <div class="form-group">
-                {!! Form::textarea('description', null, [
-                    'required',
-                    'class' => 'form-control form-control-profile',
-                    'id' => 'description',
-                    'rows' => '3',
-                    'placeholder' => 'Description',
-                ]) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::submit('Add Class', ['class' => 'btn btn-info']) !!}
+                {!! Form::submit('Add Class', ['class' => 'my-3 btn btn-info']) !!}
             </div>
             {!! Form::close() !!}
         </div>

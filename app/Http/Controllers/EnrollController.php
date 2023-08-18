@@ -38,11 +38,21 @@ class EnrollController extends Controller
      */
     public function store(Request $request)
     {
-        $enroll=Enroll::create($request->all());
-        if ($enroll) {
-            return back()->with('success', 'Your enroll  has been created successfully! You will active soon. Thanks for your patience')->withInput($request->input());
+        $uid = $request->user_id;
+        $catid = $request->category_id;
+        $endata=Enroll::where('user_id',$uid)->where('category_id',$catid)->get();
+        if ($endata->isEmpty()) {
+            // No matching records found
+            $enroll=Enroll::create($request->all());
+            if ($enroll) {
+                return back()->with('success', 'Congratulations!Your enroll  has been created successfully! You will active soon. Thanks for your patience')->withInput($request->input());
+            } else {
+                return back()->with('error', 'Error!! Enroll Not successfull!')->withInput($request->input());
+            }
         } else {
-            return back()->with('error', 'Error!! Enroll Not successfull!')->withInput($request->input());
+            
+                return back()->with('info', 'You are already enrolled successfully! You will activate soon. Thanks for your patience')->withInput($request->input());
+          
         }
     }
 
@@ -67,11 +77,18 @@ class EnrollController extends Controller
     }
     public function uenroll($id)
     {
-        if (Auth::user()) {
+        if (Auth::user()) { 
             $uid= Auth::user()->id;
             $categories = Category::where('id',$id)->pluck('name', 'id');
             $users = User::where('id',$uid)->pluck('name', 'id');
-            return view('enroll.ucreate')->with('categories', $categories)->with('users', $users);
+            $cat = Category::find($id);
+            $catp= $cat->price;
+            // $catp = Category::where('id',$id)->pluck('price');
+            // dd($catp);
+            return view('enroll.ucreate')
+            ->with('categories', $categories)
+            ->with('users', $users)
+            ->with('catp', $catp);
        
         }
       

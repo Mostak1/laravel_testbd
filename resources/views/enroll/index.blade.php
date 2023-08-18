@@ -25,6 +25,7 @@
                         <th>Category Name</th>
                         <th>User Name</th>
                         <th>Tranjection Methode</th>
+                        <th>Payment Amount</th>
                         <th>Tranjection Id</th>
                         <th>Status</th>
                         <th>Expair Time</th>
@@ -37,6 +38,7 @@
                         <th>Category Name</th>
                         <th>User Name</th>
                         <th>Tranjection Methode</th>
+                        <th>Payment Amount</th>
                         <th>Tranjection Id</th>
                         <th>Status</th>
                         <th>Expair Time</th>
@@ -50,6 +52,7 @@
                             <td>{{ $en->category->name }}</td>
                             <td>{{ $en->user->name }}</td>
                             <td>{{ $en->tj_methode }}</td>
+                            <td>{{ $en->price }}</td>
                             <td>{{ $en->tj_id }}</td>
                             <td>{{ $en->status }}</td>
                             <td>{{ $en->expair_time }}</td>

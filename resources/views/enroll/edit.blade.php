@@ -53,8 +53,8 @@
                     ]) !!}
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="form-group mb-3 row">
+                <div class="col-sm-4  mb-sm-0">
                     {!! Form::select('status', ['Pending' => 'Pending', 'Active' => 'Active'],null,  [
                         'required',
                         'class' => 'form-control form-control-profile',
@@ -62,7 +62,15 @@
                         'placeholder' => 'Active Field',
                     ]) !!}
                 </div>
-                <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col-sm-4  mb-sm-0">
+                    {!! Form::number('price', null, [
+                        'required',
+                        'class' => 'form-control form-control-profile',
+                        'id' => 'price',
+                        'placeholder' => 'price',
+                    ]) !!}
+                </div>
+                <div class="col-sm-4  mb-sm-0">
                     
                     {!! Form::text(
                         'expair_time',
@@ -73,7 +81,7 @@
                 
             </div>
             <div class="form-group">
-                {!! Form::submit('Update Enrolls', ['class' => 'btn btn-info btn-profile btn-block']) !!}
+                {!! Form::submit('Update Enrolls', ['class' => 'btn mt-3 btn-info btn-profile btn-block']) !!}
             </div>
             {!! Form::close() !!}
         </div>
