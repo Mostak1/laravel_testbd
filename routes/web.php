@@ -33,9 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('skill', [HomeController::class, 'skill']);
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-})->middleware(['auth', 'verified', 'checkRole:2'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'admin'])->middleware(['auth', 'verified', 'checkRole:2'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -68,7 +66,7 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
 });
 
 // enrollments
-Route::get('uenroll/{id}', [EnrollController::class, "uenroll"]);
+// Route::get('uenroll/{id}', [EnrollController::class, "uenroll"]);
 
 
 // topic_detail collect using topic id
@@ -104,7 +102,7 @@ Route::get('leaderboard', [LeaderboardController::class, "index"])->name('leader
 
 
 // SSLCOMMERZ Start
-// Route::get('uenroll/{id}', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('uenroll/{id}', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
 Route::post('/pay', [SslCommerzPaymentController::class, 'index']);

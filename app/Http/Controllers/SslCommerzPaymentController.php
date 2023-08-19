@@ -6,9 +6,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Category;
+use App\Models\Enroll;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB ;
+use Illuminate\Support\Facades\DB;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -16,20 +17,20 @@ class SslCommerzPaymentController extends Controller
     public function exampleEasyCheckout($id)
     {
         if (Auth::user()) {
-        $uid= Auth::user()->id;
-        $categories = Category::where('id',$id)->pluck('name', 'id');
-        $users = User::find($uid);
-        $cat = Category::find($id);
-        $catp= $cat->price;
-        // $catp = Category::where('id',$id)->pluck('price');
-        // dd($catp);
-        return view('ssl.exampleEasycheckout')
-        ->with('categories', $categories)
-        ->with('users', $users)
-        ->with('cat', $cat);
-    }
-      
-    return redirect()->route('login')->with('success', 'Please Log In First');
+            $uid = Auth::user()->id;
+            $categories = Category::where('id', $id)->pluck('name', 'id');
+            $users = User::find($uid);
+            $cat = Category::find($id);
+            $catp = $cat->price;
+            // $catp = Category::where('id',$id)->pluck('price');
+            // dd($catp);
+            return view('ssl.exampleEasycheckout')
+                ->with('categories', $categories)
+                ->with('users', $users)
+                ->with('cat', $cat);
+        }
+
+        return redirect()->route('login')->with('warning', 'Please Log In First');
         // return view('ssl.exampleEasycheckout');
     }
 
@@ -83,7 +84,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_d'] = "ref004";
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product =DB::table('orders')
+        $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
                 'name' => $post_data['cus_name'],
@@ -104,31 +105,30 @@ class SslCommerzPaymentController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-
     }
 
     public function payViaAjax(Request $request)
     {
-
+        $reData = json_decode($request->cart_json);
+        // return $reData->amount;
         # Here you have to receive all the order data to initate the payment.
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
-
         $post_data = array();
-        $post_data['total_amount'] = $request->amount; # You cant not pay less than 10
+        $post_data['total_amount'] = $reData->amount; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = $request->cus_name;
-        $post_data['cus_email'] = $request->cus_email;
-        $post_data['cus_add1'] = $request->cus_addr1;
+        $post_data['cus_name'] = $reData->cus_name;
+        $post_data['cus_email'] = $reData->cus_email ?? 'smm@mail.com';
+        $post_data['cus_add1'] = $reData->cus_add1 ?? 'Dhaka,Mirpur';
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
         $post_data['cus_state'] = "";
         $post_data['cus_postcode'] = "";
         $post_data['cus_country'] = "Bangladesh";
-        $post_data['cus_phone'] = $request->cus_phone;
+        $post_data['cus_phone'] = '8801XXXXXXXXX';
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
@@ -154,6 +154,7 @@ class SslCommerzPaymentController extends Controller
 
 
         #Before  going to initiate the payment order status need to update as Pending.
+
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
@@ -167,6 +168,17 @@ class SslCommerzPaymentController extends Controller
                 'currency' => $post_data['currency']
             ]);
 
+        Enroll::create([
+            'category_id'=>$reData->catid,
+            'user_id'=>$reData->cusid,
+            'tj_methode'=>$reData->methode,
+            'price'=>$reData->amount,
+            'tj_id'=>$post_data['tran_id'],
+            'status'=>'Pending',
+            'expair_time'=>$reData->etime,
+            // Set other attributes...
+        ]);
+
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'checkout', 'json');
@@ -175,7 +187,6 @@ class SslCommerzPaymentController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-
     }
 
     public function success(Request $request)
@@ -217,8 +228,6 @@ class SslCommerzPaymentController extends Controller
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
-
-
     }
 
     public function fail(Request $request)
@@ -239,7 +248,6 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-
     }
 
     public function cancel(Request $request)
@@ -260,8 +268,6 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-
-
     }
 
     public function ipn(Request $request)
@@ -306,5 +312,4 @@ class SslCommerzPaymentController extends Controller
             echo "Invalid Data";
         }
     }
-
 }

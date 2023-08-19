@@ -62,10 +62,12 @@
             <h4 class="mb-3">Billing address</h4>
             <form method="POST" class="needs-validation" novalidate>
                 <div class="row">
+                    
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
                         <input type="number" id="cus_id" name="cus_id" value="{{$users->id}}">
                         <input type="number" id="cat_id" name="cat_id" value="{{$cat->id}}">
+                        <input type="text" id="etime" name="etime" value="{{now()->addMonths(6)->format('Y-m-d')}}">
                         <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
                                value="{{$users->name}}" required>
                         <div class="invalid-feedback">
@@ -107,8 +109,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    <label for="methode">Payment Methode <span class="text-muted">(Please enter your Methode)</span></label>
+                   <select class="form-control" name="methode" id="methode">
+                    <option value="Bkash">Bkash</option>
+                    <option value="Nagod">Nagod</option>
+                    <option value="Roket">Roket</option>
+                    <option value="Bank">Bank</option>
+                   </select>
                 </div>
 
                 <div class="row">
@@ -182,6 +189,8 @@
     obj.amount = $('#total_amount').val();
     obj.catid = $('#cat_id').val();
     obj.cusid = $('#cus_id').val();
+    obj.methode = $('#methode').val();
+    obj.etime = $('#etime').val();
 
     $('#sslczPayBtn').prop('postdata', obj);
 

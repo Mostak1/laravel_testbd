@@ -32,7 +32,7 @@ class EnrollController extends Controller
         return view("enroll.create")->with('categories', $categories)->with('users', $users);
   
     }
-
+// ipn_listener/sss
     /**
      * Store a newly created resource in storage.
      */
@@ -92,7 +92,7 @@ class EnrollController extends Controller
        
         }
       
-        return redirect()->route('login')->with('success', 'Please Log In First');
+        return redirect()->route('login')->with('warning', 'Please Log In First');
 
    
     }

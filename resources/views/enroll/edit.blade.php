@@ -55,7 +55,7 @@
             </div>
             <div class="form-group mb-3 row">
                 <div class="col-sm-4  mb-sm-0">
-                    {!! Form::select('status', ['Pending' => 'Pending', 'Active' => 'Active'],null,  [
+                    {!! Form::select('status', ['Pending' => 'Pending', 'Active' => 'Active','Cancel' => 'Cancel','Due'=>'Due'],null,  [
                         'required',
                         'class' => 'form-control form-control-profile',
                         'id' => 'status',

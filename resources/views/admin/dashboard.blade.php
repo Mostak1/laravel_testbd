@@ -16,21 +16,26 @@
 
                             <div class="card-body">
 
-                                Daily Order
+                                Daily Order {{$orderCountD}}
 
-                                <div class="card-body">Daily Sell = TK Only</div>
+                                <div class="card-body">Daily Sell = {{$totalSalesD}}TK From {{$salesCountD}} Orders</div>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <a class="small text-white stretched-link" href="{{ url('enroll') }}">View Details</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="card h-100 bg-warning text-white mb-4">
-                            <div class="card-body">Warning Card</div>
+                            <div class="card-body">
+
+                                Weekly Order {{$orderCountW}}
+
+                                <div class="card-body">Weekly Sell = {{$totalSalesW}}TK From {{$salesCountW}} Orders</div>
+                            </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <a class="small text-white stretched-link" href="{{ url('enroll') }}">View Details</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
@@ -40,12 +45,12 @@
 
                             <div class="card-body">
 
+                                Monthly Order {{$orderCountM}}
 
-                                <div class="card-body">Monthly Sell = TK Only</div>
-
+                                <div class="card-body">Monthly Sell = {{$totalSalesM}}TK From {{$salesCountM}} Orders</div>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <a class="small text-white stretched-link" href="{{ url('enroll') }}">View Details</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
@@ -54,7 +59,7 @@
                         <div class="card h-100 bg-danger text-white mb-4">
                             <div class="card-body">Danger Card</div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <a class="small text-white stretched-link" href="{{ url('enroll') }}">View Details</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
@@ -64,11 +69,14 @@
                 <div class="card mb-4 my-5">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        DataTable Example
+                        Employee List
                     </div>
                     <div class="card-body">
-                        <table id="datatablesSimple">
+                        <table id="dataTable">
                             <thead>
+                                <tr>
+                                    <th colspan="6" class="tablebtn">
+                                    </th>
                                 <tr>
                                     <th>Name</th>
                                     <th>Position</th>
