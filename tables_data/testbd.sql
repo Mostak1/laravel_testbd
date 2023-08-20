@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 08:11 PM
+-- Generation Time: Aug 20, 2023 at 07:53 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -91,6 +91,7 @@ CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `price` int(11) NOT NULL,
   `active` set('0','1','2','3','4') NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -101,19 +102,19 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `description`, `active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Class 5', 'English Version', '1', '2023-07-13 21:01:48', '2023-07-14 22:50:17', NULL),
-(2, 'Class 6', 'English Version 2', '1', '2023-07-13 21:46:48', '2023-07-14 22:50:25', NULL),
-(3, 'Class 7', 'English Version', '1', '2023-07-14 15:23:57', '2023-07-14 15:26:18', NULL),
-(4, 'Class 8', 'English Speaking', '1', '2023-07-14 15:27:37', '2023-07-29 07:51:26', NULL),
-(5, 'Class 9', 'NCERT Solutions for Class 9 for the subjects Maths, Science and Social Science.', '1', '2023-07-15 16:28:28', '2023-07-29 07:10:46', NULL),
-(6, 'Basic Web-Design', 'IT  Programme', '2', '2023-07-16 22:16:51', '2023-08-13 02:13:50', NULL),
-(7, 'Class 10', 'Class 10', '1', '2023-07-29 06:33:17', '2023-07-29 07:50:10', NULL),
-(8, 'Class 11', 'Class 11', '1', '2023-07-29 06:33:25', '2023-07-29 07:50:45', NULL),
-(9, 'Class 12', 'Class 12', '1', '2023-07-29 06:33:30', '2023-07-29 07:52:03', NULL),
-(10, 'BCS', 'BCS preliminary', '3', '2023-07-29 06:33:38', '2023-08-13 02:33:50', NULL),
-(11, 'General Knowledge', 'General Knowledge or General Awareness is an important and common section in all competitive and government recruitment examinations such as UPSC, SSC, Bank PO/Clerk, and so forth.', '3', '2023-09-02 23:05:11', '2023-08-13 02:34:29', NULL),
-(12, 'Network Technology', 'Manage Server, Secure Network, Basic CISCO', '2', '2023-08-12 02:23:37', '2023-08-13 02:34:11', NULL);
+INSERT INTO `categories` (`id`, `name`, `description`, `price`, `active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'S.S.C', 'English and Bangla Version', 2250, '1', '2023-07-13 21:01:48', '2023-08-13 12:52:28', NULL),
+(2, 'H.S.C', 'English Version and Bangla', 3400, '1', '2023-07-13 21:46:48', '2023-08-13 12:53:12', NULL),
+(3, 'Management(Honours)', '30 years ago the National University was established by an Act of Parliament as an affiliating University of the country to impart graduate and post-graduate level education to the students through its affiliated colleges and professional institutions throughout the country.', 350, '1', '2023-07-14 15:23:57', '2023-08-16 08:31:04', NULL),
+(4, 'Economics(Honours)', '30 years ago the National University was established by an Act of Parliament as an affiliating University of the country to impart graduate and post-graduate level education to the students through its affiliated colleges and professional institutions throughout the country.', 560, '1', '2023-07-14 15:27:37', '2023-08-16 08:32:25', NULL),
+(5, 'Marketing(Honours)', '30 years ago the National University was established by an Act of Parliament as an affiliating University of the country to impart graduate and post-graduate level education to the students through its affiliated colleges and professional institutions throughout the country.', 560, '1', '2023-07-15 16:28:28', '2023-08-16 08:33:51', NULL),
+(6, 'Basic Web-Design', 'IT  Programme', 1460, '2', '2023-07-16 22:16:51', '2023-08-13 02:13:50', NULL),
+(7, 'Advance JavaScripts and jQuery', 'JavaScript (JS) is a lightweight interpreted (or just-in-time compiled) programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.', 4200, '2', '2023-07-29 06:33:17', '2023-08-16 08:38:56', NULL),
+(8, 'Learn PHP Basic to Advance with MySQL', 'PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.', 4600, '2', '2023-07-29 06:33:25', '2023-08-16 08:40:47', NULL),
+(9, 'React Js', 'React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta and a community of individual developers and companies. React can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.', 5500, '2', '2023-07-29 06:33:30', '2023-08-16 08:41:40', NULL),
+(10, 'BCS', 'BCS preliminary', 8540, '3', '2023-07-29 06:33:38', '2023-08-13 02:33:50', NULL),
+(11, 'General Knowledge', 'General Knowledge or General Awareness is an important and common section in all competitive and government recruitment examinations such as UPSC, SSC, Bank PO/Clerk, and so forth.', 670, '3', '2023-09-02 23:05:11', '2023-08-13 02:34:29', NULL),
+(12, 'Network Technology', 'Manage Server, Secure Network, Basic CISCO', 2500, '2', '2023-08-12 02:23:37', '2023-08-13 02:34:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,8 @@ INSERT INTO `details` (`id`, `topic_id`, `question`, `answer`, `created_at`, `up
 (1, 8, 'First Learning with HTML', '<pre>\r\n&lt;!DOCTYPE html&gt;\r\n&lt;html&gt;\r\n&lt;head&gt;\r\n&lt;title&gt;Page Title&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;\r\n\r\n&lt;h1&gt;This is a Heading&lt;/h1&gt;\r\n&lt;p&gt;This is a paragraph.&lt;/p&gt;\r\n\r\n&lt;/body&gt;\r\n&lt;/html&gt;\r\n</pre>\r\n\r\nThe Output Is:\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<title>Page Title</title>\r\n</head>\r\n<body>\r\n\r\n<h1>This is a Heading</h1>\r\n<p>This is a paragraph.</p>\r\n\r\n</body>\r\n</html>', '2023-08-13 06:54:34', '2023-08-13 11:20:21', NULL),
 (2, 8, 'What is HTML?', '1`.HTML stands for Hyper Text Markup Language.\r\n2.HTML is the standard markup language for creating Web pages.\r\n3.HTML describes the structure of a Web page.\r\n4.HTML consists of a series of elements.\r\n5.HTML elements tell the browser how to display the content. \r\n6.HTML elements label pieces of content such as \"this is a heading\", \"this is a paragraph\", \"this is a link\", etc.', '2023-08-13 11:24:04', '2023-08-13 11:25:48', NULL),
 (3, 8, 'What is an HTML Element?', '<pre>\r\n&lt;tagname&gt; Content goes here... &lt;/tagname&gt;\r\nThe HTML element is everything from the start tag to the end tag:\r\n\r\n&lt;h1&gt;My First Heading&lt;/h1&gt;\r\n&lt;p&gt;My first paragraph.&lt;/p&gt;\r\n</pre>\r\n\r\nOutput:\r\nAn HTML element is defined by a start tag, some content, and an end tag:\r\n\r\n<tagname> Content goes here... </tagname>\r\nThe HTML element is everything from the start tag to the end tag:\r\n\r\n<h1>My First Heading</h1>\r\n<p>My first paragraph.</p>', '2023-08-13 11:29:24', '2023-08-13 11:29:24', NULL),
-(4, 8, 'HTML History', 'Since the early days of the World Wide Web, there have been many versions of HTML:\r\n<table class=\"table\">\r\n  <tr>\r\n    <th>Year</th>\r\n    <th>Version</th>\r\n  </tr>\r\n  <tr>\r\n    <td>1989</td>\r\n    <td>Tim Berners-Lee invented www</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1991</td>\r\n    <td>Tim Berners-Lee invented HTML</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1993</td>\r\n    <td>Dave Raggett drafted HTML+</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1995</td>\r\n    <td>HTML Working Group defined HTML 2.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1997</td>\r\n    <td>W3C Recommendation: HTML 3.2</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1999</td>\r\n    <td>W3C Recommendation: HTML 4.01</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2000</td>\r\n    <td>W3C Recommendation: XHTML 1.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2008</td>\r\n    <td>WHATWG HTML5 First Public Draft</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2012</td>\r\n    <td>WHATWG HTML5 Living Standard</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2014</td>\r\n    <td>W3C Recommendation: HTML5</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2016</td>\r\n    <td>W3C Candidate Recommendation: HTML 5.1</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.1 2nd Edition</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.2</td>\r\n  </tr>\r\n</table>', '2023-08-13 11:40:10', '2023-08-13 11:41:25', NULL);
+(4, 8, 'HTML History', 'Since the early days of the World Wide Web, there have been many versions of HTML:\r\n<table class=\"table\">\r\n  <tr>\r\n    <th>Year</th>\r\n    <th>Version</th>\r\n  </tr>\r\n  <tr>\r\n    <td>1989</td>\r\n    <td>Tim Berners-Lee invented www</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1991</td>\r\n    <td>Tim Berners-Lee invented HTML</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1993</td>\r\n    <td>Dave Raggett drafted HTML+</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1995</td>\r\n    <td>HTML Working Group defined HTML 2.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1997</td>\r\n    <td>W3C Recommendation: HTML 3.2</td>\r\n  </tr>\r\n  <tr>\r\n    <td>1999</td>\r\n    <td>W3C Recommendation: HTML 4.01</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2000</td>\r\n    <td>W3C Recommendation: XHTML 1.0</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2008</td>\r\n    <td>WHATWG HTML5 First Public Draft</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2012</td>\r\n    <td>WHATWG HTML5 Living Standard</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2014</td>\r\n    <td>W3C Recommendation: HTML5</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2016</td>\r\n    <td>W3C Candidate Recommendation: HTML 5.1</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.1 2nd Edition</td>\r\n  </tr>\r\n  <tr>\r\n    <td>2017</td>\r\n    <td>W3C Recommendation: HTML5.2</td>\r\n  </tr>\r\n</table>', '2023-08-13 11:40:10', '2023-08-13 11:41:25', NULL),
+(5, 8, 'Learn HTML Using Notepad or TextEdit', '**Web pages can be created and modified by using professional HTML editors. **\r\n\r\n**However, for learning HTML we recommend a simple text editor like Notepad (PC) or TextEdit (Mac).**\r\n\r\n**We believe that using a simple text editor is a good way to learn HTML.**\r\n\r\n**Follow the steps below to create your first web page with Notepad or TextEdit.**', '2023-08-13 12:34:53', '2023-08-13 12:34:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,6 +235,50 @@ INSERT INTO `districts` (`id`, `board_id`, `name`, `bn_name`, `lat`, `lon`, `url
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `enrolls`
+--
+
+CREATE TABLE `enrolls` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `tj_methode` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `tj_id` text NOT NULL,
+  `status` text NOT NULL,
+  `expair_time` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `enrolls`
+--
+
+INSERT INTO `enrolls` (`id`, `category_id`, `user_id`, `tj_methode`, `price`, `tj_id`, `status`, `expair_time`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 6, 4, 'Bkash', 1460, '13232432bjhgj', 'Pending', '2024-02-14', '2023-08-14 03:28:28', '2023-08-14 06:22:42', NULL),
+(2, 1, 1, 'Bkash', 2250, '122676367dfdf', 'Active', '2024-02-14', '2023-08-14 09:24:06', '2023-08-14 09:33:04', NULL),
+(3, 2, 1, 'Bkash', 3400, '13232432bjhgj', 'Active', '2024-02-14', '2023-08-14 09:29:35', '2023-08-14 09:33:17', NULL),
+(4, 6, 1, 'Bkash', 1460, '13232432bjhgj', 'Active', '2024-02-16', '2023-08-16 10:07:24', '2023-08-16 10:08:07', NULL),
+(5, 7, 1, 'Bkash', 4200, '13232432bjhgj', 'Pending', '2024-02-17', '2023-08-17 06:38:17', '2023-08-17 06:38:17', NULL),
+(6, 7, 1, 'Bkash', 4200, '122676367dytrde7576', 'Pending', '2024-02-18', '2023-08-18 03:50:56', '2023-08-18 03:50:56', NULL),
+(7, 10, 1, 'Bkash', 7259, '64e05595884d0', 'Pending', '2024-02-19', '2023-08-18 23:39:33', '2023-08-18 23:39:33', NULL),
+(8, 10, 1, 'Bkash', 7259, '64e0559589129', 'Pending', '2024-02-19', '2023-08-18 23:39:33', '2023-08-18 23:39:33', NULL),
+(9, 10, 1, 'Bkash', 7259, '64e07868938c5', 'Pending', '2024-02-19', '2023-08-19 02:08:09', '2023-08-19 02:08:09', NULL),
+(10, 10, 1, 'Bkash', 7259, '64e07868938c5', 'Pending', '2024-02-19', '2023-08-19 02:08:09', '2023-08-19 02:08:09', NULL),
+(11, 3, 1, 'Bkash', 298, '64e0792c93f3a', 'Pending', '2024-02-19', '2023-08-19 02:11:24', '2023-08-19 02:11:24', NULL),
+(12, 3, 1, 'Bkash', 298, '64e0792c940f9', 'Pending', '2024-02-19', '2023-08-19 02:11:24', '2023-08-19 02:11:24', NULL),
+(13, 3, 1, 'Bkash', 298, '64e07e8d07cd2', 'Pending', '2024-02-19', '2023-08-19 02:34:21', '2023-08-19 02:34:21', NULL),
+(14, 3, 1, 'Bkash', 298, '64e07e8d1a92f', 'Pending', '2024-02-19', '2023-08-19 02:34:21', '2023-08-19 02:34:21', NULL),
+(15, 3, 1, 'Bkash', 298, '64e07fc6a92f7', 'Pending', '2024-02-19', '2023-08-19 02:39:34', '2023-08-19 02:39:34', NULL),
+(16, 3, 1, 'Bkash', 298, '64e07fc6ac97c', 'Pending', '2024-02-19', '2023-08-19 02:39:34', '2023-08-19 02:39:34', NULL),
+(17, 3, 1, 'Bkash', 298, '64e08145a444f', 'Pending', '2024-02-19', '2023-08-19 02:45:57', '2023-08-19 02:45:57', NULL),
+(18, 3, 1, 'Bkash', 298, '64e08145a444f', 'Active', '2024-02-19', '2023-08-19 02:45:57', '2023-08-19 03:39:38', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -308,7 +354,83 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2023_08_01_091935_create_quizsets_table', 10),
 (24, '2023_08_01_110834_create_leaderboards_table', 12),
 (25, '2023_08_11_114241_create_answers_table', 13),
-(26, '2023_08_13_110232_create_details_table', 14);
+(26, '2023_08_13_110232_create_details_table', 14),
+(28, '2023_08_14_073328_create_enrolls_table', 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `transaction_id` varchar(255) DEFAULT NULL,
+  `currency` varchar(20) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `amount`, `address`, `status`, `transaction_id`, `currency`, `created_at`) VALUES
+(1, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64db6f27a11a5', 'BDT', '2023-08-19 10:37:21'),
+(2, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64df281e2e237', 'BDT', '2023-08-19 10:37:21'),
+(3, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3a06ebe1b', 'BDT', '2023-08-19 10:37:21'),
+(4, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3a06ebe1b', 'BDT', '2023-08-19 10:37:21'),
+(5, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3a37e76ab', 'BDT', '2023-08-19 10:37:21'),
+(6, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3a37f0f42', 'BDT', '2023-08-19 10:37:21'),
+(7, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3b044cfe4', 'BDT', '2023-08-19 10:37:21'),
+(8, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3b044cfeb', 'BDT', '2023-08-19 10:37:21'),
+(9, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3c817fe8f', 'BDT', '2023-08-19 10:37:21'),
+(10, NULL, NULL, NULL, NULL, NULL, 'Pending', '64df3c818c5ec', 'BDT', '2023-08-19 10:37:21'),
+(11, NULL, NULL, NULL, NULL, NULL, 'Pending', '64dfcb47c258a', 'BDT', '2023-08-19 10:37:21'),
+(12, NULL, NULL, NULL, NULL, NULL, 'Pending', '64dfcb47dd539', 'BDT', '2023-08-19 10:37:21'),
+(13, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03c949b3e9', 'BDT', '2023-08-19 10:37:21'),
+(14, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03c94a9b95', 'BDT', '2023-08-19 10:37:21'),
+(15, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03d302a8a8', 'BDT', '2023-08-19 10:37:21'),
+(16, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03d3035276', 'BDT', '2023-08-19 10:37:21'),
+(17, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03e8dc7301', 'BDT', '2023-08-19 10:37:21'),
+(18, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e03e8dd7a5f', 'BDT', '2023-08-19 10:37:21'),
+(19, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e03fc428b32', 'BDT', '2023-08-19 10:37:21'),
+(20, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e03fc434d21', 'BDT', '2023-08-19 10:37:21'),
+(21, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e0404e18581', 'BDT', '2023-08-19 10:37:21'),
+(22, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e0404e24184', 'BDT', '2023-08-19 10:37:21'),
+(23, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e04aae87f31', 'BDT', '2023-08-19 10:53:02'),
+(24, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e04aaea4327', 'BDT', '2023-08-19 10:53:02'),
+(25, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e04aca3d351', 'BDT', '2023-08-19 10:53:30'),
+(26, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10, 'Customer Address', 'Pending', '64e04aca3d34c', 'BDT', '2023-08-19 10:53:30'),
+(27, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10000, 'Customer Address', 'Pending', '64e04b35603ec', 'BDT', '2023-08-19 10:55:17'),
+(28, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 10000, 'Customer Address', 'Pending', '64e04b35727e1', 'BDT', '2023-08-19 10:55:17'),
+(29, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 7259, 'Customer Address', 'Pending', '64e04c3075048', 'BDT', '2023-08-19 10:59:28'),
+(30, 'Customer Name', 'customer@mail.com', '8801XXXXXXXXX', 7259, 'Customer Address', 'Pending', '64e04c307d44d', 'BDT', '2023-08-19 10:59:28'),
+(31, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e04daaa5c14', 'BDT', '2023-08-19 11:05:46'),
+(32, 'Admin Mostak', 'admin@gmail.com', '', 7259, '93 B, New Eskaton Road', 'Pending', '64e04daaac421', 'BDT', '2023-08-19 11:05:46'),
+(33, 'Admin Mostak', 'customer@mail.com', '8801XXXXXXXXX', 7259, 'Customer Address', 'Pending', '64e04f0b66d8c', 'BDT', '2023-08-19 11:11:39'),
+(34, 'Admin Mostak', 'customer@mail.com', '8801XXXXXXXXX', 7259, 'Customer Address', 'Pending', '64e04f0b7574e', 'BDT', '2023-08-19 11:11:39'),
+(35, 'Admin Mostak', 'admin@gmail.com', '', 7259, 'Dhaka,Mirpur', 'Pending', '64e05005f3012', 'BDT', '2023-08-19 11:15:50'),
+(36, 'Admin Mostak', 'admin@gmail.com', '', 7259, 'Dhaka,Mirpur', 'Pending', '64e050060b211', 'BDT', '2023-08-19 11:15:50'),
+(37, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e050ec28f22', 'BDT', '2023-08-19 11:19:40'),
+(38, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e050ec2c4a1', 'BDT', '2023-08-19 11:19:40'),
+(39, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e05595884d0', 'BDT', '2023-08-19 11:39:33'),
+(40, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e0559589129', 'BDT', '2023-08-19 11:39:33'),
+(41, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e07868938c5', 'BDT', '2023-08-19 14:08:08'),
+(42, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 7259, 'Dhaka,Mirpur', 'Pending', '64e07868938c5', 'BDT', '2023-08-19 14:08:08'),
+(43, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e0792c93f3a', 'BDT', '2023-08-19 14:11:24'),
+(44, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e0792c940f9', 'BDT', '2023-08-19 14:11:24'),
+(45, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e07e8d07cd2', 'BDT', '2023-08-19 14:34:21'),
+(46, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e07e8d1a92f', 'BDT', '2023-08-19 14:34:21'),
+(47, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e07fc6a92f7', 'BDT', '2023-08-19 14:39:34'),
+(48, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e07fc6ac97c', 'BDT', '2023-08-19 14:39:34'),
+(49, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e08145a444f', 'BDT', '2023-08-19 14:45:57'),
+(50, 'Admin Mostak', 'admin@gmail.com', '8801XXXXXXXXX', 297.5, 'Dhaka,Mirpur', 'Pending', '64e08145a444f', 'BDT', '2023-08-19 14:45:57');
 
 -- --------------------------------------------------------
 
@@ -1389,7 +1511,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Admin Mostak', 'admin@gmail.com', '2', NULL, '$2y$10$AUcfqQ2L6599AMuUpb/7H.vwsg2MN63h9iowAvTP06/mhbvsJlS6C', 't10wHNiJgYDZsZxodfMY0eg2K5EtAHBW9bIiZ3JKykcdR6cD6nVd5X0iTfxs', '2023-07-12 04:39:16', '2023-07-30 11:35:11', NULL),
+(1, 'Admin Mostak', 'admin@gmail.com', '2', NULL, '$2y$10$AUcfqQ2L6599AMuUpb/7H.vwsg2MN63h9iowAvTP06/mhbvsJlS6C', 'UdJlLy3tAh3m18PNl0A7L2a2QRoJaeH4j77N8nH65RQds2ewhnj8jxr766LO', '2023-07-12 04:39:16', '2023-07-30 11:35:11', NULL),
 (2, 'jannat', 'jannat@gmail.com', '2', NULL, '$2y$10$AUcfqQ2L6599AMuUpb/7H.vwsg2MN63h9iowAvTP06/mhbvsJlS6C', NULL, NULL, NULL, NULL),
 (3, 'admin2', 'admin2@gmail.com', '2', NULL, '$2y$10$PCYOjJEqcPCLleerUXnBIuvw/e5sg2Tq0OS01tSqm8ChGngU6VM9W', NULL, '2023-07-23 03:56:24', '2023-07-23 03:56:24', NULL),
 (4, 'jalal', 'jalal@gmail.com', NULL, NULL, '$2y$10$0NxO7c.kcrg6XaPJzKDdP.9oQmiAtJYKOL5uiKUEDMYlOSw/tV.e6', NULL, '2023-07-30 06:25:55', '2023-07-30 06:25:55', NULL),
@@ -1399,7 +1521,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `passwo
 (8, 'Msotak', 'mostak@gmail.com', NULL, NULL, '$2y$10$2u8/gLHpm7bDLg/D4Acev.xU/1f72JPk3npF6psYpKBSh5w.Mp7e6', NULL, '2023-07-30 06:28:55', '2023-07-30 06:28:55', NULL),
 (9, 'Shohan', 'shohan@gmail.com', NULL, NULL, '$2y$10$EiShtWgHSxRwS102eAQhSezOVqzAnahNpXrUS6ZoCzUrzpGF3ywpG', NULL, '2023-07-30 06:33:36', '2023-07-30 06:33:36', NULL),
 (10, 'Mamun', 'mamun@gmail.com', NULL, NULL, '$2y$10$hDOyZuK0kOZK/HtMPG33K.FJQpkJw1WOVoaPcYnvdjvd8dNTWvZEq', NULL, '2023-07-30 06:35:18', '2023-07-30 06:35:18', NULL),
-(11, 'Simon', 'simon@gmail.com', NULL, NULL, '$2y$10$r5xLHVob4k.VNRXFjzEasO78ZBa1BmJLH8O1Li/aJ6E2afG7lmBTi', NULL, '2023-07-30 06:36:43', '2023-07-30 06:36:43', NULL);
+(11, 'Simon', 'simon@gmail.com', NULL, NULL, '$2y$10$r5xLHVob4k.VNRXFjzEasO78ZBa1BmJLH8O1Li/aJ6E2afG7lmBTi', NULL, '2023-07-30 06:36:43', '2023-07-30 06:36:43', NULL),
+(12, 'Tanvir', 'tanvir@gmail.com', '1', NULL, '$2y$10$WEHR2GA9gsss3pp0G.WxsutKLhPDTK5y9pPPGDkbQA.buFWYfrVH.', NULL, '2023-08-20 10:33:06', '2023-08-20 10:33:06', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1441,6 +1564,14 @@ ALTER TABLE `districts`
   ADD KEY `districts_board_id_foreign` (`board_id`);
 
 --
+-- Indexes for table `enrolls`
+--
+ALTER TABLE `enrolls`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enrolls_category_id_foreign` (`category_id`),
+  ADD KEY `enrolls_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -1460,6 +1591,12 @@ ALTER TABLE `leaderboards`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1551,13 +1688,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `enrolls`
+--
+ALTER TABLE `enrolls`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1575,7 +1718,13 @@ ALTER TABLE `leaderboards`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1617,7 +1766,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -1642,6 +1791,13 @@ ALTER TABLE `details`
 --
 ALTER TABLE `districts`
   ADD CONSTRAINT `districts_board_id_foreign` FOREIGN KEY (`board_id`) REFERENCES `boards` (`id`);
+
+--
+-- Constraints for table `enrolls`
+--
+ALTER TABLE `enrolls`
+  ADD CONSTRAINT `enrolls_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `enrolls_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `leaderboards`
