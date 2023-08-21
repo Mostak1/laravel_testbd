@@ -89,11 +89,11 @@
         <div class="card card-hover shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h6 class="fs-2 font-weight-bold text-center text-info">
-                   @if ($topic)
-                       Quiz Of {{$topic->name}}
-                   @endif
+                    @if ($topic)
+                        Quiz Of {{ $topic->name }}
+                    @endif
                 </h6>
-               
+
             </div>
 
             <div class="card-body">
@@ -119,43 +119,42 @@
                         <form action="{{ url('resultview') }}" method="post">
                             @csrf
                             <div class="col-12" id="quizcontainer">
-<input type="number" name="topic" id="topic" value="{{$topic->id}}">
+                                <input type="number" hidden name="topic" id="topic" value="{{ $topic->id }}">
                                 <ol>
-                                @foreach ($quizzes as $quiz)
+                                    @foreach ($quizzes as $quiz)
+                                        <li class='fw-bold border rounded py-2 ps-2'>{{ $quiz->question }}</li>
 
-                                    <li class='fw-bold border rounded py-2 ps-2'>{{ $quiz->question }}</li>
-                                
-                                    <div>
-                                        <div class='quizcontainer'>
-                                            <div class='col-12 mb-2'>
-                                                <input type='radio' name="box{{ $quiz->id }}" value="op1"
-                                                    id="one{{ $quiz->id }}" class='one'>
-                                                <label for='one{{ $quiz->id }}' class='box first'>
-                                                    <div class='course op1'><span class='circle'></span><span
-                                                            class='subject'> {{ $quiz->op1 }}</span></div>
-                                                </label>
-                                                <input type='radio' name="box{{ $quiz->id }}" value="op2"
-                                                    id="two{{ $quiz->id }}" class='two'>
-                                                <label for='two{{ $quiz->id }}' class='box second'>
-                                                    <div class='course op2'><span class='circle'></span><span
-                                                            class='subject'> {{ $quiz->op2 }}</span></div>
-                                                </label>
-                                                <input type='radio' name="box{{ $quiz->id }}" value="op3"
-                                                    id="three{{ $quiz->id }}" class='three'>
-                                                <label for='three{{ $quiz->id }}' class='box third'>
-                                                    <div class='course op3'><span class='circle'></span><span
-                                                            class='subject'>{{ $quiz->op3 }}</span></div>
-                                                </label>
-                                                <input type='radio' name="box{{ $quiz->id }}" value="op4"
-                                                    id="four{{ $quiz->id }}" class='four'>
-                                                <label for='four{{ $quiz->id }}' class='box forth'>
-                                                    <div class='course op4'><span class='circle'></span><span
-                                                            class='subject'> {{ $quiz->op4 }}</span></div>
-                                                </label>
+                                        <div>
+                                            <div class='quizcontainer'>
+                                                <div class='col-12 mb-2'>
+                                                    <input type='radio' name="box{{ $quiz->id }}" value="op1"
+                                                        id="one{{ $quiz->id }}" class='one'>
+                                                    <label for='one{{ $quiz->id }}' class='box first'>
+                                                        <div class='course op1'><span class='circle'></span><span
+                                                                class='subject'> {{ $quiz->op1 }}</span></div>
+                                                    </label>
+                                                    <input type='radio' name="box{{ $quiz->id }}" value="op2"
+                                                        id="two{{ $quiz->id }}" class='two'>
+                                                    <label for='two{{ $quiz->id }}' class='box second'>
+                                                        <div class='course op2'><span class='circle'></span><span
+                                                                class='subject'> {{ $quiz->op2 }}</span></div>
+                                                    </label>
+                                                    <input type='radio' name="box{{ $quiz->id }}" value="op3"
+                                                        id="three{{ $quiz->id }}" class='three'>
+                                                    <label for='three{{ $quiz->id }}' class='box third'>
+                                                        <div class='course op3'><span class='circle'></span><span
+                                                                class='subject'>{{ $quiz->op3 }}</span></div>
+                                                    </label>
+                                                    <input type='radio' name="box{{ $quiz->id }}" value="op4"
+                                                        id="four{{ $quiz->id }}" class='four'>
+                                                    <label for='four{{ $quiz->id }}' class='box forth'>
+                                                        <div class='course op4'><span class='circle'></span><span
+                                                                class='subject'> {{ $quiz->op4 }}</span></div>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                @endforeach
-                            </ol>
+                                    @endforeach
+                                </ol>
                             </div>
 
                             <hr>
