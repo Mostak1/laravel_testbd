@@ -27,7 +27,7 @@
                                     <div class="card-body">
                                     
                                         <div class="table-responsive" >
-                                         <div class="text-center text-danger fs-2">Top 10 Participants' Positions</div>
+                                         <div class="text-center nbc fs-2">Top 10 Participants' Positions</div>
                                             <table class="table dataTable" id="">
                                                 <thead>
                                                     <tr>
@@ -70,7 +70,7 @@
                                            
                                         </div>
                                         <div class="table-responsive" >
-                                         <div class="text-center text-danger fs-2">{{Auth::user()->name ?? 'User' }} Marks</div>
+                                         <div class="text-center nbc fs-2">{{Auth::user()->name ?? 'User' }} Marks</div>
                                             <table class="table dataTable" id="dataTable">
                                                 <thead>
                                                     <tr>

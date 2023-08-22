@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     @vite(['resources/scss/home.scss'])
+    {{-- <link rel="stylesheet" href="{{asset('build/assets/home-ca47b86c.css')}}"> --}}
     <!-- DataTable CSS -->
     <link
         href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
