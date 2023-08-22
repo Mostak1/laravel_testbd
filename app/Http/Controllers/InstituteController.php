@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Board;
+use App\Models\District;
 use App\Models\Institute;
+use App\Models\Thana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InstituteController extends Controller
 {
@@ -12,7 +16,10 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+        $institute= Institute::with(['board','district','thana'])->get();
+
+        return view('institute.index')
+        ->with('institute',$institute);
     }
 
     /**
@@ -20,7 +27,14 @@ class InstituteController extends Controller
      */
     public function create()
     {
-        //
+        $board = Board::pluck('name','id');
+        $district=District::pluck('name','id');
+        $thana=Thana::pluck('name','id');
+        return view('institute.create')
+        ->with('board',$board)
+        ->with('district',$district)
+        ->with('thana',$thana)
+        ->with('user',Auth::user());
     }
 
     /**
@@ -28,7 +42,13 @@ class InstituteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $institute=Institute::create($request->all());
+        if ($institute) {
+            return back()->with('success', $institute . 'Institute created successfully');
+        } else {
+            return back()->with('info','Data not inserted !!!');
+        }
+        
     }
 
     /**
@@ -36,7 +56,14 @@ class InstituteController extends Controller
      */
     public function show(Institute $institute)
     {
-        //
+        $board = Board::pluck('name','id');
+        $district=District::pluck('name','id');
+        $thana=Thana::pluck('name','id');
+        return view('institute.show')
+        ->with('board',$board)
+        ->with('district',$district)
+        ->with('thana',$thana)
+        ->with('user',Auth::user());
     }
 
     /**

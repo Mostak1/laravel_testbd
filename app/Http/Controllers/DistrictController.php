@@ -24,7 +24,11 @@ class DistrictController extends Controller
             ->with('b', $board)
             ->with('dis', $dis);
     }
-
+    public function distJson($id)
+    {
+        $dist = District::where('board_id', $id)->pluck('name', 'id');
+        return response()->json($dist);
+    }
     /**
      * Show the form for creating a new resource.
      */

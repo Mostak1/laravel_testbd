@@ -23,7 +23,10 @@ class ThanaController extends Controller
         // ->with('districts', $districts);
     }
 
-
+public function thanaJson($id){
+    $thana = Thana::where('district_id', $id)->pluck('name', 'id');
+    return response()->json($thana);
+}
     /**
      * Show the form for creating a new resource.
      */

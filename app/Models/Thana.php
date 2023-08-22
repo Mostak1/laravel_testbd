@@ -18,4 +18,8 @@ class Thana extends Model
     {
         return $this->belongsTo(District::class);
     }
+    public function institutes()
+    {
+        return $this->hasMany(Institute::class);
+    }
 }

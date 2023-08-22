@@ -19,4 +19,8 @@ class Board extends Model
     {
         return $this->hasMany(District::class);
     }
+    public function institutes()
+    {
+        return $this->hasMany(Institute::class);
+    }
 }

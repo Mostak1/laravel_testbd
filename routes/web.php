@@ -8,6 +8,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
@@ -58,13 +59,16 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'quizset' => QuizsetController::class,
         'detail' => DetailController::class,
         'enroll' => EnrollController::class,
+        'institute' => InstituteController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');
     Route::post('thana/restore/{id}', [ThanaController::class, 'restore'])->name('thana.restore');
     
 });
-
+// district in json according to board id
+Route::post('dist/{id}',[DistrictController::class,'distJson']);
+Route::post('thana/{id}',[ThanaController::class,'thanaJson']);
 // enrollments
 // Route::get('uenroll/{id}', [EnrollController::class, "uenroll"]);
 
