@@ -48,6 +48,7 @@
 
                     <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Random Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="{{ url('leaderboard/user') }}">Exam Score</a>
+                    <a class="customNav  me-4 fs-5 " href="{{ url('question/user/create') }}">Question Upload</a>
                     <div class="dropdown">
                         <a class=" dropdown-toggle wc fs-5" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">

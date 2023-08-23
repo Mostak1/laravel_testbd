@@ -108,7 +108,7 @@ class QuestionController extends Controller
 
                     $image = ImageI::make(Storage::path($loc))->save(Storage::path($loc));
                 }
-                return redirect()->route("question.create")->with("success", "Question saved successfully. ID is " . $question->id);
+                return redirect()->back()->with("success", "Question saved successfully. ID is " . $question->id);
             } else {
                 echo "image not available";
             }
