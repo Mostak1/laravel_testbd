@@ -196,7 +196,6 @@ class SslCommerzPaymentController extends Controller
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
         $currency = $request->input('currency');
-
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
@@ -217,13 +216,17 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
-                echo "<br >Transaction is successfully Completed";
+                echo '<br >Transaction is successfully Completed';
             }
+            return view('ssl.message', compact('tran_id','amount','currency'))
+            ->with('success',"Transaction is successfully Completed");
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             /*
-             That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
-             */
+            That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
+            */
             echo "Transaction is successfully Completed";
+            return view('ssl.message', compact('tran_id','amount','currency'))
+            ->with('success',"Transaction is successfully Completed");
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";

@@ -12,6 +12,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    {{-- lightbox --}}
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/lightbox.min.css') }}">
+
     @vite(['resources/scss/home.scss'])
     {{-- <link rel="stylesheet" href="{{asset('build/assets/home-ca47b86c.css')}}"> --}}
     <!-- DataTable CSS -->
@@ -29,7 +32,7 @@
     <nav id="navCustom" class="customBac navbar fixed-top navbar-expand-lg navbar shadow px-0 py-3">
         <div class="container-xl">
             <!-- Logo -->
-            <a class="navbar-brand customNav fs-2" href="#">
+            <a class="navbar-brand customNav fs-2" href="{{ url('') }}">
                 <span class="bc">Test</span>BD
             </a>
             <!-- Navbar toggle -->
@@ -42,7 +45,7 @@
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto wc">
                     <a class="customNav  me-4 fs-5  " href="{{ url('') }}">Home</a>
-                   
+
                     <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Random Quiz</a>
                     <a class="customNav  me-4 fs-5 " href="{{ url('leaderboard/user') }}">Exam Score</a>
                     <div class="dropdown">
@@ -124,7 +127,8 @@
         src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.js">
     </script>
     <!-- DataTable JS -->
-
+    {{-- lightbox --}}
+    <script src="{{ asset('assets/dist/js/lightbox-plus-jquery.min.js') }}"></script>
 
     <script>
         $.ajaxSetup({
@@ -209,6 +213,106 @@
             });
 
         });
+        // district,thana,institute autocomplete common scripts
+        $(document).ready(function() {
+
+            // show the alert
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 2000);
+            // =========
+            // for district 
+            function districtSellect(ob) {
+                $("#district_id").empty().append('<option value = "0">All');
+
+                let html = "<option value='0'>All</option>";
+                for (const key in ob) {
+                    if (Object.hasOwnProperty.call(ob, key)) {
+                        html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                    }
+                }
+                $("#district_id").html(html);
+            }
+            $("#board_id").change(function() {
+                // console.log( $(this).val() )
+                let URL = "{{ url('dist') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        districtSellect(response);
+                    }
+                });
+            });
+
+            // for thana
+            function selectThana(ot) {
+
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
+
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
+                }
+                $("#thana_id").html(html);
+            }
+            $("#district_id").on('change', function() {
+
+                // })
+                // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#thana_id").empty().append('<option value = "0">All');
+                    return;
+                }
+                // console.log( $(this).val() )
+                let URL = "{{ url('thana') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectThana(response);
+                    }
+                });
+            });
+            // for institute
+            function selectIns(ot) {
+
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
+
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
+                }
+                $("#institute_id").html(html);
+            }
+            $("#thana_id").on('change', function() {
+
+                // })
+                // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#institute_id").empty().append('<option value = "0">All');
+                    return;
+                }
+                // console.log( $(this).val() )
+                let URL = "{{ url('ins') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectIns(response);
+                    }
+                });
+            });
+
+        });
         $(document).ready(function() {
 
             var table = $('#dataTable').DataTable();
@@ -239,14 +343,17 @@
         });
     </script>
     <script>
-        (function (window, document) {
-            var loader = function () {
-                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
-                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(
+                    7);
                 tag.parentNode.insertBefore(script, tag);
             };
-    
-            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
+                loader);
         })(window, document);
     </script>
     @yield('script')

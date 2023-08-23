@@ -18,25 +18,27 @@ class Subcategory extends Model
         'active',
     ];
 
-    public function blogs()
+    public function questions()
     {
-    return $this->hasMany('App\Models\Blog');
+        return $this->hasMany(Question::class);
     }
+   
+   
     public function category()
     {
-    return $this->belongsTo('App\Models\Category');
-    // return $this->belongsTo(Category::class);
+        return $this->belongsTo('App\Models\Category');
+        // return $this->belongsTo(Category::class);
     }
     public function topics()
     {
-    return $this->hasMany('App\Models\Topic');
+        return $this->hasMany('App\Models\Topic');
     }
     public function quizsets()
     {
-    return $this->hasMany('App\Models\Quizset');
+        return $this->hasMany('App\Models\Quizset');
     }
     public function quizzes()
     {
-    return $this->hasMany('App\Models\Quiz');
+        return $this->hasMany('App\Models\Quiz');
     }
 }

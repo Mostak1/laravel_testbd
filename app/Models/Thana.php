@@ -14,6 +14,9 @@ class Thana extends Model
     protected $fillable = [
         'district_id', 'name', 'bn_name', 'url'
     ];
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
     public function district()
     {
         return $this->belongsTo(District::class);

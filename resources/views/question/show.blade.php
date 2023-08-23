@@ -3,8 +3,8 @@
 @section('content')
     <div class="card card-hover shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-info">Institute Details</h6>
-            <a href="{{ url('institute') }}" class="btn btn-info btn-circle btn-sm" title="Back to Institute">
+            <h6 class="m-0 font-weight-bold text-info">Topic Details</h6>
+            <a href="{{ url('topic') }}" class="btn btn-info btn-circle btn-sm" title="Back to Chapter">
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
@@ -16,21 +16,20 @@
             </tr> --}}
                 <tr class="table-bordered">
                     <th>Name:</th>
-                    <td>{{ $ins->name }}</td>
+                    <td>{{ $topic->name }}</td>
                 </tr>
                 <tr class="table-bordered">
-                    <th>Board:</th>
-                    <td>{{ $ins->board->name }}</td>
+                    <th>Class:</th>
+                    <td>{{ $topic->subcategory->name }}</td>
                 </tr>
                 <tr class="table-bordered">
-                    <th>District:</th>
-                    <td>{{ $ins->district->name }}</td>
+                    <th>Active:</th>
+                    <td>{{ $topic->active }}</td>
                 </tr>
                 <tr class="table-bordered">
-                    <th>Thana:</th>
-                    <td>{{ $ins->thana->name }}</td>
+                    <th>Description:</th>
+                    <td>{{ $topic->description }}</td>
                 </tr>
-                
             </table>
         </div>
     </div>

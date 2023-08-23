@@ -14,7 +14,9 @@ class Board extends Model
     protected $fillable = [
         'name', 'url'
     ];
-
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
     public function districts()
     {
         return $this->hasMany(District::class);

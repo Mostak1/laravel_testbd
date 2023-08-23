@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuizsetController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -60,15 +61,20 @@ Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
         'detail' => DetailController::class,
         'enroll' => EnrollController::class,
         'institute' => InstituteController::class,
+        'question' => QuestionController::class,
     ]);
     Route::post('board/restore/{id}', [BoardController::class, 'restore'])->name('board.restore');
     Route::post('district/restore/{id}', [DistrictController::class, 'restore'])->name('district.restore');
     Route::post('thana/restore/{id}', [ThanaController::class, 'restore'])->name('thana.restore');
+    Route::post('question/restore/{id}', [QuestionController::class, 'restore'])->name('question.restore');
     
 });
+// question related
+Route::get('question/user/create',[QuestionController::class, 'ucreate']);
 // district in json according to board id
 Route::post('dist/{id}',[DistrictController::class,'distJson']);
 Route::post('thana/{id}',[ThanaController::class,'thanaJson']);
+Route::post('ins/{id}',[InstituteController::class,'insJson']);
 // enrollments
 // Route::get('uenroll/{id}', [EnrollController::class, "uenroll"]);
 

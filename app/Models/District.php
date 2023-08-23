@@ -14,6 +14,9 @@ class District extends Model
     protected $fillable = [
         'board_id', 'name', 'bn_name', 'lat', 'lon', 'url'
     ];
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
     public function board()
     {
         return $this->belongsTo(Board::class);

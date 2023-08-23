@@ -38,9 +38,7 @@
                         <a href="{{ url('question') }}" class="nav-link" rel="noopener noreferrer">
                             <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Question
                         </a>
-                        <a href="{{ url('question') }}" class="nav-link" rel="noopener noreferrer">
-                            <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Question
-                        </a>
+                       
                         <a href="{{ url('order') }}" class="nav-link" rel="noopener noreferrer">
                             <div class="sb-nav-link-icon"><i class="fa-brands fa-mendeley fa-beat-fade"></i></div>Order Management
                         </a>

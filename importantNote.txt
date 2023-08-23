@@ -29,7 +29,12 @@ details table
 id,topic_id,question,answer,
 
 in arry dea kaj krtehbe 
+Using Third-Party Libraries (Optional):
+There are various third-party libraries that simplify lazy loading, provide additional features, and offer better browser compatibility. Some popular libraries include:
 
+LazyLoad: A lightweight library for lazy loading images and other elements.
+Lozad.js: Another library for lazy loading images with a focus on performance.
+AOS (Animate On Scroll): While primarily used for animations, AOS can also help trigger lazy loading when elements enter the viewport.
 
 
 

@@ -27,4 +27,7 @@ class Institute extends Model
     {
         return $this->belongsTo(Thana::class);
     }
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
 }

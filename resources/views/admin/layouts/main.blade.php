@@ -17,6 +17,10 @@
         href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
         rel="stylesheet" />
     <!-- DataTable CSS -->
+    {{-- lightBox  --}}
+    <link rel="stylesheet" href="{{ asset('node_modules/lightbox2/dist/css/lightbox.min.css') }}">
+    <script src="{{ asset('node_modules/lightbox2/dist/js/lightbox.min.js') }}"></script>
+    {{-- lightBox  --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -76,6 +80,7 @@
     </script>
 
     <script>
+        // category , subcategory, topic auto complete code 
         $(document).ready(function() {
 
             // show the alert
@@ -143,6 +148,8 @@
             });
 
         });
+
+        // datatable for all tables common coad
         $(document).ready(function() {
 
             var table = $('#dataTable').DataTable();
@@ -156,6 +163,112 @@
             $('.tablebtn .dt-buttons').removeClass('flex-wrap');
             $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-primary');
 
+        });
+        // district,thana,institute autocomplete common scripts
+        $(document).ready(function() {
+
+            // show the alert
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 2000);
+            // =========
+            // for district 
+            function districtSellect(ob) {
+                $("#district_id").empty().append('<option value = "0">All');
+
+                let html = "<option value='0'>All</option>";
+                for (const key in ob) {
+                    if (Object.hasOwnProperty.call(ob, key)) {
+                        html += "<option value='" + key + "'>" + ob[key] + "</option>";
+                    }
+                }
+                $("#district_id").html(html);
+            }
+            $("#board_id").change(function() {
+                // console.log( $(this).val() )
+                let URL = "{{ url('dist') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        districtSellect(response);
+                    }
+                });
+            });
+
+            // for thana
+            function selectThana(ot) {
+
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
+
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
+                }
+                $("#thana_id").html(html);
+            }
+            $("#district_id").on('change', function() {
+
+                // })
+                // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#thana_id").empty().append('<option value = "0">All');
+                    return;
+                }
+                // console.log( $(this).val() )
+                let URL = "{{ url('thana') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectThana(response);
+                    }
+                });
+            });
+            // for institute
+            function selectIns(ot) {
+
+                let html = "<option value='0'>All</option>";
+                for (const k in ot) {
+                    if (Object.hasOwnProperty.call(ot, k)) {
+
+                        html += "<option value='" + k + "'>" + ot[k] + "</option>";
+                    }
+                }
+                $("#institute_id").html(html);
+            }
+            $("#thana_id").on('change', function() {
+
+                // })
+                // $("#subcategory_id").change(function() {
+                if ($(this).val() == "null") {
+                    $("#institute_id").empty().append('<option value = "0">All');
+                    return;
+                }
+                // console.log( $(this).val() )
+                let URL = "{{ url('ins') }}";
+                $.ajax({
+                    type: "post",
+                    url: URL + '/' + $(this).val(),
+                    data: "data",
+                    dataType: "json",
+                    success: function(response) {
+                        selectIns(response);
+                    }
+                });
+            });
+
+        });
+        // lightbox common script
+
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
         });
     </script>
     <!-- dynamic content start-->

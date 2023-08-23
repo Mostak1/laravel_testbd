@@ -43,7 +43,8 @@ class QuizController extends Controller
         $categories = Category::pluck('name', 'id');
         $subcategories = Subcategory::pluck('name', 'id');
         $topics = Topic::pluck('name', 'id');
-        return view('quiz.create',)->with('categories', $categories)
+        return view('quiz.create')
+        ->with('categories', $categories)
             ->with('subcategories', $subcategories)
             ->with('topics', $topics)
             ->with('user', Auth::user());

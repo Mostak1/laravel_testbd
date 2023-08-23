@@ -44,7 +44,7 @@ class InstituteController extends Controller
     {
         $institute=Institute::create($request->all());
         if ($institute) {
-            return back()->with('success', $institute . 'Institute created successfully');
+            return back()->with('success','Institute created successfully');
         } else {
             return back()->with('info','Data not inserted !!!');
         }
@@ -56,14 +56,18 @@ class InstituteController extends Controller
      */
     public function show(Institute $institute)
     {
-        $board = Board::pluck('name','id');
-        $district=District::pluck('name','id');
-        $thana=Thana::pluck('name','id');
-        return view('institute.show')
-        ->with('board',$board)
-        ->with('district',$district)
-        ->with('thana',$thana)
-        ->with('user',Auth::user());
+       $id=$institute->id;
+
+       $ins =Institute::with(['board','district','thana'])->find($id);
+
+        // $board = Board::pluck('name','id');
+        // $district=District::pluck('name','id');
+        // $thana=Thana::pluck('name','id');
+        return view('institute.show',compact('ins'));
+        // ->with('board',$board)
+        // ->with('district',$district)
+        // ->with('thana',$thana)
+        // ->with('user',Auth::user());
     }
 
     /**
@@ -71,7 +75,14 @@ class InstituteController extends Controller
      */
     public function edit(Institute $institute)
     {
-        //
+        $board = Board::pluck('name','id');
+        $district=District::pluck('name','id');
+        $thana=Thana::pluck('name','id');
+        return view('institute.edit',compact('institute'))
+        ->with('board',$board)
+        ->with('district',$district)
+        ->with('thana',$thana)
+        ->with('user',Auth::user());
     }
 
     /**
@@ -79,7 +90,12 @@ class InstituteController extends Controller
      */
     public function update(Request $request, Institute $institute)
     {
-        //
+        $institute->update($request->all());
+        if ($institute->save()) {
+            return back()->with('success', "Update Successfully!");
+        } else {
+            return back()->with('error', "Update Failed!");
+        }
     }
 
     /**
@@ -87,6 +103,12 @@ class InstituteController extends Controller
      */
     public function destroy(Institute $institute)
     {
-        //
+        if (Institute::destroy($institute->id)) {
+            return back()->with('success', $institute->id . ' Deleted!!!!');
+        }
+    }
+    public function insJson($id){
+        $ins = Institute::where('thana_id', $id)->pluck('name', 'id');
+        return response()->json($ins);
     }
 }

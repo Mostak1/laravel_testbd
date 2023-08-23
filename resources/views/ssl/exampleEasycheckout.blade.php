@@ -24,11 +24,9 @@
 
 <div class="container afterNav">
     <div class="py-5 text-center">
-        <h2>EasyCheckout (Popup) - SSLCommerz</h2>
+        <h2>Make Your Payment</h2>
 
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. We have provided this
-            sample form for understanding EasyCheckout (Popup) Payment integration with SSLCommerz.</p>
-    </div>
+        <p class="lead">  </div>
 
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
@@ -65,9 +63,9 @@
                     
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
-                        <input type="number" id="cus_id" name="cus_id" value="{{$users->id}}">
-                        <input type="number" id="cat_id" name="cat_id" value="{{$cat->id}}">
-                        <input type="text" id="etime" name="etime" value="{{now()->addMonths(6)->format('Y-m-d')}}">
+                        <input hidden type="number" id="cus_id" name="cus_id" value="{{$users->id}}">
+                        <input hidden type="number" id="cat_id" name="cat_id" value="{{$cat->id}}">
+                        <input hidden type="text" id="etime" name="etime" value="{{now()->addMonths(6)->format('Y-m-d')}}">
                         <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
                                value="{{$users->name}}" required>
                         <div class="invalid-feedback">
@@ -110,7 +108,7 @@
 
                 <div class="mb-3">
                     <label for="methode">Payment Methode <span class="text-muted">(Please enter your Methode)</span></label>
-                   <select class="form-control" name="methode" id="methode">
+                   <select class="form-control" name="methode" id="methode" required>
                     <option value="Bkash">Bkash</option>
                     <option value="Nagod">Nagod</option>
                     <option value="Roket">Roket</option>
@@ -118,7 +116,7 @@
                    </select>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
                         <select class="custom-select d-block w-100" id="country" required>
@@ -146,7 +144,7 @@
                             Zip code required.
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="same-address">
