@@ -27,6 +27,9 @@ class User extends Authenticatable
         'password',
         'role',
     ];
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
     public function enrolls()
     {
     return $this->hasMany(Enroll::class);

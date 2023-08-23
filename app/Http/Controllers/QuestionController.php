@@ -11,6 +11,7 @@ use App\Models\Question_image;
 use App\Models\Subcategory;
 use App\Models\Thana;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -40,7 +41,7 @@ class QuestionController extends Controller
         $subcategories = Subcategory::pluck('name', 'id');
         $topics = Topic::pluck('name', 'id');
         $institute = Institute::pluck('name', 'id');
-       
+
         return view("question.create")
             ->with('board', $board)
             ->with('district', $district)
@@ -61,7 +62,7 @@ class QuestionController extends Controller
         $topics = Topic::pluck('name', 'id');
         $institute = Institute::pluck('name', 'id');
         $questions = Question::with(['user', 'board', 'district', 'thana', 'institute', 'subcategory', 'question_images'])->paginate(6);
-       
+
         return view("question.ucreate")
             ->with('board', $board)
             ->with('district', $district)
@@ -108,6 +109,17 @@ class QuestionController extends Controller
 
                     $image = ImageI::make(Storage::path($loc))->save(Storage::path($loc));
                 }
+                $uid = Auth::user()->id;
+                $user = User::find($uid);
+                $npoints = 100;
+                
+
+                // Update the points for the user
+                $user->points += $npoints; // Add the new points to the existing points
+
+                // Save the changes
+                $user->save();
+
                 return redirect()->back()->with("success", "Question saved successfully. ID is " . $question->id);
             } else {
                 echo "image not available";

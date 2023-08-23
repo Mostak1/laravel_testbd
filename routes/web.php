@@ -41,8 +41,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Custom Profile
+    Route::get('/uprofile', [ProfileController::class, 'index']);
+    Route::get('/uprofile/create', [ProfileController::class, 'ucreate']);
+    Route::post('/uprofile/store', [ProfileController::class, 'ustore'])->name('uprofile.store');
+    Route::get('/uprofile/edit', [ProfileController::class, 'uedit']);
+    Route::put('/uprofile/update', [ProfileController::class, 'uupdate'])->name('uprofile.update');
+
 });
-Route::middleware(['auth', 'verified', 'checkRole:2'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', [AdminController::class, 'user']);
     Route::get('user/edit/{id}', [AdminController::class, 'user_edit']);
     Route::put('user/update/{user}', [AdminController::class, 'user_update'])->name('user.update');

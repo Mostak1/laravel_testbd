@@ -75,13 +75,13 @@
                         </a>
                         <ul class="dropdown-menu customBac dropdown-menu-end">
                             @if (Auth::check() && $user->role == 2)
-                                <li><a class="dropdown-item customNav" href="{{ url('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-item customNav" href="{{ url('uprofile') }}">Profile</a></li>
                                 <li><a class="dropdown-item customNav" href="{{ url('dashboard') }}"
                                         target="_blank">Dashboard</a>
                                 </li>
                                 @include('components.logout')
                             @elseif (Auth::check())
-                                <li><a class="dropdown-item customNav" href="{{ url('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-item customNav" href="{{ url('uprofile') }}">Profile</a></li>
                                 @include('components.logout')
                             @else
                                 <li><a class="dropdown-item customNav" href="{{ url('login') }}">Login</a></li>
