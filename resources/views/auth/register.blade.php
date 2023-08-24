@@ -1,4 +1,8 @@
-<x-guest-layout>
+@extends('users.layouts.main')
+@section('style')
+@endsection
+@section('content')
+    {{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +53,55 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+    <div class="afterNav"></div>
+    <div class="container  my-5">
+        <div class="row contact">
+            <div class="col-md-6">
+                <!-- <Lottie animationData={contactm} loop={true} /> -->
+
+                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_mjlh3hcy.json" background="transparent"
+                    speed="1" style=" height: 400px;" loop autoplay></lottie-player>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage mx-auto text-center">
+                            <h2>LogIn Here</h2>
+                        </div>
+                    </div>
+                </div>
+                @include('layouts.flash')
+
+                <!-- <form method="post" action="registration/store">/ -->
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <label for="name" class="form-label">Full Name</label>
+                    <input id="name" class="form-control" type="text" name="name" value="" required />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" class="form-control" type="email" name="email" value="" required />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+                    <label for="role" class="form-label" @required(true)>Your Label</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="1">Student</option>
+                        <option value="3">Teacher</option>
+                        <option value="1">Common User</option>
+                    </select>
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" class="form-control" type="password" name="password" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                    <input class="btn btn-outline-primary my-4" type="submit" value="Register" />
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
