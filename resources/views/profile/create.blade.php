@@ -4,12 +4,12 @@
 @section('content')
     <div class="container afterNav">
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                @include('profile.sidebar')
-            </div>
+           
             <div class="col-md-8">
                 <div class="card mb-5">
-                    <div class="card-header">User Profile</div>
+                    <div class="card-header fs-4">
+                        Upload Profile Information <a href="{{ url('uprofile') }}" class="nav-link text-primary">Go to Profile</a>
+                    </div>
 
                     <div class="card-body">
                         <div class="row">

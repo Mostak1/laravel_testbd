@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Enroll;
 use App\Models\Profile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,9 +18,10 @@ class ProfileController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $profile = Profile::where('user_id', $id)->get();
-
+        $profile = Profile::where('user_id', $id)->with('user')->get();
+        $enroll = Enroll::where('user_id', $id)->with('category')->paginate(6);
         return view('profile.index')
+            ->with('enroll', $enroll)
             ->with('profile', $profile);
     }
     public function ucreate()

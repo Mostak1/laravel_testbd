@@ -31,11 +31,11 @@
         <div class="my-3 row">
             <div class="col-md-6">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_yg29hewu.json" background="transparent"
-                    speed="1" style="width: 600px; " loop autoplay></lottie-player>
+                    speed="1" loop autoplay></lottie-player>
             </div>
             <div class="col-md-6">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_1a8dx7zj.json" background="transparent"
-                    speed="1" style="width: 600px;" loop autoplay></lottie-player>
+                    speed="1" loop autoplay></lottie-player>
             </div>
         </div>
     </div>
@@ -63,7 +63,10 @@
                                 <article id="tabs-1">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src="assets/images/choose-us-image-01.png" alt="" />
+                                            <section class="image-section">
+                                                <img class="section-image" src="assets/images/choose-us-image-01.png"
+                                                    alt="" />
+                                            </section>
                                         </div>
                                         <div class="col-md-6">
                                             <h4>Best Education</h4>
@@ -82,7 +85,12 @@
                                 <article id="tabs-2">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src="assets/images/choose-us-image-02.png" alt="" />
+                                            <section class="image-section">
+
+                                                <img class="section-image" src="assets/images/choose-us-image-02.png"
+                                                    alt="" />
+                                            </section>
+
                                         </div>
                                         <div class="col-md-6">
                                             <h4>Top Level</h4>
@@ -102,7 +110,10 @@
                                 <article id="tabs-3">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src="assets/images/choose-us-image-03.png" alt="" />
+                                            <section class="image-section">
+                                                <img class="section-image" src="assets/images/choose-us-image-03.png"
+                                                    alt="" />
+                                            </section>
                                         </div>
                                         <div class="col-md-6">
                                             <h4>Quality Meeting</h4>

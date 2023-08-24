@@ -57,7 +57,7 @@
                 <!-- <Lottie animationData={contactm} loop={true} /> -->
 
                 <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_mjlh3hcy.json" background="transparent"
-                    speed="1" style="width: 600px; height: 400px;" loop autoplay></lottie-player>
+                    speed="1" style=" height: 400px;" loop autoplay></lottie-player>
             </div>
             <div class="col-md-6">
                 <div class="row">

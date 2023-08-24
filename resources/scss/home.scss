@@ -10,6 +10,7 @@ $bumbleBcolor: #f5a425;
 $wColor: #ffffff;
 $gradientColor1: linear-gradient(to bottom, #f5a425, #d66f00);
 $gradientColor2: linear-gradient(to bottom, #162138, #354968);
+
 // admin panel css
 .sidebar {
     background: $gradientColor2;
@@ -20,37 +21,46 @@ $gradientColor2: linear-gradient(to bottom, #162138, #354968);
 
 
 // common class css
-.nbc{
+.nbc {
     color: $navBacColor;
 }
+
 .wc {
     color: $wColor;
 }
+
 .bc {
     color: $bumbleBcolor;
 }
-.bnav{
+
+.bnav {
     background-color: $navBacColor;
 }
+
 .cbtn {
     border: 1px solid $bumbleBcolor;
     border-radius: 6px;
     color: $bumbleBcolor;
     padding: 2px 10px;
 }
+
 .cbtn:hover {
     background-color: $bumbleBcolor;
     color: $wColor;
 }
+
 * {
     font-family: $passageFont;
 }
+
 .customBac {
     background-color: $navBacColor;
 }
+
 .customNav {
     color: $wColor;
 }
+
 .customNav:hover {
     color: $bumbleBcolor;
 }
@@ -59,15 +69,56 @@ $gradientColor2: linear-gradient(to bottom, #162138, #354968);
 .afterNav {
     margin-top: 100px;
 }
+
 // ************************
 //*********home page css**********
 //********************************
+
+// image common css
+/* Basic styling for the section */
+.image-section {
+    position: relative;
+    max-width: 100%;
+    /* Ensure the section doesn't exceed the viewport width */
+    overflow: hidden;
+    /* Hide any overflow from the image */
+}
+
+/* Style the image to be 100% wide and auto height */
+.section-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+
+    /* Adjust the section's height if needed for mobile layout */
+    .image-section {
+        height: auto;
+        /* Allow the section to expand based on content */
+    }
+
+    /* Adjust image size for mobile devices */
+    .section-image {
+        max-width: 100%;
+        /* Ensure the image doesn't exceed the viewport width */
+        height: auto;
+    }
+}
+
+
+
+
+// image common css
 .main-banner {
     position: relative;
     max-height: 100%;
     overflow: hidden;
     margin-bottom: -7px;
 }
+
 #bg-video {
     min-width: 100%;
     min-height: 100vh;
@@ -76,6 +127,7 @@ $gradientColor2: linear-gradient(to bottom, #162138, #354968);
     object-fit: cover;
     z-index: -1;
 }
+
 #bg-video::-webkit-media-controls {
     display: none !important;
 }
@@ -132,6 +184,7 @@ $gradientColor2: linear-gradient(to bottom, #162138, #354968);
         font-size: 58px;
     }
 }
+
 @media screen and (max-width: 767px) {
     .main-banner .caption h6 {
         font-weight: 500;
@@ -149,14 +202,17 @@ $gradientColor2: linear-gradient(to bottom, #162138, #354968);
     margin: 0 auto;
     color: $bumbleBcolor;
 }
+
 a {
     text-decoration: none;
 }
+
 .exam_data {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .exam_topic {
     width: 350px;
     color: rgb(235, 155, 6);
@@ -166,8 +222,10 @@ a {
     font-size: 40px;
     border-radius: 10px;
 }
+
 .exam_topic:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(235, 155, 6);
 }
+
 //****************************** home css end****************************************************************

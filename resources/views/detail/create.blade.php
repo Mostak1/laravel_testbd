@@ -41,32 +41,38 @@
 
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-sm-6">
+            <div class="form-group row my-2">
+                <div class="col-md-6">
                     {!! Form::textarea('question', null, [
                         'required',
                         'class' => 'form-control form-control-profile',
                         'id' => 'question',
-                        'rows' => '2',
+                        'rows' => '15',
                         'placeholder' => 'question',
                     ]) !!}
                 </div>
 
-                <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col-md-6">
                     {!! Form::textarea('answer', null, [
                         'required',
                         'class' => 'form-control form-control-profile',
                         'id' => 'answer',
-                        'rows' => '2',
+                        'rows' => '15',
                         'placeholder' => 'answer',
                     ]) !!}
                 </div>
 
             </div>
+            <div class="form-group row my-2">
+                
+
+                
+
+            </div>
 
 
             <div class="form-group">
-                {!! Form::submit('Add Class', ['class' => 'btn btn-info btn-profile btn-block']) !!}
+                {!! Form::submit('Add Detail', ['class' => 'btn my-2 btn-info btn-profile btn-block']) !!}
             </div>
             {!! Form::close() !!}
         </div>

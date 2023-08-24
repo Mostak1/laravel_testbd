@@ -61,7 +61,7 @@ class QuestionController extends Controller
         $subcategories = Subcategory::pluck('name', 'id');
         $topics = Topic::pluck('name', 'id');
         $institute = Institute::pluck('name', 'id');
-        $questions = Question::with(['user', 'board', 'district', 'thana', 'institute', 'subcategory', 'question_images'])->paginate(6);
+        $questions = Question::with(['user', 'board', 'district', 'thana', 'institute', 'subcategory', 'question_images'])->orderBy('created_at', 'desc')->paginate(6);
 
         return view("question.ucreate")
             ->with('board', $board)
