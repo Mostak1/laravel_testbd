@@ -167,18 +167,24 @@ class SslCommerzPaymentController extends Controller
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
             ]);
+        $uid = Auth::user()->id;
+        $catid = $reData->catid;
+        $endata = Enroll::where('user_id', $uid)->where('category_id', $catid)->get();
+        if ($endata->isEmpty()) {
+            Enroll::create([
+                'category_id' => $reData->catid,
+                'user_id' => $reData->cusid,
+                'tj_methode' => $reData->methode,
+                'price' => $reData->amount,
+                'tj_id' => $post_data['tran_id'],
+                'status' => 'Pending',
+                'expair_time' => $reData->etime,
+                // Set other attributes...
+            ]);
+        } else {
 
-        Enroll::create([
-            'category_id'=>$reData->catid,
-            'user_id'=>$reData->cusid,
-            'tj_methode'=>$reData->methode,
-            'price'=>$reData->amount,
-            'tj_id'=>$post_data['tran_id'],
-            'status'=>'Pending',
-            'expair_time'=>$reData->etime,
-            // Set other attributes...
-        ]);
-
+            return back()->with('info', 'You are already enrolled successfully! You will activate soon. Thanks for your patience')->withInput($request->input());
+        }
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'checkout', 'json');
@@ -218,15 +224,15 @@ class SslCommerzPaymentController extends Controller
 
                 echo '<br >Transaction is successfully Completed';
             }
-            return view('ssl.message', compact('tran_id','amount','currency'))
-            ->with('success',"Transaction is successfully Completed");
+            return view('ssl.message', compact('tran_id', 'amount', 'currency'))
+                ->with('success', "Transaction is successfully Completed");
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             /*
             That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
             */
             echo "Transaction is successfully Completed";
-            return view('ssl.message', compact('tran_id','amount','currency'))
-            ->with('success',"Transaction is successfully Completed");
+            return view('ssl.message', compact('tran_id', 'amount', 'currency'))
+                ->with('success', "Transaction is successfully Completed");
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";

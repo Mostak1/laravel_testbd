@@ -207,7 +207,7 @@ class QuizController extends Controller
     public function catquiz($id)
     {
         $uid = Auth::user()->id ?? null;
-        $uenroll = Enroll::where('user_id', $uid)->where('status', 'Active')->where('category_id',$id)->get();
+        $uenroll = Enroll::where('user_id', $uid)->where('category_id',$id)->get();
 // dd($uenroll);
         $cats  = Category::with("subcategories.topics")->find($id);
         //    dd($cats);

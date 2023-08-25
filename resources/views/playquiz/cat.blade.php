@@ -12,15 +12,15 @@
 
                 {{-- @dd($uenroll) --}}
                 @forelse ($uenroll as $item)
-@php
-    $expairTime = new DateTime($item->expair_time);
-    $currentDate = new DateTime();
-    $dateDiff = $currentDate->diff($expairTime);
-@endphp
+                    @php
+                        $expairTime = new DateTime($item->expair_time);
+                        $currentDate = new DateTime();
+                        $dateDiff = $currentDate->diff($expairTime);
+                    @endphp
 
-<p>Remaining Time: {{ $dateDiff->format('%m Months and %d Days') }} </p>
+                    <p>Remaining Time: {{ $dateDiff->format('%m Months and %d Days') }} </p>
 
-                    @if ($item->category_id === $cats->id)
+                    @if ($item->status === "Active")
                         <!-- Card for Sub-Category -->
                         <div class="row">
                             @foreach ($cats->subcategories as $scs)
@@ -37,29 +37,25 @@
                                 </div>
                             @endforeach
                         </div>
-                   
-                        
                     @else
-                        
-                    
-                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{$cats->price}}Tk Only</a>
+                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{ $cats->price }}Tk Only</a>
                     @endif
                 @empty
-                        <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{$cats->price}}Tk Only</a>
+                    <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{ $cats->price }}Tk Only</a>
                 @endforelse
-            @auth
+                @auth
 
-            @endauth
+                @endauth
+            </div>
         </div>
     </div>
-</div>
-<!-- Facilities End -->
+    <!-- Facilities End -->
 @endsection
 
 @section('script')
-<script type="text/javascript">
-    $(document).ready(function() {
-        // Code here if needed
-    });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Code here if needed
+        });
+    </script>
 @endsection
