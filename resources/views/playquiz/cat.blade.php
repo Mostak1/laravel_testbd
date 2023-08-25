@@ -20,7 +20,7 @@
 
                     <p>Remaining Time: {{ $dateDiff->format('%m Months and %d Days') }} </p>
 
-                    @if ($item->status === "Active")
+                    @if ($item->status === 'Active')
                         <!-- Card for Sub-Category -->
                         <div class="row">
                             @foreach ($cats->subcategories as $scs)
@@ -30,15 +30,20 @@
                                             <h5 class="card-title bc">{{ $scs->name }}</h5>
                                             <p class="card-text wc">{{ $scs->description }}</p>
                                             <a href="{{ url('playquiz/subcat/' . $scs->id) }}"
-                                                class="btn btn-outline-primary">Go
-                                                Topics</a>
+                                                class="btn btn-outline-primary">
+                                                Go Topics
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     @else
+                        @if ($item->status === 'Pending')
+                        <div class="fs-4 nbc">You enrolled successfully. Your content available soon.</div>
+                        @else
                         <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{ $cats->price }}Tk Only</a>
+                        @endif
                     @endif
                 @empty
                     <a href="{{ url('uenroll/' . $cats->id) }}">Enroll Now for {{ $cats->price }}Tk Only</a>

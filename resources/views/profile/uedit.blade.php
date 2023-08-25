@@ -4,16 +4,17 @@
 @section('content')
     <div class="container afterNav">
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                @include('profile.sidebar')
-            </div>
+            
             <div class="col-md-8">
+                <div class="fs-3 my-3 nvc text-decoration-underline text-center">User Profile Update</div> 
                 <div class="card mb-5">
-                    <div class="card-header">User Profile Edit</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <a class="" href="{{ url('uprofile') }}">Back</a>
+                    </div>
                     @foreach ($profile as $item)
                         <div class="card-body">
                             <div class="row">
-                                {{ Form::open(['route' => 'uprofile.update','method' => 'put', 'class' => 'user', 'enctype' => 'multipart/form-data']) }}
+                                {{ Form::open(['route' => 'uprofile.update', 'method' => 'put', 'class' => 'user', 'enctype' => 'multipart/form-data']) }}
 
                                 <div class="col-md-4">
                                     <label for="image" class="control-label">Image</label>
@@ -164,7 +165,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::submit('Add Profile Information', ['class' => 'btn my-3 btn-info btn-profile btn-block']) !!}
+                                    {!! Form::submit('Update Profile Information', ['class' => 'btn my-3 btn-info btn-profile btn-block']) !!}
                                 </div>
                                 {!! Form::close() !!}
                             </div>

@@ -4,11 +4,13 @@
 @section('content')
     <div class="container afterNav">
         <div class="row justify-content-center">
-           
+
             <div class="col-md-8">
+                <div class="fs-3 my-3 nvc text-decoration-underline text-center">User Profile Create</div>
+
                 <div class="card mb-5">
-                    <div class="card-header fs-4">
-                        Upload Profile Information <a href="{{ url('uprofile') }}" class="nav-link text-primary">Go to Profile</a>
+                    <div class="card-header d-flex justify-content-between">
+                        <a class="" href="{{ url('uprofile') }}">Back</a>
                     </div>
 
                     <div class="card-body">
@@ -24,11 +26,11 @@
                             </div>
                             <div class="col-md-8">
                                 {!! Form::text('user_id', Auth::user()->id, [
-                                        'required','hidden',
-                                        'class' => 'form-control form-control-profile',
-                                        'id' => 'user_id',
-                                        
-                                    ]) !!}
+                                    'required',
+                                    'hidden',
+                                    'class' => 'form-control form-control-profile',
+                                    'id' => 'user_id',
+                                ]) !!}
                                 <div>
                                     <label for="fullname" class="control-label">Your Full Name</label>
 
@@ -87,7 +89,6 @@
                                 <div>
                                     <strong class="">Biography:</strong>
                                     {!! Form::text('bio', null, [
-                                        
                                         'class' => 'form-control form-control-profile',
                                         'id' => 'bio',
                                         'placeholder' => 'Biography',
@@ -114,7 +115,6 @@
                                 <div>
                                     <strong class="">Youtube Link:</strong>
                                     {!! Form::text('yt', null, [
-                                        
                                         'class' => 'form-control form-control-profile',
                                         'id' => 'yt',
                                         'placeholder' => 'Youtube Link',
@@ -123,7 +123,6 @@
                                 <div>
                                     <strong class="">Facebook Link:</strong>
                                     {!! Form::text('fb', null, [
-                                        
                                         'class' => 'form-control form-control-profile',
                                         'id' => 'fb',
                                         'placeholder' => 'Facebook Link',
@@ -132,7 +131,6 @@
                                 <div>
                                     <strong class="">LinkedIn Link:</strong>
                                     {!! Form::text('in', null, [
-                                        
                                         'class' => 'form-control form-control-profile',
                                         'id' => 'in',
                                         'placeholder' => 'LinkedIn Link',

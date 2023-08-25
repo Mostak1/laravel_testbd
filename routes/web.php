@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/uprofile/store', [ProfileController::class, 'ustore'])->name('uprofile.store');
     Route::get('/uprofile/edit', [ProfileController::class, 'uedit']);
     Route::put('/uprofile/update', [ProfileController::class, 'uupdate'])->name('uprofile.update');
+    Route::get('/uprofile/enroll', [ProfileController::class, 'enrollCourse']);
 
 });
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -24,6 +24,15 @@ class ProfileController extends Controller
             ->with('enroll', $enroll)
             ->with('profile', $profile);
     }
+    public function enrollCourse()
+    {
+        $id = Auth::user()->id;
+        $profile = Profile::where('user_id', $id)->with('user')->get();
+        $enroll = Enroll::where('user_id', $id)->with('category')->paginate(6);
+        return view('profile.enroll')
+            ->with('enroll', $enroll)
+            ->with('profile', $profile);
+    }
     public function ucreate()
     {
         return view('profile.create');
