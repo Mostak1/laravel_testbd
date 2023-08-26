@@ -22,10 +22,22 @@
         href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
         rel="stylesheet" />
     <!-- DataTable CSS -->
+     {{-- wow js --}}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     {{-- animate css --}}
+     <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+   />
+   
+{{-- custome  css  --}}
+   @vite(['resources/scss/home.scss'])
+    {{-- <link rel="stylesheet" href="{{asset('build/assets/home-ca47b86c.css')}}"> --}}
     @yield('style')
 </head>
 
 <body>
+    <div id="preloader"></div>
     @php
         $user = Auth::user();
     @endphp
@@ -65,6 +77,11 @@
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
             }
         });
+        var loader = document.getElementById('preloader');
+        window.addeventListener('load', function() {
+            // loader.style.display = 'none';
+        })
+        new WOW().init();
     </script>
     <script>
         $(document).ready(function() {

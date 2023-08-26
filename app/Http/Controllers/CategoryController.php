@@ -37,6 +37,7 @@ class CategoryController extends Controller
         $data = [
             'name' => $request->name,
             'description' => $request->description,
+            'price' => $request->price,
             'active' => $request->active,
         ];
         // dd($data);

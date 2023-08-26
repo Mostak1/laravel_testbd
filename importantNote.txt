@@ -36,6 +36,18 @@ LazyLoad: A lightweight library for lazy loading images and other elements.
 Lozad.js: Another library for lazy loading images with a focus on performance.
 AOS (Animate On Scroll): While primarily used for animations, AOS can also help trigger lazy loading when elements enter the viewport.
 
+dtabase for portfolio website
+users:
+id first_name last_name mobile_no image home_mobile email father_name mother_name birth_date pr_address per_address nid linkedin github website facebook career_object 
+educations:
+id user_id  class subject year result board institute 
+experiences
+id user_id institute position starting_time end_time resone 
+projects 
+id user_id title description link video 
+images
+id project_id image
+
 
 
 

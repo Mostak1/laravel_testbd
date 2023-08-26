@@ -181,9 +181,6 @@ class SslCommerzPaymentController extends Controller
                 'expair_time' => $reData->etime,
                 // Set other attributes...
             ]);
-        } else {
-
-            return back()->with('info', 'You are already enrolled successfully! You will activate soon. Thanks for your patience')->withInput($request->input());
         }
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )

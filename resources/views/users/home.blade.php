@@ -13,7 +13,7 @@
     <div class="section main-banner" id="top">
         <video autoplay muted loop id="bg-video" src="{{ asset('assets/images/course-video.mp4') }}"></video>
         <div class="video-overlay header-text">
-            <div class="caption">
+            <div class="caption wow animate__animated animate__rubberBand animate__infinite" data-wow-iteration="10">
                 <h6>You Have a <span class="bc">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
                     a<span class="bc">Smart Decision</span> and <span class="bc">Develop Your Skill</span> </h6>
                 <h2><em>Your</em> Classroom</h2>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading my-4">
-                            <h2 class="text-center">Why choose <span class="bc">TestBD School</span> ?</h2>
+                            <h2 class="text-center wow animate__animated animate__zoomIn">Why choose <span class="bc">TestBD School</span> ?</h2>
                         </div>
                     </div>
                     <div class="col-md-12">

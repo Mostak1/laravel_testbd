@@ -27,13 +27,21 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    {{-- wao js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- animate c --}}
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  
     <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
     @vite(['resources/scss/home.scss'])
     @yield('css')
 </head>
 
 <body>
-
+    <div id="preloader"></div>
     <div id="layoutSidenav">
         @include('admin.layouts.side_nav')
         <div id="layoutSidenav_content">
@@ -77,6 +85,11 @@
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
             }
         });
+        var loader = document.getElementById('preloader');
+        window.addeventListener('load', function() {
+            loader.style.display = 'none';
+        })
+        new WOW().init();
     </script>
 
     <script>
