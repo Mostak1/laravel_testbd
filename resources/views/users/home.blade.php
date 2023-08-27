@@ -13,10 +13,11 @@
     <div class="section main-banner" id="top">
         <video autoplay muted loop id="bg-video" src="{{ asset('assets/images/course-video.mp4') }}"></video>
         <div class="video-overlay header-text">
-            <div class="caption wow animate__animated animate__rubberBand animate__infinite" data-wow-iteration="10">
-                <h6>You Have a <span class="bc">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
+            <div class="caption " >
+                <h6>You Have a <span class="bc wow bounceInUp">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
                     a<span class="bc">Smart Decision</span> and <span class="bc">Develop Your Skill</span> </h6>
                 <h2><em>Your</em> Classroom</h2>
+                
                 <div class="main-button">
                     <div class="scroll-to-section">
                         <a class="cbtn" href="#section2">Discover more</a>
@@ -68,7 +69,7 @@
                                                     alt="" />
                                             </section>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 wow bounceInUp">
                                             <h4>Best Education</h4>
                                             <p>
                                                 Grad School is free educational HTML template with

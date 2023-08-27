@@ -21,17 +21,13 @@
     <link
         href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
         rel="stylesheet" />
-    <!-- DataTable CSS -->
-     {{-- wow js --}}
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     {{-- animate css --}}
-     <link
-     rel="stylesheet"
-     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-   />
-   
-{{-- custome  css  --}}
-   @vite(['resources/scss/home.scss'])
+    <!-- DataTable CSS end-->
+    {{-- animate css --}}
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}" />
+
+
+    {{-- custome  css  --}}
+    @vite(['resources/scss/home.scss'])
     {{-- <link rel="stylesheet" href="{{asset('build/assets/home-ca47b86c.css')}}"> --}}
     @yield('style')
 </head>
@@ -70,6 +66,8 @@
     <!-- DataTable JS -->
     {{-- lightbox --}}
     <script src="{{ asset('assets/dist/js/lightbox-plus-jquery.min.js') }}"></script>
+    {{-- wow js --}}
+    <script src="{{asset('assets/js/wow.min.js')}}"></script>
 
     <script>
         $.ajaxSetup({
@@ -81,7 +79,14 @@
         window.addeventListener('load', function() {
             // loader.style.display = 'none';
         })
-        new WOW().init();
+        wow = new WOW({
+            boxClass: 'wow', // default
+            animateClass: 'animated', // default
+            offset: 0, // default
+            mobile: true, // default
+            live: true // default
+        })
+        wow.init();
     </script>
     <script>
         $(document).ready(function() {
