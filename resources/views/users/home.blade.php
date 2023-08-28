@@ -14,9 +14,9 @@
         <video autoplay muted loop id="bg-video" src="{{ asset('assets/images/course-video.mp4') }}"></video>
         <div class="video-overlay header-text">
             <div class="caption " >
-                <h6>You Have a <span class="bc wow bounceInUp">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
+                <h6 data-aos="fade-up" data-aos-duration="3000">You Have a <span class="bc wow bounceInUp">Smartphone</span> or <span class="bc">Personl Computer!</span><br> Get
                     a<span class="bc">Smart Decision</span> and <span class="bc">Develop Your Skill</span> </h6>
-                <h2><em>Your</em> Classroom</h2>
+                <h2 data-aos="fade-down" data-aos-duration="3000"><em>Your</em> Classroom</h2>
                 
                 <div class="main-button">
                     <div class="scroll-to-section">
@@ -30,11 +30,11 @@
     <div class="container my-5">
 
         <div class="my-3 row">
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="fade-down">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_yg29hewu.json" background="transparent"
                     speed="1" loop autoplay></lottie-player>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="fade-down">
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_1a8dx7zj.json" background="transparent"
                     speed="1" loop autoplay></lottie-player>
             </div>
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading my-4">
-                            <h2 class="text-center wow animate__animated animate__zoomIn">Why choose <span class="bc">TestBD School</span> ?</h2>
+                            <h2 class="text-center">Why choose <span class="bc">TestBD School</span> ?</h2>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -64,12 +64,12 @@
                                 <article id="tabs-1">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <section class="image-section">
+                                            <section class="image-section" data-aos="fade-left" data-aos-duration="3000">
                                                 <img class="section-image" src="assets/images/choose-us-image-01.png"
                                                     alt="" />
                                             </section>
                                         </div>
-                                        <div class="col-md-6 wow bounceInUp">
+                                        <div class="col-md-6" data-aos="fade-right" data-aos-duration="3000">
                                             <h4>Best Education</h4>
                                             <p>
                                                 Grad School is free educational HTML template with
@@ -85,7 +85,7 @@
                                 </article>
                                 <article id="tabs-2">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" data-aos="flip-left" data-aos-duration="3000">
                                             <section class="image-section">
 
                                                 <img class="section-image" src="assets/images/choose-us-image-02.png"
@@ -93,7 +93,7 @@
                                             </section>
 
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="3000">
                                             <h4>Top Level</h4>
                                             <p>
                                                 You can modify this HTML layout by editing contents and
@@ -110,13 +110,13 @@
                                 </article>
                                 <article id="tabs-3">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" data-aos="zoom-out-right" data-aos-duration="3000">
                                             <section class="image-section">
                                                 <img class="section-image" src="assets/images/choose-us-image-03.png"
                                                     alt="" />
                                             </section>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" data-aos="fade-up" data-aos-duration="3000">
                                             <h4>Quality Meeting</h4>
                                             <p>
                                                 You are NOT allowed to redistribute this template ZIP

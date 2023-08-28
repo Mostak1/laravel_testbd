@@ -9,7 +9,7 @@
             <!-- Left -->
 
             <!-- Right -->
-            <div>
+            <div data-aos="fade-left" data-aos-duration="3000">
                 <a href="https://www.facebook.com/mdmostak.ahmedsarker" class="me-4 text-reset">
                     <i class="wc fab fa-facebook-f"></i>
                 </a>
@@ -39,7 +39,7 @@
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="wc col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div data-aos="fade-left" data-aos-duration="3000" class="wc col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="wc fas fa-gem me-3"></i>Web Design & Development
@@ -55,7 +55,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="wc col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="wc col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Products</h6>
                         <p>
@@ -82,7 +82,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="wc col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div data-aos="fade-down" data-aos-duration="3000" class="wc col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
                         <p>
@@ -109,7 +109,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="wc col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div data-aos="fade-right" data-aos-duration="3000" class="wc col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                         <p>
@@ -133,7 +133,7 @@
         <!-- Section: Links -->
 
         <!-- Copyright -->
-        <div class="wc text-center p-4">
+        <div  class="wc text-center p-4">
             © 2023 Copyright:
             <a class="text-reset fw-bold" href="">Mostak Ahmed</a>
         </div>

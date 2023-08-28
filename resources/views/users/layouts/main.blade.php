@@ -23,8 +23,9 @@
         rel="stylesheet" />
     <!-- DataTable CSS end-->
     {{-- animate css --}}
-    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}" />
-
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}" />
+    {{-- AOS --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     {{-- custome  css  --}}
     @vite(['resources/scss/home.scss'])
@@ -67,9 +68,13 @@
     {{-- lightbox --}}
     <script src="{{ asset('assets/dist/js/lightbox-plus-jquery.min.js') }}"></script>
     {{-- wow js --}}
-    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    {{-- AOS --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 
     <script>
+        AOS.init();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
@@ -77,16 +82,9 @@
         });
         var loader = document.getElementById('preloader');
         window.addeventListener('load', function() {
-            // loader.style.display = 'none';
+            loader.style.display = 'none';
         })
-        wow = new WOW({
-            boxClass: 'wow', // default
-            animateClass: 'animated', // default
-            offset: 0, // default
-            mobile: true, // default
-            live: true // default
-        })
-        wow.init();
+        
     </script>
     <script>
         $(document).ready(function() {

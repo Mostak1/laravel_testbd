@@ -5,7 +5,7 @@
     <!-- Facilities Start -->
     <div class="afterNav container-fluid pt-5">
         <div class="container pb-3">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4" data-aos="zoom-out" data-aos-duration="3000">
                 @foreach ($cats as $cs)
                     {{-- {{dd($cs);}} animation_lkt38hd2.mp4 --}}
                     <div class="col">
