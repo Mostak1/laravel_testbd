@@ -26,6 +26,7 @@
                             <th>Active</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                             <th>Sector</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -57,6 +59,7 @@
                                 </td>
                                 <td>{{ $category->description }}</td>
                                 <td>{{ $category->price }}Tk</td>
+                                <td> <img class="img-fluid" src="{{asset('assets/img/category')}}/{{ $category->image }}" alt="{{ $category->image }}"></td>
                                 <td class="skip d-flex justify-content-center">
                                     {!! Form::open(['method' => 'delete', 'route' => ['category.destroy', $category->id], 'id' => 'deleteform']) !!}
                                     <a href="javascript:void(0)" class="btn btn-danger  btn-sm" title="Delete"

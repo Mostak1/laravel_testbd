@@ -16,8 +16,10 @@
             ]) !!}
             {{-- @include('partial.flash')
             @include('partial.error') --}}
+    
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label for="name" class="form-label">Name :</label>
                     {!! Form::text('name', null, [
                         'required',
                         'class' => 'form-control form-control-profile',
@@ -25,7 +27,8 @@
                         'placeholder' => 'Name',
                     ]) !!}
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <label for="active" class="form-label">Set Sector:</label>
                     {!! Form::select('active', [1 => 'Academic', 2 => ' Skill Development', 3 => 'Competitive Exam'], null, [
                         'required',
                         'class' => 'form-control form-control-profile',
@@ -35,9 +38,16 @@
                         'placeholder' => 'Active Field',
                     ]) !!}
                 </div>
+                <div class="col-sm-4">
+                    <label for="image" class="form-label">Input Image:</label>
+                        {!! Form::file('image', ['class' => 'form-control', 'id' => 'image', 'title' => 'Category Picture']) !!}
+                    
+                </div>
             </div>
+
             <div class="form-group mt-3 row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="description" class="form-label">Description:</label>
                     {!! Form::textarea('description', null, [
                         'required',
                         'class' => 'form-control form-control-profile',
@@ -47,11 +57,12 @@
                     ]) !!}
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="price" class="form-label">Price:</label>
                     {!! Form::number('price', null, [
                         'required',
                         'class' => 'form-control form-control-profile',
                         'id' => 'price',
-                        
+                    
                         'placeholder' => 'Price',
                     ]) !!}
                 </div>

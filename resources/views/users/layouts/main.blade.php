@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test BD</title>
+    <link rel="icon" href="{{asset('assets/img/icon.png')}}" type="image/png">
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,8 +23,7 @@
         href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.5/b-2.4.0/b-html5-2.4.0/b-print-2.4.0/r-2.5.0/datatables.min.css"
         rel="stylesheet" />
     <!-- DataTable CSS end-->
-    {{-- animate css --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}" />
+    
     {{-- AOS --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -34,7 +34,6 @@
 </head>
 
 <body>
-    <div id="preloader"></div>
     @php
         $user = Auth::user();
     @endphp
@@ -67,8 +66,7 @@
     <!-- DataTable JS -->
     {{-- lightbox --}}
     <script src="{{ asset('assets/dist/js/lightbox-plus-jquery.min.js') }}"></script>
-    {{-- wow js --}}
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+   
     {{-- AOS --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -80,10 +78,7 @@
                 'X-CSRF-TOKEN': jQuery('meta[name="X-CSRF-TOKEN"]').attr('content')
             }
         });
-        var loader = document.getElementById('preloader');
-        window.addeventListener('load', function() {
-            loader.style.display = 'none';
-        })
+       
         
     </script>
     <script>

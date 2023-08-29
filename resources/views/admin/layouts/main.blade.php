@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>TestBD Admin</title>
+    <link rel="icon" href="{{asset('assets/img/icon.png')}}" type="image/png">
     {{-- CSRF --}}
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

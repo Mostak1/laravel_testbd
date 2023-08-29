@@ -48,6 +48,10 @@ id user_id title description link video
 images
 id project_id image
 
+DB_DATABASE=mostaksa_testbd
+DB_USERNAME=mostaksa_booksell
+DB_PASSWORD=Mostaksa-Booksell
+
 
 
 

@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('skill', [HomeController::class, 'skill']);
+Route::post('email', [HomeController::class, 'sendEmail'])->name('email');
 
 Route::get('/dashboard', [HomeController::class, 'admin'])->middleware(['auth', 'verified', 'checkRole:2'])->name('dashboard');
 
@@ -97,7 +98,7 @@ Route::post('dynamicquiz', [QuizController::class, "dynamicquiz"]);
 Route::get('playquiz', [QuizController::class, "qskill"]);
 Route::get('playquiz_ac', [QuizController::class, "qacademic"]);
 Route::get('playquiz_com', [QuizController::class, "qcompetitive"]);
-Route::get('playquiz/cat/{id}', [QuizController::class, "catquiz"]);
+Route::get('playquiz/cat/{id}', [QuizController::class, "catquiz"])->name('playquiz.cat');
 Route::get('playquiz/subcat/{id}', [QuizController::class, "subcatquiz"]);
 Route::get('playquiz/topic/{id}', [QuizController::class, "topicquiz"]);
 Route::get('/showquiz', [QuizController::class, "dynamicquiz"]); 

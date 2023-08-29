@@ -1,7 +1,7 @@
 <div class="customBac wc">
     <footer class="container-xl pt-2 text-center text-lg-start text-dark">
         <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom aos-init overflow-hidden">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block">
                 <span class="wc">Get connected with us on social networks:</span>
@@ -9,7 +9,7 @@
             <!-- Left -->
 
             <!-- Right -->
-            <div data-aos="fade-left" data-aos-duration="3000">
+            <div class="aos aos-init" data-aos="fade-up" data-aos-duration="3000">
                 <a href="https://www.facebook.com/mdmostak.ahmedsarker" class="me-4 text-reset">
                     <i class="wc fab fa-facebook-f"></i>
                 </a>
@@ -37,9 +37,9 @@
         <section class="">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->
-                <div class="row mt-3">
+                <div class="row mt-3 aos-init overflow-hidden">
                     <!-- Grid column -->
-                    <div data-aos="fade-left" data-aos-duration="3000" class="wc col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="wc aos aos-init col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="wc fas fa-gem me-3"></i>Web Design & Development
@@ -55,7 +55,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div data-aos="fade-up" data-aos-duration="3000" class="wc col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="wc aos aos-init col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Products</h6>
                         <p>
@@ -82,7 +82,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div data-aos="fade-down" data-aos-duration="3000" class="wc col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div data-aos="fade-down" data-aos-duration="3000" class="wc aos aos-init col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
                         <p>
@@ -109,7 +109,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div data-aos="fade-right" data-aos-duration="3000" class="wc col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div data-aos="fade-down" data-aos-duration="3000" class="wc aos aos-init col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                         <p>

@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Subcategory;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -33,11 +35,18 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extention = $file->extension();
+            $qid  = Category::all()->last()->id;
+            $filename = $request->name . '.' . $extention;
+            $request->image->move(public_path('/assets/img/category/'), $filename);
+        }
         $data = [
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
+            'image' => $filename ?? '',
             'active' => $request->active,
         ];
         // dd($data);
@@ -68,7 +77,32 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category->update($request->all());
+        if ($request->hasFile('image')) {
+            if ($category->image) {
+                $exfile=$category->image;
+                $filePath = public_path('/assets/img/category/') . $exfile; // Change this to the actual path of the image you want to delete
+                
+                if (File::exists($filePath)) {
+                    File::delete($filePath);
+                   
+                }
+                Storage::delete($category->image);
+            }
+            $file = $request->file('image');
+            $extention = $file->extension();
+            $qid  = $category->name;
+            $filename = $qid . '.' . $extention;
+            $request->image->move(public_path('/assets/img/category/'), $filename);
+        }
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $filename ?? $category->image,
+            'active' => $request->active,
+        ];
+
+        $category->update($data);
         if ($category->save()) {
             return back()->with('success', "Update Successfully!");
         } else {

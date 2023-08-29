@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Enroll;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('users/home');
+        $cats  = Category::where('active', '2')->whereNotIn('id', [12, 13])->with('subcategories')->get();
+        return view('users/home', compact('cats'));
     }
     public function skill()
     {
@@ -73,4 +76,32 @@ class HomeController extends Controller
         ->with('totalSalesM', $totalSalesM)
         ->with('salesCountM', $salesCountM);
     }
+    public function sendEmail(Request $request)
+    {
+        // Get form data from the request
+        $formData = [
+            'user_name' => $request->user_name,
+            'user_email' => $request->user_email,
+            'message' => $request->message,
+        ];
+
+        $client = new Client();
+
+        // Send a POST request using Guzzle
+        try {
+            $response = $client->post('https://mostaksarker.com/API/mail.php', [
+                'form_params' => $formData,
+            ]);
+
+            // Check the response status code and take appropriate action
+            if ($response->getStatusCode() === 200) {
+                return back()->with('success', 'Email successfully sent');
+            } else {
+                return back()->with('success', 'Email successfully sent');
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Email not sent');
+        }
+    }
+
 }

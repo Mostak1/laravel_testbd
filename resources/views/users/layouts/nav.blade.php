@@ -1,5 +1,5 @@
-<nav id="navCustom" class="customBac navbar fixed-top navbar-expand-lg navbar shadow px-0 py-3">
-    <div class="container-xl">
+<nav class="customBac navbar fixed-top navbar-expand-lg shadow mx-0 px-0 py-3">
+    <div class="container">
         <!-- Logo -->
         <a class="navbar-brand customNav fs-2" href="{{ url('') }}">
             <span class="bc">Test</span>BD
@@ -13,13 +13,13 @@
         <div class="collapse navbar-collapse wc" id="navbarCollapse">
             <!-- Nav -->
             <div class="navbar-nav mx-lg-auto wc">
-                <a class="customNav  me-4 fs-5  " href="{{ url('') }}">Home</a>
+                <a class="customNav  me-4 fs-6  " href="{{ url('') }}">Home</a>
 
-                <a class="customNav  me-4 fs-5 " href="{{ url('quiz/qz/qshow') }}">Random Quiz</a>
-                <a class="customNav  me-4 fs-5 " href="{{ url('leaderboard/user') }}">Exam Score</a>
-                <a class="customNav  me-4 fs-5 " href="{{ url('question/user/create') }}">Question Upload</a>
+                <a class="customNav  me-4 fs-6 " href="{{ url('quiz/qz/qshow') }}">Random Quiz</a>
+                <a class="customNav  me-4 fs-6 " href="{{ url('leaderboard/user') }}">Exam Score</a>
+                <a class="customNav  me-4 fs-6 " href="{{ url('question/user/create') }}">Question Upload</a>
                 <div class="dropdown">
-                    <a class=" dropdown-toggle wc fs-5" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class=" dropdown-toggle wc fs-6" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Learning Sector
                     </a>
@@ -60,15 +60,7 @@
 
                     </ul>
                 </li>
-                <div class="">
-                    {{-- <a href="{{ url('checkout') }}" class=" customNav position-relative">
-                        Buy Item
-                        <span id="additm"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            <span class="visually-hidden">unread messages</span>
-                        </span>
-                    </a> --}}
-                </div>
+                
             </ul>
         </div>
     </div>

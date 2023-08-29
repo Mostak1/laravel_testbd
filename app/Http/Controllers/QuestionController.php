@@ -135,7 +135,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+    
     }
 
     /**
@@ -159,7 +159,11 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        if (Question::destroy($question->id)) {
+            return back()->with('success', $question->id . ' has been deleted!');
+        } else {
+            return back()->with('error', 'Delete Failed!');
+        }
     }
     public function restore($id)
     {
